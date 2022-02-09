@@ -37,9 +37,9 @@ const GetMusic = () => {
                 // console.log(response.data.tracks);
             }).catch(function (error) {
                 console.error(error);
-            });  
+            }, [options]);  
         }
-    }, [options, searchTerm])
+    }, [searchTerm])
     // took out the dependency array for deployment
 
     // const songResults = () => {
