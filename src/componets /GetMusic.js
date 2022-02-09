@@ -20,25 +20,45 @@ const GetMusic = () => {
         setUserInput(event.target.value);
     }
 
-    const options = {
-        method: 'GET',
-        url: 'https://shazam.p.rapidapi.com/search',
-        params: { term: searchTerm, locale: 'en-US', offset: '0', limit: '5' },
-        headers: {
-            'x-rapidapi-host': 'shazam.p.rapidapi.com',
-            'x-rapidapi-key': '4e6f74d025msh36947ff6c814c7cp11d0c1jsnc6f9a4f67eae'
-        }
-    };
+    // const options = {
+    //     method: 'GET',
+    //     url: 'https://shazam.p.rapidapi.com/search',
+    //     params: { term: searchTerm, locale: 'en-US', offset: '0', limit: '5' },
+    //     headers: {
+    //         'x-rapidapi-host': 'shazam.p.rapidapi.com',
+    //         'x-rapidapi-key': '4e6f74d025msh36947ff6c814c7cp11d0c1jsnc6f9a4f67eae'
+    //     }
+    // };
 
-    useEffect(() => {
+    // useEffect(() => {
+    //     if (searchTerm) {
+    //         axios.request(options).then(function (response) {
+    //             setSongList(response.data.tracks.hits);
+    //             // console.log(response.data.tracks);
+    //         }, ).catch(function (error) {
+    //             console.error(error);
+    //         });  
+    //     }
+    // }, [searchTerm])
+
+    useEffect( () => {
         if (searchTerm) {
-            axios.request(options).then(function (response) {
-                setSongList(response.data.tracks.hits);
-                // console.log(response.data.tracks);
-            }, [options])
-            .catch(function (error) {
-                console.error(error);
-            });  
+            axios({
+                method: 'GET',
+                url: 'https://shazam.p.rapidapi.com/search',
+                params: {   
+                    term: searchTerm, 
+                    locale: 'en-US', 
+                    offset: '0', 
+                    limit: '5' 
+                },
+                headers: {
+                    'x-rapidapi-host': 'shazam.p.rapidapi.com',
+                    'x-rapidapi-key': '4e6f74d025msh36947ff6c814c7cp11d0c1jsnc6f9a4f67eae'
+                }
+            }).then( (response) => {
+                setSongList(response.data.tracks.hits)
+            })
         }
     }, [searchTerm])
     // took out the dependency array for deployment
