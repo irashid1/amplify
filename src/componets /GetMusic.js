@@ -31,14 +31,22 @@ const GetMusic = () => {
     };
 
     useEffect(() => {
-        axios.request(options).then(function (response) {
-            setSongList(response.data.tracks);
-            console.log(response.data.tracks);
-        }).catch(function (error) {
-            console.error(error);
-        });
+        if (searchTerm) {
+            axios.request(options).then(function (response) {
+                setSongList(response.data.tracks.hits);
+                // console.log(response.data.tracks);
+            }).catch(function (error) {
+                console.error(error);
+            });  
+        }
     }, [searchTerm])
     // took out the dependency array for deployment
+
+    // const songResults = () => {
+    //     songList.map( (song) => {
+    //         console.log(song)
+    //     })
+    // }
 
    
 
@@ -50,16 +58,14 @@ const GetMusic = () => {
                 <input type="text" id="search" onChange={handleChange} value={userInput} />
                 <button> Search </button>
             </form>
-            {/* {
-                tracks.map((track) => {
-                    return (
-                        <div>
-                            {track.hub.actions.uri}
-                        </div>
-                    )
-                })
+            {
 
-            } */}
+                console.log(songList)
+            
+            
+
+
+            }
         </div>
     )
     
