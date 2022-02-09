@@ -39,7 +39,7 @@ const GetMusic = () => {
                 console.error(error);
             });  
         }
-    }, [searchTerm])
+    }, [options, searchTerm])
     // took out the dependency array for deployment
 
     // const songResults = () => {
