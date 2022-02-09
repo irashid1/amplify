@@ -1,13 +1,16 @@
 import axios from "axios";
-import { useEffect } from "react";
-
-
+import { useState, useEffect } from "react";
 
 const GetMusic = () => {
+
+    // states 
+    const [userInput, setUserInput] = useState("");
+    const [searchTerm, setSearchTerm] = useState("");
+
     const options = {
         method: 'GET',
         url: 'https://shazam.p.rapidapi.com/search',
-        params: { term: 'kiss the rain', locale: 'en-US', offset: '0', limit: '5' },
+        params: { term: searchTerm, locale: 'en-US', offset: '0', limit: '5' },
         headers: {
             'x-rapidapi-host': 'shazam.p.rapidapi.com',
             'x-rapidapi-key': '4e6f74d025msh36947ff6c814c7cp11d0c1jsnc6f9a4f67eae'
@@ -21,10 +24,26 @@ const GetMusic = () => {
             console.error(error);
         });
     })
+    // took out the dependency array for deployment
+
+    // event handlers
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setSearchTerm(userInput);
+    }
+
+    const handleChange = (event) => {
+        setUserInput(event.target.value);
+    }
 
     return(
       <div>
-
+          <form onSubmit={handleSubmit}>
+              <label htmlFor="search"> Search For Music </label>
+              <input type="text" id="search" onChange={handleChange} value={userInput}/>
+              <button> Search </button>
+          </form>
       </div>
     )
 
