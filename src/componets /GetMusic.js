@@ -35,9 +35,10 @@ const GetMusic = () => {
             axios.request(options).then(function (response) {
                 setSongList(response.data.tracks.hits);
                 // console.log(response.data.tracks);
-            }).catch(function (error) {
+            }, [options])
+            .catch(function (error) {
                 console.error(error);
-            }, [options]);  
+            });  
         }
     }, [searchTerm])
     // took out the dependency array for deployment
