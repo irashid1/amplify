@@ -6,6 +6,19 @@ const GetMusic = () => {
     // states 
     const [userInput, setUserInput] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
+    const [songList, setSongList] = useState([]);
+    // const [submitButton, setSubmitButton] = useState(false);
+
+    // event handlers
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        // setSubmitButton(!submitButton);
+        setSearchTerm(userInput);
+    }
+
+    const handleChange = (event) => {
+        setUserInput(event.target.value);
+    }
 
     const options = {
         method: 'GET',
@@ -17,35 +30,39 @@ const GetMusic = () => {
         }
     };
 
-    useEffect( () => {
+    useEffect(() => {
         axios.request(options).then(function (response) {
-            console.log(response.data);
+            setSongList(response.data.tracks);
+            console.log(response.data.tracks);
         }).catch(function (error) {
             console.error(error);
         });
-    })
+    }, [searchTerm])
     // took out the dependency array for deployment
 
-    // event handlers
+   
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        setSearchTerm(userInput);
-    }
 
-    const handleChange = (event) => {
-        setUserInput(event.target.value);
-    }
+    return (
+        <div>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="search"> Search For Music </label>
+                <input type="text" id="search" onChange={handleChange} value={userInput} />
+                <button> Search </button>
+            </form>
+            {/* {
+                tracks.map((track) => {
+                    return (
+                        <div>
+                            {track.hub.actions.uri}
+                        </div>
+                    )
+                })
 
-    return(
-      <div>
-          <form onSubmit={handleSubmit}>
-              <label htmlFor="search"> Search For Music </label>
-              <input type="text" id="search" onChange={handleChange} value={userInput}/>
-              <button> Search </button>
-          </form>
-      </div>
+            } */}
+        </div>
     )
+    
 
 }
 
