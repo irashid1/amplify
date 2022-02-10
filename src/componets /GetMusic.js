@@ -8,6 +8,8 @@ const GetMusic = () => {
     const [userInput, setUserInput] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
     const [songList, setSongList] = useState([]);
+    
+    // const [audio, setAudio] = useState([]);
     // const [submitButton, setSubmitButton] = useState(false);
 
     // event handlers
@@ -20,6 +22,10 @@ const GetMusic = () => {
     const handleChange = (event) => {
         setUserInput(event.target.value);
     }
+    
+    // const handlePlay = () => {
+    //    setAudio(audio.play)
+    // }
 
     // const options = {
     //     method: 'GET',
@@ -82,12 +88,12 @@ const GetMusic = () => {
                 <button> Search </button>
             </form>
             {songList.map((song) => {
-                console.log(song.track)
+                console.log(song.track.hub.actions[1].uri)
                 return(
                     <div key={song.track.key}>
                         <img src={song.track.images.coverart} alt={`Coverart of ${song.track.title}`}/>
                         <h2>{song.track.title}</h2>
-                        {/* <audio src="../assets/smokeSamp.mp3" controls /> */}
+                        <audio src={song.track.hub.actions[1].uri} controls />
                     </div>
                     )
                 })
