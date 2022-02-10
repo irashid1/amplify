@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
+
 const GetMusic = () => {
 
     // states 
@@ -81,11 +82,15 @@ const GetMusic = () => {
                 <button> Search </button>
             </form>
             {songList.map((song) => {
+                console.log(song.track)
                 return(
-                    <h2>{song.track.title}</h2>
+                    <div key={song.track.key}>
+                        <img src={song.track.images.coverart} alt={`Coverart of ${song.track.title}`}/>
+                        <h2>{song.track.title}</h2>
+                        {/* <audio src="../assets/smokeSamp.mp3" controls /> */}
+                    </div>
                     )
-                    // console.log(song.track.title)
-            })
+                })
 
                 // console.log(songList)
             
