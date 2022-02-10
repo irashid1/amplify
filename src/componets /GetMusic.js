@@ -69,6 +69,7 @@ const GetMusic = () => {
     //     })
     // }
 
+
    
 
 
@@ -79,9 +80,14 @@ const GetMusic = () => {
                 <input type="text" id="search" onChange={handleChange} value={userInput} />
                 <button> Search </button>
             </form>
-            {
+            {songList.map((song) => {
+                return(
+                    <h2>{song.track.title}</h2>
+                    )
+                    // console.log(song.track.title)
+            })
 
-                console.log(songList)
+                // console.log(songList)
             
             
 
