@@ -94,8 +94,8 @@ const GetMusic = () => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="search"> Search For Music </label>
-                <input type="text" id="search" onChange={handleChange} value={userInput} />
+                <label className="sr-only" htmlFor="search"> Search For Music </label>
+                <input placeholder="Search For Music" type="text" id="search" onChange={handleChange} value={userInput} />
                 <button> Search </button>
             </form>
             {songList.map((song) => {

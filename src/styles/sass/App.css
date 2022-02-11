@@ -228,4 +228,14 @@ html {
           clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+form {
+  margin: 20px;
 }/*# sourceMappingURL=App.css.map */
