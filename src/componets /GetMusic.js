@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import PlayMusic from "./PlayMusic";
 
 
 const GetMusic = () => {
@@ -8,6 +9,8 @@ const GetMusic = () => {
     const [userInput, setUserInput] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
     const [songList, setSongList] = useState([]);
+
+    const [currentTrack, setCurrentTrack] = useState({});
     
     // const [audio, setAudio] = useState([]);
     // const [submitButton, setSubmitButton] = useState(false);
@@ -23,10 +26,15 @@ const GetMusic = () => {
         setUserInput(event.target.value);
     }
     
-    // const handlePlay = () => {
-    //    setAudio(audio.play)
-    // }
+    const handlePlay = (event) => {
+    //    console.log(event);
+    setCurrentTrack(event);
+    
+    }
 
+    
+
+    
     // const options = {
     //     method: 'GET',
     //     url: 'https://shazam.p.rapidapi.com/search',
@@ -56,16 +64,19 @@ const GetMusic = () => {
                 params: {   
                     term: searchTerm, 
                     locale: 'en-US', 
-                    offset: '0', 
+                    offset: '1', 
                     limit: '5' 
                 },
                 headers: {
                     'x-rapidapi-host': 'shazam.p.rapidapi.com',
-                    'x-rapidapi-key': '4e6f74d025msh36947ff6c814c7cp11d0c1jsnc6f9a4f67eae'
+                    'x-rapidapi-key': '8b686888demsh8b501dde66c5b3dp12f3d2jsn655350bd72a5'
                 }
             }).then( (response) => {
                 setSongList(response.data.tracks.hits)
-            })
+            }).catch(function (error) {
+                console.error(error);
+            });
+                
         }
     }, [searchTerm])
     // took out the dependency array for deployment
@@ -88,22 +99,25 @@ const GetMusic = () => {
                 <button> Search </button>
             </form>
             {songList.map((song) => {
-                console.log(song.track.hub.actions[1].uri)
+                // console.log(song.track.hub)
                 return(
-                    <div key={song.track.key}>
+                    
+                    <div onClick={()=>handlePlay(song.track.hub.actions[1].uri)} key={song.track.key}>
                         <img src={song.track.images.coverart} alt={`Coverart of ${song.track.title}`}/>
                         <h2>{song.track.title}</h2>
-                        <audio src={song.track.hub.actions[1].uri} controls />
+                        {/* <audio src={song.track.hub.actions[1].uri} controls /> */}
                     </div>
+
+                    
                     )
                 })
-
-                // console.log(songList)
-            
-            
-
-
+                
+                // console.log(currentTrack)
             }
+            {currentTrack ? <PlayMusic currentTrack={currentTrack} /> : null }
+                     
+            
+
         </div>
     )
     
