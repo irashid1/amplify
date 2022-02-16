@@ -11,6 +11,10 @@ const GetMusic = () => {
     const [songList, setSongList] = useState([]);
 
     const [currentTrack, setCurrentTrack] = useState({});
+
+    const [playPause, setPlayPause] = useState(false);
+
+    const [toggle, setToggle] = useState(false)
     
     // const [audio, setAudio] = useState([]);
     // const [submitButton, setSubmitButton] = useState(false);
@@ -26,11 +30,23 @@ const GetMusic = () => {
         setUserInput(event.target.value);
     }
     
-    const handlePlay = (event) => {
+    const handlePlayPause = (event) => {
     //    console.log(event);
-    setCurrentTrack(event);
+    // setCurrentTrack(event);
+    // setPlayPause(!playPause)
+        setToggle(!toggle)
+    if (event === currentTrack) {
+        setPlayPause(!playPause)
+    } else {
+        setCurrentTrack(event);
+    }
+   
     
     }
+
+
+
+    
 
     
 
@@ -102,7 +118,7 @@ const GetMusic = () => {
                 // console.log(song.track.hub)
                 return(
                     
-                    <div onClick={()=>handlePlay(song.track.hub.actions[1].uri)} key={song.track.key}>
+                    <div onClick={()=>handlePlayPause(song.track.hub.actions[1].uri)} key={song.track.key}>
                         <img src={song.track.images.coverart} alt={`Coverart of ${song.track.title}`}/>
                         <h2>{song.track.title}</h2>
                         {/* <audio src={song.track.hub.actions[1].uri} controls /> */}
@@ -114,7 +130,7 @@ const GetMusic = () => {
                 
                 // console.log(currentTrack)
             }
-            {currentTrack ? <PlayMusic currentTrack={currentTrack} /> : null }
+            {currentTrack ? <PlayMusic currentTrack={currentTrack} playPause={playPause} toggle={toggle} /> : null }
                      
             
 
