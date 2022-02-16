@@ -32,7 +32,7 @@ const PlayMusic = ({currentTrack, playPause, toggle}) => {
         } else {
             audioRef.current.play();
         }
-    }, [toggle]);
+    }, [toggle, currentTrack, playPause]);
 
     // useEffect(() => {
     //     if (isPlaying) {
