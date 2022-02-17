@@ -10,7 +10,7 @@ const Pages = ({ pageIndex, setPageIndex }) => {
         } else if (pageIndex > 0) {
             setDisabled(false);
         }
-    })
+    }, [pageIndex])
 
     return (
         <>
