@@ -9,7 +9,7 @@ const PlayMusic = ({currentTrack, playPause, toggle}) => {
 
     const audioRef = useRef(audioElement);
 
-    console.log(audioRef.current);
+    // console.log(audioRef.current);
 
     
     useEffect( () => {
