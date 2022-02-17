@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import PlayMusic from "./PlayMusic";
+import Pages from "./Pages";
 
 
 const GetMusic = () => {
@@ -15,6 +16,9 @@ const GetMusic = () => {
     const [playPause, setPlayPause] = useState(false);
 
     const [toggle, setToggle] = useState(false)
+
+    //for pages 
+    const [pageIndex, setPageIndex] = useState(0);
     
     // const [audio, setAudio] = useState([]);
     // const [submitButton, setSubmitButton] = useState(false);
@@ -80,7 +84,7 @@ const GetMusic = () => {
                 params: {   
                     term: searchTerm, 
                     locale: 'en-US', 
-                    offset: '1', 
+                    offset: pageIndex, 
                     limit: '5' 
                 },
                 headers: {
@@ -94,7 +98,7 @@ const GetMusic = () => {
             });
                 
         }
-    }, [searchTerm])
+    }, [searchTerm , pageIndex])
     // took out the dependency array for deployment
 
     // const songResults = () => {
@@ -113,7 +117,8 @@ const GetMusic = () => {
                 <label className="sr-only" htmlFor="search"> Search For Music </label>
                 <input placeholder="Search For Music" type="text" id="search" onChange={handleChange} value={userInput} />
                 <button> Search </button>
-            </form>
+            </form> 
+            {searchTerm ? <Pages pageIndex={pageIndex} setPageIndex={setPageIndex} /> : null }
             {songList.map((song) => {
                 // console.log(song.track.hub)
                 return(
@@ -130,6 +135,7 @@ const GetMusic = () => {
                 
                 // console.log(currentTrack)
             }
+            
             {currentTrack ? <PlayMusic currentTrack={currentTrack} playPause={playPause} toggle={toggle} /> : null }
                      
             
