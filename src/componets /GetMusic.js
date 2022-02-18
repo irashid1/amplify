@@ -11,7 +11,7 @@ const GetMusic = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [songList, setSongList] = useState([]);
 
-    const [currentTrack, setCurrentTrack] = useState({});
+    const [currentTrack, setCurrentTrack] = useState();
 
     const [playPause, setPlayPause] = useState(false);
 
@@ -19,7 +19,7 @@ const GetMusic = () => {
 
     //for pages 
     const [pageIndex, setPageIndex] = useState(0);
-    
+
     // const [audio, setAudio] = useState([]);
     // const [submitButton, setSubmitButton] = useState(false);
 
@@ -33,28 +33,29 @@ const GetMusic = () => {
     const handleChange = (event) => {
         setUserInput(event.target.value);
     }
-    
+
     const handlePlayPause = (event) => {
-    //    console.log(event);
-    // setCurrentTrack(event);
-    // setPlayPause(!playPause)
+        //    console.log(event);
+        // setCurrentTrack(event);
+        // setPlayPause(!playPause)
         setToggle(!toggle)
-    if (event === currentTrack) {
-        setPlayPause(!playPause)
-    } else {
-        setCurrentTrack(event);
+        if (event === currentTrack) {
+            setPlayPause(!playPause)
+        } else {
+            setCurrentTrack(event);
+            setPlayPause(false);
+        }
+
+
     }
-   
-    
-    }
 
 
 
-    
 
-    
 
-    
+
+
+
     // const options = {
     //     method: 'GET',
     //     url: 'https://shazam.p.rapidapi.com/search',
@@ -76,29 +77,29 @@ const GetMusic = () => {
     //     }
     // }, [searchTerm])
 
-    useEffect( () => {
+    useEffect(() => {
         if (searchTerm) {
             axios({
                 method: 'GET',
                 url: 'https://shazam.p.rapidapi.com/search',
-                params: {   
-                    term: searchTerm, 
-                    locale: 'en-US', 
-                    offset: pageIndex, 
-                    limit: '5' 
+                params: {
+                    term: searchTerm,
+                    locale: 'en-US',
+                    offset: pageIndex,
+                    limit: '5'
                 },
                 headers: {
                     'x-rapidapi-host': 'shazam.p.rapidapi.com',
                     'x-rapidapi-key': '8b686888demsh8b501dde66c5b3dp12f3d2jsn655350bd72a5'
                 }
-            }).then( (response) => {
+            }).then((response) => {
                 setSongList(response.data.tracks.hits)
             }).catch(function (error) {
                 console.error(error);
             });
-                
+
         }
-    }, [searchTerm , pageIndex])
+    }, [searchTerm, pageIndex])
     // took out the dependency array for deployment
 
     // const songResults = () => {
@@ -108,7 +109,7 @@ const GetMusic = () => {
     // }
 
 
-   
+
 
 
     return (
@@ -117,32 +118,32 @@ const GetMusic = () => {
                 <label className="sr-only" htmlFor="search"> Search For Music </label>
                 <input placeholder="Search For Music" type="text" id="search" onChange={handleChange} value={userInput} />
                 <button> Search </button>
-            </form> 
-            {searchTerm ? <Pages pageIndex={pageIndex} setPageIndex={setPageIndex} /> : null }
-            {songList.map((song) => {
-                // console.log(song.track.hub)
-                return(
-                    
-                    <div onClick={()=>handlePlayPause(song.track.hub.actions[1].uri)} key={song.track.key}>
-                        <img src={song.track.images.coverart} alt={`Coverart of ${song.track.title}`}/>
+            </form>
+            {searchTerm ? <Pages pageIndex={pageIndex} setPageIndex={setPageIndex} /> : null}
+            {songList.map((song, index) => {
+                console.log(index)
+                return (
+
+                    <div onClick={() => handlePlayPause(song.track)} key={song.track.key}>
+                        <img src={song.track.images.coverart} alt={`Coverart of ${song.track.title}`} />
                         <h2>{song.track.title}</h2>
                         {/* <audio src={song.track.hub.actions[1].uri} controls /> */}
                     </div>
 
-                    
-                    )
-                })
-                
+
+                )
+            })
+
                 // console.log(currentTrack)
             }
-            
-            {currentTrack ? <PlayMusic currentTrack={currentTrack} playPause={playPause} toggle={toggle} /> : null }
-                     
-            
+
+            {currentTrack ? <PlayMusic currentTrack={currentTrack} playPause={playPause} toggle={toggle} /> : null}
+
+
 
         </div>
     )
-    
+
 
 }
 
