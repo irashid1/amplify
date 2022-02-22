@@ -1,6 +1,7 @@
 import { useEffect, useRef} from "react"
+import MediaPlayer from "./MediaPlayer";
 
-const PlayMusic = ({currentTrack, playPause, toggle}) => {
+const PlayMusic = ({currentTrack, playPause, setPlayPause, toggle, setToggle}) => {
 
     const audioElement = new Audio();
 
@@ -9,7 +10,7 @@ const PlayMusic = ({currentTrack, playPause, toggle}) => {
 
     const audioRef = useRef(audioElement);
 
-    // console.log(currentTrack);
+    // console.log(handlePlayPause);
 
     
     useEffect( () => {
@@ -56,6 +57,7 @@ const PlayMusic = ({currentTrack, playPause, toggle}) => {
     return (
         <>
             {/* <audio src={props.currentTrack} autoPlay controls />    */}
+            <MediaPlayer audioRef={audioRef} playPause={playPause} setPlayPause={setPlayPause} toggle={toggle} setToggle={setToggle} currentTrack={currentTrack} />
         </>
     )
 }
