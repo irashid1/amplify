@@ -1,7 +1,7 @@
-import { FaPlay, FaPause, FaFastBackward, FaFastForward } from "react-icons/fa";
+import { FaPlay, FaFastBackward, FaFastForward } from "react-icons/fa";
 // import { handlePlayPause } from "./PlayMusic";
 
-const MediaPlayer = ({ audioRef, playPause, setPlayPause, toggle, setToggle }) => {
+const MediaPlayer = ({ audioRef, playPause, toggle, setToggle }) => {
 
     // console.log(currentTrack)
 
