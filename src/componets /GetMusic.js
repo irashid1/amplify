@@ -34,7 +34,7 @@ const GetMusic = () => {
         setUserInput(event.target.value);
     }
 
-    const handlePlayPause = (event) => {
+     const handlePlayPause = (event) => {
         //    console.log(event);
         // setCurrentTrack(event);
         // setPlayPause(!playPause)
@@ -137,7 +137,7 @@ const GetMusic = () => {
                 // console.log(currentTrack)
             }
 
-            {currentTrack ? <PlayMusic currentTrack={currentTrack} playPause={playPause} toggle={toggle} /> : null}
+            {currentTrack ? <PlayMusic currentTrack={currentTrack} playPause={playPause} setPlayPause={setPlayPause} toggle={toggle} setToggle={setToggle} /> : null}
 
 
 
