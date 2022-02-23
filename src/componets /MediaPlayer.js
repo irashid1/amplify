@@ -1,7 +1,7 @@
-import { FaPlay, FaFastBackward, FaFastForward } from "react-icons/fa";
+import { FaPlay, FaPause, FaFastBackward, FaFastForward } from "react-icons/fa";
 // import { handlePlayPause } from "./PlayMusic";
 
-const MediaPlayer = ({ audioRef, playPause, setPlayPause, toggle, setToggle }) => {
+const MediaPlayer = ({ audioRef, playPause, setPlayPause, toggle, setToggle, currentTrack, setCurrentTrack, songList }) => {
 
     // console.log(currentTrack)
 
@@ -13,25 +13,42 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, toggle, setToggle }) =
         } else {
             audioRef.current.play();
         }
-        
+    }
+
+    const prevTrack = () => {
+        if (audioRef.current.currentTime > 1) {
+            // reseting track to start position
+            audioRef.current.currentTime = 0;
+            // console.log(currentTrack)
+            // console.log(songList)
+        } else if (audioRef.current.currentTime < 1) {
+            const prev = currentTrack.index - 1 
+            setCurrentTrack(songList[prev].track);
+            audioRef.current.play();
+            
+        }
         
     }
+    
+    const nextTrack = () => {
+        const next = currentTrack.index + 1
+        setCurrentTrack(songList[next].track);
+        audioRef.current.play();
+    }
+
 
     return(
         <div className="mediaPlayer">
 
-            <button>
+            <button onClick={() => prevTrack()}>
             <FaFastBackward />
             </button>
                 <div className="playPause">
                     <button onClick={() => togglePlayPause()}>
-                        <FaPlay />
+                        {playPause ? <FaPlay /> : <FaPause />}
                     </button>
-                    {/* <button onClick={}>
-                        <FaPause />
-                    </button> */}
                 </div>
-            <button>
+            <button onClick={() => nextTrack()}>
                 <FaFastForward />
             </button>
 

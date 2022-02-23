@@ -20,6 +20,7 @@ const GetMusic = () => {
     //for pages 
     const [pageIndex, setPageIndex] = useState(0);
 
+
     // const [audio, setAudio] = useState([]);
     // const [submitButton, setSubmitButton] = useState(false);
 
@@ -34,17 +35,18 @@ const GetMusic = () => {
         setUserInput(event.target.value);
     }
 
-     const handlePlayPause = (event) => {
-        //    console.log(event);
-        // setCurrentTrack(event);
-        // setPlayPause(!playPause)
+     const handlePlayPause = (event, index) => {
         setToggle(!toggle)
+        console.log(index)
+
+        console.log(event)
         if (event === currentTrack) {
             setPlayPause(!playPause)
         } else {
             setCurrentTrack(event);
             setPlayPause(false);
         }
+
 
 
     }
@@ -121,10 +123,12 @@ const GetMusic = () => {
             </form>
             {searchTerm ? <Pages pageIndex={pageIndex} setPageIndex={setPageIndex} /> : null}
             {songList.map((song, index) => {
-                console.log(index)
+                song.track.index = index; 
+                // console.log(song)
+                // console.log(songList)
                 return (
 
-                    <div onClick={() => handlePlayPause(song.track)} key={song.track.key}>
+                    <div onClick={() => handlePlayPause(song.track, songList)} key={song.track.key}>
                         <img src={song.track.images.coverart} alt={`Coverart of ${song.track.title}`} />
                         <h2>{song.track.title}</h2>
                         {/* <audio src={song.track.hub.actions[1].uri} controls /> */}
@@ -137,7 +141,7 @@ const GetMusic = () => {
                 // console.log(currentTrack)
             }
 
-            {currentTrack ? <PlayMusic currentTrack={currentTrack} playPause={playPause} setPlayPause={setPlayPause} toggle={toggle} setToggle={setToggle} /> : null}
+            {currentTrack ? <PlayMusic currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} playPause={playPause} setPlayPause={setPlayPause} toggle={toggle} setToggle={setToggle} songList={songList} /> : null}
 
 
 
