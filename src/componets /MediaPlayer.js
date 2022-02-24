@@ -1,10 +1,12 @@
-import { useState } from "react";
+// import { useState, useEffect } from "react";
 import { FaPlay, FaPause, FaFastBackward, FaFastForward } from "react-icons/fa";
 
 
 const MediaPlayer = ({ audioRef, playPause, setPlayPause, toggle, setToggle, currentTrack, setCurrentTrack, songList, pageIndex, setPageIndex }) => {
 
-    const [nextPageToggle, setNextPageToggle] = useState(false); 
+    
+
+    // const [nextPageToggle, setNextPageToggle] = useState(false); 
 
     const togglePlayPause = () => {
         setToggle(!toggle)
@@ -35,11 +37,9 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, toggle, setToggle, cur
 
     const nextTrack = () => {
 
-        
-
         if (currentTrack.index === 4) {
             setPageIndex(pageIndex + 5)
-            setNextPageToggle(!nextPageToggle)
+            // setNextPageToggle(!nextPageToggle)
         } else {
             
             const next = currentTrack.index + 1
@@ -47,6 +47,7 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, toggle, setToggle, cur
             audioRef.current.play();
         }
     }
+    
 
     return(
         <div className="mediaPlayer">

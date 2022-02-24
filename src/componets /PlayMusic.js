@@ -29,6 +29,11 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, tog
     }, [toggle, currentTrack, playPause]);
 
 
+    useEffect(() => {
+        console.log(songList[0].track);
+        setCurrentTrack(songList[0].track)
+    }, [songList, setCurrentTrack])
+
     return (
         <>
             <MediaPlayer audioRef={audioRef} playPause={playPause} setPlayPause={setPlayPause} toggle={toggle} setToggle={setToggle} currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} songList={songList} pageIndex={pageIndex} setPageIndex={setPageIndex} />

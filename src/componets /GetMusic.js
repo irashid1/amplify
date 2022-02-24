@@ -43,6 +43,7 @@ const GetMusic = () => {
     }
 
     useEffect(() => {
+
         if (searchTerm) {
             axios({
                 method: 'GET',
@@ -58,6 +59,8 @@ const GetMusic = () => {
                     'x-rapidapi-key': 'cd2f669506mshbacf9d2b7d2169ep15ef89jsnb7d5c64abf1d'
                 }
             }).then((response) => {
+                
+
                 setSongList(response.data.tracks.hits);
 
             }).catch(function (error) {
@@ -66,7 +69,7 @@ const GetMusic = () => {
 
         }
 
-    }, [searchTerm, pageIndex])
+    }, [pageIndex, searchTerm])
 
     return (
         <div>
