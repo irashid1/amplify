@@ -30,9 +30,21 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, tog
 
 
     useEffect(() => {
-        console.log(songList[0].track);
-        setCurrentTrack(songList[0].track)
-    }, [songList, setCurrentTrack])
+        
+        // if page index is greater than 0 && currentTrack.index == 0 && previous is clicked then we want to go to previous songList and setCurrentTrack to songList[4].track
+
+        // if (pageIndex !== 0 && currentTrack.index === 0) {
+
+        // }
+
+        if (currentTrack.index === 4 && pageIndex >= 0) {
+            setCurrentTrack(songList[0].track)
+        } else if (currentTrack.index === 0 && pageIndex >= 0 ) {
+            setCurrentTrack(songList[songList.length - 1].track)
+        }
+        
+        
+    }, [songList])
 
     return (
         <>
