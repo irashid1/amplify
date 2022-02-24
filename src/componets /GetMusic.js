@@ -35,9 +35,8 @@ const GetMusic = () => {
         setUserInput(event.target.value);
     }
 
-     const handlePlayPause = (event, index) => {
+     const handlePlayPause = (event) => {
         setToggle(!toggle)
-        console.log(index)
 
         console.log(event)
         if (event === currentTrack) {
@@ -92,7 +91,7 @@ const GetMusic = () => {
                 },
                 headers: {
                     'x-rapidapi-host': 'shazam.p.rapidapi.com',
-                    'x-rapidapi-key': '8b686888demsh8b501dde66c5b3dp12f3d2jsn655350bd72a5'
+                    'x-rapidapi-key': 'cd2f669506mshbacf9d2b7d2169ep15ef89jsnb7d5c64abf1d'
                 }
             }).then((response) => {
                 setSongList(response.data.tracks.hits)
@@ -128,7 +127,7 @@ const GetMusic = () => {
                 // console.log(songList)
                 return (
 
-                    <div onClick={() => handlePlayPause(song.track, songList)} key={song.track.key}>
+                    <div onClick={() => handlePlayPause(song.track)} key={song.track.key}>
                         <img src={song.track.images.coverart} alt={`Coverart of ${song.track.title}`} />
                         <h2>{song.track.title}</h2>
                         {/* <audio src={song.track.hub.actions[1].uri} controls /> */}
@@ -141,7 +140,7 @@ const GetMusic = () => {
                 // console.log(currentTrack)
             }
 
-            {currentTrack ? <PlayMusic currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} playPause={playPause} setPlayPause={setPlayPause} toggle={toggle} setToggle={setToggle} songList={songList} /> : null}
+            {currentTrack ? <PlayMusic currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} playPause={playPause} setPlayPause={setPlayPause} toggle={toggle} setToggle={setToggle} songList={songList} pageIndex={pageIndex} setPageIndex={setPageIndex} /> : null}
 
 
 

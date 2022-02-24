@@ -15,11 +15,11 @@ const Pages = ({ pageIndex, setPageIndex }) => {
     return (
         <>
         <button 
-        onClick={()=> setPageIndex(pageIndex-1)}
+        onClick={()=> setPageIndex(pageIndex - 5)}
         disabled={disabled}>
             {"<"}
         </button>
-        <button onClick={() => setPageIndex(pageIndex + 1)}>
+        <button onClick={() => setPageIndex(pageIndex + 5)}>
             {">"}
         </button>
         </>
