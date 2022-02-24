@@ -1,7 +1,7 @@
 import { useEffect, useRef} from "react"
 import MediaPlayer from "./MediaPlayer";
 
-const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, toggle, setToggle, songList }) => {
+const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, toggle, setToggle, songList, pageIndex, setPageIndex }) => {
 
     const audioElement = new Audio();
 
@@ -10,7 +10,7 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, tog
 
     const audioRef = useRef(audioElement);
 
-    // console.log(handlePlayPause);
+    // console.log(songList);
 
     
     useEffect( () => {
@@ -57,7 +57,7 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, tog
     return (
         <>
             {/* <audio src={props.currentTrack} autoPlay controls />    */}
-            <MediaPlayer audioRef={audioRef} playPause={playPause} setPlayPause={setPlayPause} toggle={toggle} setToggle={setToggle} currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} songList={songList} />
+            <MediaPlayer audioRef={audioRef} playPause={playPause} setPlayPause={setPlayPause} toggle={toggle} setToggle={setToggle} currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} songList={songList} pageIndex={pageIndex} setPageIndex={setPageIndex} />
         </>
     )
 }
