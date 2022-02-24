@@ -1,5 +1,5 @@
 import { FaPlay, FaPause, FaFastBackward, FaFastForward } from "react-icons/fa";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 // import { handlePlayPause } from "./PlayMusic";
 
 const MediaPlayer = ({ audioRef, playPause, setPlayPause, toggle, setToggle, currentTrack, setCurrentTrack, songList, pageIndex, setPageIndex }) => {
