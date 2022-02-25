@@ -1,19 +1,20 @@
 import { useEffect, useRef} from "react"
 import MediaPlayer from "./MediaPlayer";
 
-const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, toggle, setToggle, songList, pageIndex, setPageIndex }) => {
+const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, toggle, setToggle, songList, pageIndex, setPageIndex, submitToggle, setSubmitToggle}) => {
 
     const audioElement = new Audio();
     const audioRef = useRef(audioElement);
 
     
     useEffect( () => {
-        
+        setSubmitToggle(true)
         const currentSong = currentTrack.hub.actions[1].uri;
 
         if (playPause === false && audioRef.current.currentTime === 0) {
             audioRef.current.src = currentSong;
             audioRef.current.play();
+            console.log(currentSong)
 
         } else if (audioRef.current.src !== currentSong) {
             audioRef.current.currentTime = 0;
@@ -26,8 +27,7 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, tog
         } else {
             audioRef.current.play();
         }
-    }, [toggle, currentTrack, playPause]);
-
+    }, [currentTrack]);
 
     useEffect(() => {
         
@@ -36,12 +36,16 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, tog
         // if (pageIndex !== 0 && currentTrack.index === 0) {
 
         // }
-
-        if (currentTrack.index === 4 && pageIndex >= 0) {
-            setCurrentTrack(songList[0].track)
-        } else if (currentTrack.index === 0 && pageIndex >= 0 ) {
-            setCurrentTrack(songList[songList.length - 1].track)
+        if (submitToggle === true) {
+            if (currentTrack.index === (songList.length - 1) && pageIndex >= 0) {
+                setCurrentTrack(songList[0].track)
+            } else if (currentTrack.index === 0 && pageIndex >= 0 && audioRef.current.currentTime !== 0) {
+                setCurrentTrack(songList[songList.length - 1].track)
+            } else if (currentTrack.index < (songList.length - 1) && pageIndex > 0) {
+                setCurrentTrack(songList[0].track)
+            }
         }
+
         
         
     }, [songList])

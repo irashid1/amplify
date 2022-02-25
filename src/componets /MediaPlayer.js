@@ -38,7 +38,7 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, toggle, setToggle, cur
 
     const nextTrack = () => {
 
-        if (currentTrack.index === 4) {
+        if (currentTrack.index === (songList.length - 1)) {
             setPageIndex(pageIndex + 5)
 
         } else {
@@ -46,6 +46,7 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, toggle, setToggle, cur
             const next = currentTrack.index + 1
             setCurrentTrack(songList[next].track);
             audioRef.current.play();
+            console.log(songList)
         }
     }
 

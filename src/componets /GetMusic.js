@@ -16,6 +16,7 @@ const GetMusic = () => {
     const [playPause, setPlayPause] = useState(false);
 
     const [toggle, setToggle] = useState(false)
+    const [submitToggle, setSubmitToggle] = useState(false)
 
     //for pages 
     const [pageIndex, setPageIndex] = useState(0);
@@ -24,6 +25,7 @@ const GetMusic = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         setSearchTerm(userInput);
+        setSubmitToggle(false)
     }
 
     const handleChange = (event) => {
@@ -56,7 +58,7 @@ const GetMusic = () => {
                 },
                 headers: {
                     'x-rapidapi-host': 'shazam.p.rapidapi.com',
-                    'x-rapidapi-key': 'cd2f669506mshbacf9d2b7d2169ep15ef89jsnb7d5c64abf1d'
+                    'x-rapidapi-key': 'cd74434576msh2f5cc3adcc9d925p11959ejsnfe4483674b62'
                 }
             }).then((response) => {
                 
@@ -95,7 +97,7 @@ const GetMusic = () => {
 
             }
 
-            {currentTrack ? <PlayMusic currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} playPause={playPause} setPlayPause={setPlayPause} toggle={toggle} setToggle={setToggle} songList={songList} pageIndex={pageIndex} setPageIndex={setPageIndex} /> : null}
+            {currentTrack ? <PlayMusic currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} playPause={playPause} setPlayPause={setPlayPause} toggle={toggle} setToggle={setToggle} songList={songList} pageIndex={pageIndex} setPageIndex={setPageIndex} setSubmitToggle={setSubmitToggle} submitToggle={submitToggle} /> : null}
 
 
 
