@@ -21,7 +21,7 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, toggle, setToggle, cur
     const prevTrack = () => {
 
 
-        if (audioRef.current.currentTime > 1) {
+        if (audioRef.current.currentTime > 2) {
             audioRef.current.currentTime = 0;
         } else {
             if (currentTrack.index === 0) {

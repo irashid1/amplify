@@ -37,9 +37,11 @@ const GetMusic = () => {
 
         if (event === currentTrack) {
             setPlayPause(!playPause)
+            console.log(playPause)
         } else {
             setCurrentTrack(event);
             setPlayPause(false);
+            console.log(playPause)
         }
 
     }

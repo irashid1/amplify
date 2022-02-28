@@ -1,4 +1,4 @@
-import { useEffect, useRef} from "react"
+import { useCallback, useEffect, useRef} from "react"
 import MediaPlayer from "./MediaPlayer";
 
 const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, toggle, setToggle, songList, pageIndex, setPageIndex, submitToggle, setSubmitToggle}) => {
@@ -14,7 +14,7 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, tog
         if (playPause === false && audioRef.current.currentTime === 0) {
             audioRef.current.src = currentSong;
             audioRef.current.play();
-            console.log(currentSong)
+            console.log(playPause)
 
         } else if (audioRef.current.src !== currentSong) {
             audioRef.current.currentTime = 0;
@@ -27,9 +27,9 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, tog
         } else {
             audioRef.current.play();
         }
-    }, [currentTrack]);
+    }, [currentTrack, playPause]);
 
-    useEffect(() => {
+    useEffect( () => {
         
         // if page index is greater than 0 && currentTrack.index == 0 && previous is clicked then we want to go to previous songList and setCurrentTrack to songList[4].track
 
