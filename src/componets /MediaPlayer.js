@@ -1,12 +1,12 @@
-// import { useState, useEffect } from "react";
+// import { useState} from "react";
 import { FaPlay, FaPause, FaFastBackward, FaFastForward } from "react-icons/fa";
 
 
-const MediaPlayer = ({ audioRef, playPause, setPlayPause, toggle, setToggle, currentTrack, setCurrentTrack, songList, pageIndex, setPageIndex }) => {
+const MediaPlayer = ({ audioRef, playPause, setPlayPause, toggle, setToggle, currentTrack, setCurrentTrack, songList, pageIndex, setPageIndex, trackProgress, onScrub, onScrubEnd, duration }) => {
 
+    // const { duration } = audioRef.current
 
-
-    // const [nextPageToggle, setNextPageToggle] = useState(false); 
+    
 
     const togglePlayPause = () => {
         setToggle(!toggle)
@@ -52,7 +52,10 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, toggle, setToggle, cur
 
 
     return (
-        <div className="mediaPlayer">
+
+        <>
+
+        <div className="mediaButtons">
 
             <button onClick={() => prevTrack()}>
                 <FaFastBackward />
@@ -67,8 +70,18 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, toggle, setToggle, cur
             </button>
 
         </div>
+
+        <div className="mediaTime">
+
+            <input className="progress" type="range" value={trackProgress} step="1" min="0" max={duration ? duration : `${duration}`} onChange={(event)=>onScrub(event.target.value)} onMouseUp={onScrubEnd} onKeyUp={onScrubEnd}/>
+
+        </div>
+
+        </>
     )
 
 }
+
+
 
 export default MediaPlayer;
