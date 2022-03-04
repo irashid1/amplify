@@ -1,15 +1,11 @@
-// import { useState, useEffect } from "react";
+// import { useState} from "react";
 import { FaPlay, FaPause, FaFastBackward, FaFastForward } from "react-icons/fa";
 
 
-const MediaPlayer = ({ audioRef, playPause, setPlayPause, toggle, setToggle, currentTrack, setCurrentTrack, songList, pageIndex, setPageIndex }) => {
-
-    
-
-    // const [nextPageToggle, setNextPageToggle] = useState(false); 
+const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurrentTrack, songList, pageIndex, setPageIndex, trackProgress, onScrub, onScrubEnd, duration, setUpdatedPage }) => {
 
     const togglePlayPause = () => {
-        setToggle(!toggle)
+        // control function for the play/pause button
         setPlayPause(!playPause)
         if (playPause === true) {
             audioRef.current.pause();
@@ -17,56 +13,73 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, toggle, setToggle, cur
             audioRef.current.play();
         }
     }
-    
+
     const prevTrack = () => {
 
-        if (pageIndex > 0 || (pageIndex === 0 && currentTrack.index !== 0)) {
-            if (audioRef.current.currentTime > 1) {
-                audioRef.current.currentTime = 0;
+        // control function for the previous track button
+        if (audioRef.current.currentTime > 2) {
+            // if the track has been playing for more than 2 seconds, it will restart the track
+            audioRef.current.currentTime = 0;
+        } else {
+            if (currentTrack.index === 0) {
+                // if current track is the first index of the current list, it will go back to the previous list
+                setPageIndex(pageIndex - 5);
+                setUpdatedPage(true);
             } else {
+                // goes back to the previous track index within the same list
                 const prev = currentTrack.index - 1;
                 setCurrentTrack(songList[prev].track);
                 audioRef.current.play();
             }
-        } else if (pageIndex === 0 && currentTrack.index === 0) {
-            audioRef.current.currentTime = 0;
         }
-      
-        
     }
 
     const nextTrack = () => {
 
-        if (currentTrack.index === 4) {
-            setPageIndex(pageIndex + 5)
-            // setNextPageToggle(!nextPageToggle)
+        // control function for the next track button
+        if (currentTrack.index === (songList.length - 1)) {
+            // if on the last index of the current list, then displays the next list of results
+            setPageIndex(pageIndex + 5);
+            setUpdatedPage(true);
         } else {
-            
-            const next = currentTrack.index + 1
+            // goes to the next track index within the same list
+            const next = currentTrack.index + 1;
             setCurrentTrack(songList[next].track);
             audioRef.current.play();
         }
     }
-    
 
-    return(
-        <div className="mediaPlayer">
+    return (
+
+        <>
+
+        <div className="mediaButtons">
 
             <button onClick={() => prevTrack()}>
-            <FaFastBackward />
+                <FaFastBackward />
             </button>
-                <div className="playPause">
-                    <button onClick={() => togglePlayPause()}>
-                        {playPause ? <FaPlay /> : <FaPause />}
-                    </button>
-                </div>
+            <div className="playPause">
+                <button onClick={() => togglePlayPause()}>
+                    {playPause ? <FaPlay /> : <FaPause />}
+                </button>
+            </div>
             <button onClick={() => nextTrack()}>
                 <FaFastForward />
             </button>
 
         </div>
+
+        <div className="mediaTime">
+
+            <input className="progress" type="range" value={trackProgress} step="1" min="0" max={duration ? duration : `${duration}`} onChange={(event)=>onScrub(event.target.value)} onMouseUp={onScrubEnd} onKeyUp={onScrubEnd}/>
+
+        </div>
+
+        </>
     )
 
 }
+
+
 
 export default MediaPlayer;
