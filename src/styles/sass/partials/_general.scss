@@ -4,6 +4,11 @@ body {
     text-align: center;
 }
 
+p {
+    margin: 0;
+    padding: 0;
+}
+
 form {
     margin: 20px;
 }
@@ -38,6 +43,32 @@ button {
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    input {
+        margin: 10px;
+    }
 }
 
+.signInToggle, .signUpToggle {
+    display: flex;
+    width: 100%;
+    height: 30px;
+    p {
+        display: flex;
+        width: 50%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+}
+
+.signInToggle p:first-child {
+    background: rgba(114, 223, 119, 0.623);
+    border-radius: 10px 0 0 0;
+}
+
+.signUpToggle p:last-child {
+    background: rgba(114, 223, 119, 0.623);
+    border-radius: 0 10px 0 0;
+}
 
