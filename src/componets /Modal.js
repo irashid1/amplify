@@ -1,17 +1,33 @@
 import { useSpring, animated } from "react-spring"
 import { useState } from "react"
 
-const Modal = ({ showModal, setShowModal }) => {
+const Modal = ({ showModal, setShowModal, userInfo, setUserInfo }) => {
 
-    const [logInToggle, setLogInToggle] = useState()
+    // states for firebase
+    const [userEmail, setUserEmail] = useState("");
+    const [userPassword, setUserPassword] = useState("");
 
-    const handleLogIn = () => {
-        setShowModal(false)
+    const [userSignUp, setUserSignUp] = useState(false);
+    
+
+    // submit function
+    const handleLogIn = (event) => {
+        event.preventDefault();
+        setShowModal(false); 
     }
 
-    // const handleSignIn = () => {
-    //     setLogInToggle(!logInToggle)
-    // }
+    const handleSignUp = (event) => {
+        setUserSignUp(!userSignUp);
+    }
+
+    // userChange
+    const handleUserEmail = (event) => {
+        setUserEmail(event.target.value);
+    }
+
+    const handleUserPassword = (event) => {
+        setUserPassword(event.target.value);
+    }
 
     const animate = useSpring({
         config: {
@@ -32,50 +48,31 @@ const Modal = ({ showModal, setShowModal }) => {
                 <animated.div style={animate}>
                     <div className="modalContent">
                         <form onSubmit={handleLogIn}>
-                            {!logInToggle ? 
 
                             <>
-                                 <div className="signInToggle">
-                                    <p onClick={() => setLogInToggle(false)}>Sign In</p>
-                                    <p onClick={() => setLogInToggle(true)}>Sign Up</p>
-                                </div>
 
-                                <h2>Sign In</h2>
+                                <label htmlFor="userEmail"> Email </label>
+                                        <input type="email" id="email" onChange={handleUserEmail} value={userEmail}/>
 
-                                <label className="sr-only" htmlFor="userEmail"> Email </label>
-                                <input placeholder="Email" type="email" id="email" />
+                                <label htmlFor="userPassword"> Password </label>
+                                        <input type="passsword" id="password" onChange={handleUserPassword} value={userPassword}/>
 
-                                <label className="sr-only" htmlFor="userPassword"> Password </label>
-                                <input placeholder="Password" type="passsword" id="password" />
+                                { !userSignUp ?
+                                <>
+                                    <button> Sign In </button>
+                                    <p>Don't have an account?<span onClick={() => { handleSignUp() }}>Sign up</span></p>
+                                </>
+                                :
+                                <>
+                                    <button> Sign up </button>
+                                    <p>Already have an account?<span onClick={() => { handleSignUp() }}>Sign In</span></p>
+                                </>
+                                }
+                                
 
-                                <button> Enter </button>
-
-                                <p onClick={handleLogIn}>Continue As Guest</p>
                             </>
 
-                            : 
-                            <>
-                                <div className="signUpToggle">
-                                    <p onClick={() => setLogInToggle(false)}>Sign In</p>
-                                    <p onClick={() => setLogInToggle(true)}>Sign Up</p>
-                                </div>
-
-                                <h2>Sign Up</h2>
-
-                                <label className="sr-only" htmlFor="userName"> User Name </label>
-                                <input placeholder="User Name" type="text" id="name" />
-
-                                <label className="sr-only" htmlFor="userEmail"> Email </label>
-                                <input placeholder="Email" type="email" id="email" />
-
-                                <label className="sr-only" htmlFor="userPassword"> Password </label>
-                                <input placeholder="Password" type="passsword" id="password" />
-
-                                <button > Enter </button>
-
-                                <p onClick={handleLogIn}>Continue As Guest</p>
-                            </>
-                            }
+                         
                         </form>
                     </div>
                 </animated.div>
