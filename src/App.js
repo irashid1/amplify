@@ -135,4 +135,51 @@ function App() {
 
 export default App;
 
+// Styling App
+
+// THEME
+
+// - choosing color palettes 
+//  * coolors and colorhunt
+
+// - choosing font
+//  * use google fonts
+
+// - create name and logo
+//  * use react icons (headphones) to create a logo
+//  * rounded theme (kinda like apple)
+
+// SCSS & JSX
+
+// - create wireframe & creating partials 
+//  * login area, main page, album art, header, footer
+
+// - media queries 
+//  * possible flex direction switch on media query 
+
+// - media player 
+//  * add album art, artist and track name to media player
+
+// - footer
+//  * add media links and desgined by
+
+// - header
+//  * add welcome with users email
+//  * find a way to display everything before the @ sign
+
+// - main/ landing page  
+//  * moving liner gradient background 
+//  * content - basic call to action 
+
+// - main/ after search 
+//  * album art use react spring carosul 
+
+// - leave comments in html for all the resource that we used
+//  * media player- Ryan from lets build ui 
+//  * firebase auth- Youtube h3 web dev tuts
+
+
+
+
+
 
