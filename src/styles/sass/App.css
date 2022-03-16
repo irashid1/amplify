@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Monoton&family=Poppins:wght@400;600&display=swap");
 html {
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
@@ -230,16 +231,109 @@ html {
   overflow: hidden;
 }
 
+html {
+  font-family: "Monoton", cursive;
+  font-size: 125%;
+}
+
+h1 {
+  font-size: 4rem;
+  text-transform: uppercase;
+  font-weight: 200;
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 2.75rem;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.headphones {
+  background: black;
+  color: white;
+  border-radius: 20px;
+  width: 75px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
 body {
   display: flex;
   justify-content: center;
   text-align: center;
 }
 
+p {
+  margin: 0;
+  padding: 0;
+}
+
 form {
-  margin: 20px;
+  padding: 20px;
 }
 
 button {
   margin: 10px 5px;
+}
+
+.mediaButtons {
+  display: flex;
+  justify-content: center;
+}
+
+.modalContainer {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modalContent form {
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.modalContent form input {
+  margin: 10px;
+}
+
+.signInToggle, .signUpToggle {
+  display: flex;
+  width: 100%;
+  height: 30px;
+}
+.signInToggle p, .signUpToggle p {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.signInToggle p:first-child {
+  background: rgba(114, 223, 119, 0.623);
+  border-radius: 10px 0 0 0;
+}
+
+.signUpToggle p:last-child {
+  background: rgba(114, 223, 119, 0.623);
+  border-radius: 0 10px 0 0;
 }/*# sourceMappingURL=App.css.map */

@@ -2,6 +2,7 @@ import './styles/sass/App.scss';
 import GetMusic from './componets /GetMusic';
 import LoginModal from './componets /LoginModal';
 import {  useEffect, useState, useCallback  } from 'react'
+import { FaHeadphonesAlt } from 'react-icons/fa'
 
 // firebase
 import fire from './firebase.js';
@@ -21,7 +22,8 @@ function App() {
   
   console.log(emailError)
   console.log(passwordError)
-  // const [showModal, setShowModal] = useState(false)
+  
+  const [showModal, setShowModal] = useState(false)
 
   const clearInputs = () => {
     setEmail("");
@@ -87,11 +89,11 @@ function App() {
       if (user) {
         clearInputs();
         setUser(user)
-        // setShowModal(false)
+        setShowModal(!user)
       } 
       else {
         setUser("")
-        // setShowModal(true)
+        setShowModal(true)
       }
     })
   },[])  
@@ -118,16 +120,21 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Music App</h1>
+        <div className="logo">
+          <div className="headphones">
+            <FaHeadphonesAlt />
+          </div>
+          <h1>Amplify</h1>
+        </div>
         <button onClick={handleLogout}>Logout</button>
       </header>
-        {user ? 
+       
           <GetMusic />
         
-        :
-          <LoginModal email={email} setEmail={setEmail} password={password} setPassword={setPassword} handleLogin={handleLogin} handleSignUp={handleSignUp} emailError={emailError} passwordError={passwordError} hasAccount={hasAccount} setHasAccount={setHasAccount} user={user} setUser={setUser}/>
+       
+          <LoginModal email={email} setEmail={setEmail} password={password} setPassword={setPassword} handleLogin={handleLogin} handleSignUp={handleSignUp} emailError={emailError} passwordError={passwordError} hasAccount={hasAccount} setHasAccount={setHasAccount} user={user} showModal={showModal}/>
 
-        }
+      
           
     </div>
   );
@@ -148,6 +155,9 @@ export default App;
 // - create name and logo
 //  * use react icons (headphones) to create a logo
 //  * rounded theme (kinda like apple)
+
+// possible name
+// - amplify-music
 
 // SCSS & JSX
 
