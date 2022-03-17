@@ -1,6 +1,8 @@
 import { useSpring, animated } from "react-spring"
+import { RiCloseCircleFill } from "react-icons/ri"
+import { FaHeadphonesAlt } from 'react-icons/fa'
 
-const LoginModal = ({ email, setEmail, password, setPassword, handleLogin, handleSignUp, emailError, passwordError, hasAccount, setHasAccount, showModal }) => {
+const LoginModal = ({ email, setEmail, password, setPassword, handleLogin, handleSignUp, emailError, passwordError, hasAccount, setHasAccount, showModal, setShowModal }) => {
 
 
 
@@ -12,7 +14,7 @@ const LoginModal = ({ email, setEmail, password, setPassword, handleLogin, handl
             duration: 250
         },
         opacity: showModal ? 1 : 0,
-        transform: showModal ? `translateY(0%)` : `translateY(-100%)`
+        transform: showModal ? `opacity(0%)` : `opacity(100%)`
     });
 
 
@@ -28,13 +30,18 @@ const LoginModal = ({ email, setEmail, password, setPassword, handleLogin, handl
                             <form>
 
                                 <>
-
+                                    <div className="modalHeader">
+                                        <p><span><FaHeadphonesAlt /></span>Amplify</p>
+                                        <div className="closeIcon" onClick={ () => setShowModal(false) }>
+                                            <RiCloseCircleFill />
+                                        </div>
+                                    </div>
                                     <label htmlFor="userEmail"> Email </label>
-                                    <input type="email" id="email" autoFocus required onChange={ (e) => setEmail(e.target.value)} value={email}/>
+                                    <input type="email" id="email" required onChange={ (e) => setEmail(e.target.value)} value={email}/>
                                     <p className="errorMessage">{emailError}</p>
 
                                     <label htmlFor="userPassword"> Password </label>
-                                    <input type="passsword" id="password" required onChange={ (e) => setPassword(e.target.value)} value={password}/>
+                                    <input type="password" id="password" required onChange={ (e) => setPassword(e.target.value)} value={password}/>
                                     <p className="errorMessage">{passwordError}</p>
 
                                     { hasAccount ?

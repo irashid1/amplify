@@ -2,10 +2,11 @@ import './styles/sass/App.scss';
 import GetMusic from './componets /GetMusic';
 import LoginModal from './componets /LoginModal';
 import {  useEffect, useState, useCallback  } from 'react'
-import { FaHeadphonesAlt } from 'react-icons/fa'
+
 
 // firebase
 import fire from './firebase.js';
+import Header from './componets /Header';
 
 console.log(fire)
 
@@ -89,11 +90,11 @@ function App() {
       if (user) {
         clearInputs();
         setUser(user)
-        setShowModal(!user)
+        setShowModal(false)
       } 
       else {
         setUser("")
-        setShowModal(true)
+        // setShowModal(true)
       }
     })
   },[])  
@@ -120,22 +121,19 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div className="logo">
-          <div className="headphones">
-            <FaHeadphonesAlt />
-          </div>
-          <h1>Amplify</h1>
-        </div>
-        <button onClick={handleLogout}>Logout</button>
+          <Header handleLogout={handleLogout} setShowModal={setShowModal} user={user} setHasAccount={setHasAccount} />
       </header>
-       
-          <GetMusic />
-        
-       
-          <LoginModal email={email} setEmail={setEmail} password={password} setPassword={setPassword} handleLogin={handleLogin} handleSignUp={handleSignUp} emailError={emailError} passwordError={passwordError} hasAccount={hasAccount} setHasAccount={setHasAccount} user={user} showModal={showModal}/>
 
+      <main>
+          <GetMusic />
       
-          
+          <LoginModal email={email} setEmail={setEmail} password={password} setPassword={setPassword} handleLogin={handleLogin} handleSignUp={handleSignUp} emailError={emailError} passwordError={passwordError} hasAccount={hasAccount} setHasAccount={setHasAccount} user={user} showModal={showModal} setShowModal={setShowModal}/>
+      </main>
+
+      <footer>
+
+      </footer>
+         
     </div>
   );
 }
