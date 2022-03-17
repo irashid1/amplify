@@ -232,50 +232,36 @@ html {
 }
 
 html {
-  font-family: "Monoton", cursive;
+  font-family: "Poppins", sans-serif;
   font-size: 125%;
 }
 
-h1 {
-  font-size: 4rem;
-  text-transform: uppercase;
-  font-weight: 200;
+h1,
+h2,
+h3,
+h4,
+a,
+p,
+li,
+ul {
   margin: 0;
   padding: 0;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  font-size: 2.75rem;
-  justify-content: center;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.headphones {
-  background: black;
+p,
+a,
+span,
+li {
   color: white;
-  border-radius: 20px;
-  width: 75px;
-  height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin-bottom: 5px;
+  font-size: 1rem;
 }
 
-body {
-  display: flex;
-  justify-content: center;
-  text-align: center;
+a {
+  text-decoration: none;
 }
 
-p {
-  margin: 0;
-  padding: 0;
+li {
+  list-style: none;
 }
 
 form {
@@ -286,9 +272,66 @@ button {
   margin: 10px 5px;
 }
 
-.mediaButtons {
+.wrapper {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header {
+  background: black;
+  padding: 15px 0;
+}
+header .headerContent {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header nav ul {
+  display: flex;
+}
+header nav ul li, header nav ul a {
+  padding-left: 30px;
+  cursor: pointer;
+}
+header nav ul li:hover, header nav ul a:hover {
+  color: royalblue;
+}
+header nav ul span {
+  padding-left: 30px;
+}
+header nav ul .userLogin {
+  display: flex;
+}
+
+h2 {
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-family: "Monoton", cursive;
+  color: white;
+  font-weight: 200;
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.75rem;
   justify-content: center;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.headphones {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 5px;
+  padding-right: 5px;
 }
 
 .modalContainer {
@@ -336,4 +379,159 @@ button {
 .signUpToggle p:last-child {
   background: rgba(114, 223, 119, 0.623);
   border-radius: 0 10px 0 0;
+}
+
+.closeIcon {
+  text-align: end;
+  font-size: 1.25rem;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+}
+.modalHeader p {
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-family: "Monoton", cursive;
+  font-weight: 200;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.modalHeader p span {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 25px;
+  padding-right: 2px;
+}
+
+footer {
+  background: black;
+  padding: 25px 0;
+  text-align: center;
+}
+footer .footerContent span svg {
+  padding-top: 3px;
+}
+footer .footerContent a:hover {
+  color: royalblue;
+}
+footer .infoContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 0;
+}
+footer .infoContent {
+  display: flex;
+}
+footer .infoContent .info {
+  padding: 0 30px;
+}
+footer .infoContent .info p {
+  padding: 20px 0;
+  font-size: 1.1rem;
+  opacity: 0.7;
+}
+footer .infoContent .info li {
+  padding: 5px 0;
+}
+footer .logo {
+  justify-content: flex-start;
+}
+
+.mediaButtons {
+  display: flex;
+  justify-content: center;
+}
+
+.mediaTiime {
+  text-align: center;
+}
+
+.searchBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchBar input {
+  height: 35px;
+  font-family: "Poppins", sans-serif;
+}
+.searchBar button {
+  font-family: "Poppins", sans-serif;
+  border: none;
+  background: royalblue;
+  color: white;
+  padding: 8px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.coverFlow {
+  display: flex;
+}
+.coverFlow .artContainer {
+  width: calc(20% - 10px);
+  padding: 0 10px;
+}
+.coverFlow .artContainer img {
+  width: 100%;
+}
+
+main {
+  background-image: linear-gradient(315deg, #eec0c6 0%, #7ee8fa 74%);
+  padding: 50px 0;
+  min-height: 90vh;
+}
+
+h1 {
+  font-size: 6rem;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 600;
+  padding: 200px 0 100px 0;
+}
+h1 span {
+  font-size: 6rem;
+  font-family: "Monoton", cursive;
+  text-transform: uppercase;
+  font-weight: 200;
+  color: black;
+}
+
+.tagLine {
+  padding-bottom: 100px;
+  text-align: center;
+}
+.tagLine p {
+  color: black;
+  padding: 20px 0;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.tagLine button {
+  font-family: "Poppins", sans-serif;
+  border: none;
+  background: royalblue;
+  color: white;
+  padding: 8px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.pagesBtnContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pagesBtnContainer button {
+  border: none;
+  color: black;
+  font-size: 2rem;
+  background: none;
 }/*# sourceMappingURL=App.css.map */

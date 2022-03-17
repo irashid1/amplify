@@ -1,12 +1,16 @@
 import './styles/sass/App.scss';
 import GetMusic from './componets /GetMusic';
 import LoginModal from './componets /LoginModal';
+import Header from './componets /Header';
+import Footer from './componets /Footer';
+import Contacts from './componets /Contacts';
+
+// React Hooks
 import {  useEffect, useState, useCallback  } from 'react'
 
 
-// firebase
+// Firebase
 import fire from './firebase.js';
-import Header from './componets /Header';
 
 console.log(fire)
 
@@ -20,10 +24,7 @@ function App() {
   const [emailError, setEmailError ] = useState("")
   const [passwordError, setPasswordError ] = useState("")
   const [hasAccount, setHasAccount ] = useState(false)
-  
-  console.log(emailError)
-  console.log(passwordError)
-  
+
   const [showModal, setShowModal] = useState(false)
 
   const clearInputs = () => {
@@ -125,13 +126,15 @@ function App() {
       </header>
 
       <main>
-          <GetMusic />
+          <GetMusic user={user}/>
       
           <LoginModal email={email} setEmail={setEmail} password={password} setPassword={setPassword} handleLogin={handleLogin} handleSignUp={handleSignUp} emailError={emailError} passwordError={passwordError} hasAccount={hasAccount} setHasAccount={setHasAccount} user={user} showModal={showModal} setShowModal={setShowModal}/>
+
       </main>
 
       <footer>
-
+          <Contacts />
+          <Footer />
       </footer>
          
     </div>

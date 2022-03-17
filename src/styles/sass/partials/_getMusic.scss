@@ -1,0 +1,31 @@
+
+.searchBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  input {
+    height: 35px;
+    font-family: 'Poppins', sans-serif;
+  }
+  button {
+      font-family: 'Poppins', sans-serif;
+      border: none;
+      background: royalblue;
+      color: white; 
+      padding: 8px 25px; 
+      border-radius: 25px ;
+      cursor: pointer;
+    }
+  
+}
+
+.coverFlow {
+    display: flex;
+    .artContainer {
+        width: calc(100% / 5 - 10px);
+        padding: 0 10px;
+        img {
+            width: 100%;
+        }
+    }
+}

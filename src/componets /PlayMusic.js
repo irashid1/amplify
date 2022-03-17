@@ -94,9 +94,9 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
     }
 
     return (
-        <>
+        <div className="wrapper">
             <MediaPlayer audioRef={audioRef} playPause={playPause} setPlayPause={setPlayPause} currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} songList={songList} pageIndex={pageIndex} setPageIndex={setPageIndex} trackProgress={trackProgress} onScrub={onScrub} onScrubEnd={onScrubEnd} duration={duration} setUpdatedPage={setUpdatedPage}/>
-        </>
+        </div>
     )
 }
 

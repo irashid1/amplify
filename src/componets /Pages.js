@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from "react-icons/bs"
 
 const Pages = ({ pageIndex, setPageIndex }) => {
 
@@ -14,16 +15,18 @@ const Pages = ({ pageIndex, setPageIndex }) => {
     }, [pageIndex])
 
     return (
-        <>
-        <button 
-        onClick={()=> setPageIndex(pageIndex - 5)}
-        disabled={disabled}>
-            {"<"}
-        </button>
-        <button onClick={() => setPageIndex(pageIndex + 5)}>
-            {">"}
-        </button>
-        </>
+        <section>
+            <div className="pagesBtnContainer">
+                <button 
+                onClick={()=> setPageIndex(pageIndex - 5)}
+                disabled={disabled}>
+                    <BsFillArrowLeftCircleFill />
+                </button>
+                <button onClick={() => setPageIndex(pageIndex + 5)}>
+                    <BsFillArrowRightCircleFill />
+                </button>
+            </div>
+        </section>
     )
 }
 

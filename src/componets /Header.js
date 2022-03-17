@@ -3,7 +3,7 @@ import { FaHeadphonesAlt } from 'react-icons/fa'
 const Header = ({ handleLogout, setShowModal, user, setHasAccount}) => {
 
     return(
-        <>
+        <div className='wrapper headerContent'>
             <div className="logo">
                 <div className="headphones">
                     <FaHeadphonesAlt />
@@ -11,16 +11,24 @@ const Header = ({ handleLogout, setShowModal, user, setHasAccount}) => {
                 <h2>Amplify</h2>
             </div>
 
-            {user ?
-                <p onClick={handleLogout}>Logout</p>
-                :
-                <div>
-                    <p onClick={() => {setShowModal(true); setHasAccount(true)} } >Log in</p>
-                    <p onClick={() => { setShowModal(true); setHasAccount(false)} } >Sign up</p>
-                </div>
+            <nav>
+                <ul>
+                    <li><a href="#contact">Contact</a></li>
+                    <span>|</span>
+                {user ?
+                    <li onClick={handleLogout}>Logout</li>
+                    :
+                    <div className="userLogin">
+                        <li onClick={() => {setShowModal(true); setHasAccount(true)} } >Log in</li>
+                        <li onClick={() => { setShowModal(true); setHasAccount(false)} } >Sign up</li>
+                    </div>
+                }
 
-            }
-        </>
+                </ul>
+
+            </nav>
+
+        </div>
     )
 }
 
