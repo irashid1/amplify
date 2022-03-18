@@ -4,7 +4,7 @@ const Contacts = () => {
 
     return(
         <section>
-            <div className="infoContainer wrapper">
+            <div id='contact' className="infoContainer wrapper">
                 <div className="logo">
                     <div className="headphones">
                         <FaHeadphonesAlt />

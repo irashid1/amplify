@@ -1,11 +1,13 @@
 .pagesBtnContainer {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    padding-bottom: 75px;
     button {
         border: none;
         color: black;
-        font-size: 2rem;
+        font-size: 2.5rem;
         background: none;
+        cursor: pointer;
     }
 }

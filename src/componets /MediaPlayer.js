@@ -1,5 +1,5 @@
 // import { useState} from "react";
-import { FaPlay, FaPause, FaFastBackward, FaFastForward } from "react-icons/fa";
+import { BsFillPlayCircleFill, BsFillPauseCircleFill, BsFillSkipForwardCircleFill, BsFillSkipBackwardCircleFill } from "react-icons/bs";
 
 
 const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurrentTrack, songList, pageIndex, setPageIndex, trackProgress, onScrub, onScrubEnd, duration, setUpdatedPage }) => {
@@ -51,31 +51,31 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
 
     return (
 
-        <>
+        <div className="mediaPlayer">
 
-        <div className="mediaButtons">
+            <div className="mediaButtons">
 
-            <button onClick={() => prevTrack()}>
-                <FaFastBackward />
-            </button>
-            <div className="playPause">
-                <button onClick={() => togglePlayPause()}>
-                    {playPause ? <FaPlay /> : <FaPause />}
+                <button onClick={() => prevTrack()}>
+                    <BsFillSkipBackwardCircleFill />
                 </button>
+                <div className="playPause">
+                    <button onClick={() => togglePlayPause()}>
+                        {playPause ? <BsFillPlayCircleFill /> : <BsFillPauseCircleFill />}
+                    </button>
+                </div>
+                <button onClick={() => nextTrack()}>
+                    <BsFillSkipForwardCircleFill />
+                </button>
+
             </div>
-            <button onClick={() => nextTrack()}>
-                <FaFastForward />
-            </button>
+
+            <div className="mediaTime">
+
+                <input className="progress" type="range" value={trackProgress} step="1" min="0" max={duration ? duration : `${duration}`} onChange={(event)=>onScrub(event.target.value)} onMouseUp={onScrubEnd} onKeyUp={onScrubEnd}/>
+
+            </div>
 
         </div>
-
-        <div className="mediaTime">
-
-            <input className="progress" type="range" value={trackProgress} step="1" min="0" max={duration ? duration : `${duration}`} onChange={(event)=>onScrub(event.target.value)} onMouseUp={onScrubEnd} onKeyUp={onScrubEnd}/>
-
-        </div>
-
-        </>
     )
 
 }

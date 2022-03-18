@@ -110,14 +110,17 @@ const GetMusic = ({ user }) => {
                 <Pages pageIndex={pageIndex} setPageIndex={setPageIndex} /> 
             
             : 
+
+            
                 <div className="tagLine">
                     <h1><span>Amplify</span>ing Your Music</h1>
                     <p>Expand your musical horizon</p>
                     <button>Get Started</button>
                 </div>
+
             }
 
-            <div className="coverFlow wrapper">
+            <div className="coverFlow">
                 {songList.map((song, index) => {
                     song.track.index = index; // putting trackIndex on to the song object
                         console.log(song.track)
