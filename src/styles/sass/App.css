@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Monoton&family=Poppins:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Monoton&family=Poppins:wght@400;600;700;800&display=swap");
 html {
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
@@ -272,6 +272,10 @@ button {
   margin: 10px 5px;
 }
 
+input {
+  padding-left: 5px;
+}
+
 .wrapper {
   width: 90%;
   max-width: 1200px;
@@ -348,14 +352,57 @@ h2 {
 }
 
 .modalContent form {
-  background-color: black;
+  background-image: linear-gradient(315deg, #eec0c6 0%, #7ee8fa 74%);
   color: white;
-  border-radius: 10px;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
+  width: 500px;
+  height: 395px;
 }
-.modalContent form input {
-  margin: 10px;
+.modalContent form .loginInfo {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+}
+.modalContent form .loginInfo .inputField {
+  display: flex;
+  flex-direction: column;
+  height: 150px;
+}
+.modalContent form .loginInfo .inputField input {
+  margin: 15px 0 0 0;
+  background: rgba(255, 255, 255, 0.541);
+  border: none;
+  padding: 5px 0;
+  border-radius: 5px;
+}
+.modalContent form .loginInfo .inputField p {
+  text-align: left;
+  color: yellow;
+}
+.modalContent form button {
+  width: 50%;
+  margin: 30px auto;
+  font-family: "Poppins", sans-serif;
+  border: none;
+  background: royalblue;
+  color: white;
+  padding: 8px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+.modalContent form p {
+  text-align: end;
+  font-size: 0.7rem;
+}
+.modalContent form p span {
+  font-size: 0.7rem;
+  color: yellow;
+  cursor: pointer;
+}
+.modalContent form p span:hover {
+  color: royalblue;
 }
 
 .signInToggle, .signUpToggle {
@@ -423,7 +470,7 @@ footer .footerContent a:hover {
 footer .infoContainer {
   display: flex;
   justify-content: space-between;
-  padding: 30px 0;
+  padding: 50px 0 80px 0;
 }
 footer .infoContent {
   display: flex;
@@ -433,11 +480,12 @@ footer .infoContent .info {
 }
 footer .infoContent .info p {
   padding: 20px 0;
-  font-size: 1.1rem;
+  font-size: 1rem;
   opacity: 0.7;
 }
 footer .infoContent .info li {
   padding: 5px 0;
+  font-size: 0.8rem;
 }
 footer .logo {
   justify-content: flex-start;
@@ -447,9 +495,33 @@ footer .logo {
   display: flex;
   justify-content: center;
 }
+.mediaButtons button {
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  box-shadow: 2px pink;
+}
 
-.mediaTiime {
+.playPause button {
+  font-size: 3rem;
+}
+
+.mediaTime {
   text-align: center;
+}
+
+.mediaPlayer {
+  padding-top: 60px;
+}
+
+input[type=range] {
+  height: 5px;
+  width: 25%;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  background: royalblue;
+  transition: background 0.2s ease;
+  cursor: pointer;
 }
 
 .searchBar {
@@ -458,8 +530,11 @@ footer .logo {
   align-items: center;
 }
 .searchBar input {
-  height: 35px;
+  height: 40px;
   font-family: "Poppins", sans-serif;
+  background: rgba(255, 255, 255, 0.541);
+  border: none;
+  border-radius: 5px;
 }
 .searchBar button {
   font-family: "Poppins", sans-serif;
@@ -473,6 +548,7 @@ footer .logo {
 
 .coverFlow {
   display: flex;
+  justify-content: space-between;
 }
 .coverFlow .artContainer {
   width: calc(20% - 10px);
@@ -480,6 +556,15 @@ footer .logo {
 }
 .coverFlow .artContainer img {
   width: 100%;
+  border-radius: 5px;
+}
+.coverFlow .artContainer h3 {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.coverFlow .artContainer h4 {
+  font-weight: 100;
+  font-size: 0.8rem;
 }
 
 main {
@@ -492,8 +577,9 @@ h1 {
   font-size: 6rem;
   text-transform: uppercase;
   text-align: center;
-  font-weight: 600;
+  font-weight: 700;
   padding: 200px 0 100px 0;
+  text-shadow: 5px 1px 8px gainsboro;
 }
 h1 span {
   font-size: 6rem;
@@ -526,12 +612,14 @@ h1 span {
 
 .pagesBtnContainer {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding-bottom: 75px;
 }
 .pagesBtnContainer button {
   border: none;
   color: black;
-  font-size: 2rem;
+  font-size: 2.5rem;
   background: none;
+  cursor: pointer;
 }/*# sourceMappingURL=App.css.map */

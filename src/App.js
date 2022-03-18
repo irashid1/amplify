@@ -189,6 +189,16 @@ export default App;
 //  * media player- Ryan from lets build ui 
 //  * firebase auth- Youtube h3 web dev tuts
 
+// possible issues 
+// - clearing search and stoping playing music on logout
+// - react spring animation using "useTranstion" from both modal and album art 
+// - adding visual to modal to help distinguish log in and sign up
+// - adding icons for footer and getting icons to animate into text on hover 
+// - volume controls in media player 
+// - when song finishes playing start next song
+// - disable page button on index 0 
+// - add page index to display 
+
 
 
 

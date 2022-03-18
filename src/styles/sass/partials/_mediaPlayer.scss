@@ -1,8 +1,36 @@
 .mediaButtons {
     display: flex;
     justify-content: center;
+    button {
+        background: none;
+        border: none;
+        font-size: 2.5rem;
+        box-shadow: 2px pink;
+    }
 }
 
-.mediaTiime {
+.playPause {
+    button {
+        font-size: 3rem;
+    }
+}
+
+.mediaTime {
     text-align: center;
+}
+
+.mediaPlayer {
+    padding-top: 60px;
+}
+
+input[type=range] {
+	height: 5px;
+	// -webkit-appearance: none;
+    // -webkit-gradient: (linear, 0% 0%, 100% 0%, color-stop(currentPercentage, #fff), color-stop(currentPercentage, #777));
+	width: 25%;
+	margin-bottom: 10px;
+	border-radius: 8px;
+	background: royalblue;
+	transition: background 0.2s ease;
+	cursor: pointer;
 }

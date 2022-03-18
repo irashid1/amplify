@@ -4,8 +4,12 @@
   justify-content: center;
   align-items: center;
   input {
-    height: 35px;
+    height: 40px;
     font-family: 'Poppins', sans-serif;
+    background: rgba(255, 255, 255, 0.541);
+    border: none;
+    border-radius: 5px;
+    
   }
   button {
       font-family: 'Poppins', sans-serif;
@@ -21,11 +25,22 @@
 
 .coverFlow {
     display: flex;
+    justify-content: space-between;
     .artContainer {
         width: calc(100% / 5 - 10px);
         padding: 0 10px;
         img {
-            width: 100%;
+          width: 100%;
+          border-radius: 5px;
         }
+        h3 {
+          font-weight: 600;
+          font-size: 1.1rem;
+        }
+        h4 {
+          font-weight: 100;
+          font-size: 0.8rem;
+        }
+
     }
 }

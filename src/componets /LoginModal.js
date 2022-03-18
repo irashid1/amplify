@@ -14,7 +14,8 @@ const LoginModal = ({ email, setEmail, password, setPassword, handleLogin, handl
             duration: 250
         },
         opacity: showModal ? 1 : 0,
-        transform: showModal ? `opacity(0%)` : `opacity(100%)`
+        transform: showModal ? `opacity(0%)` : `opacity(100%)`, 
+        
     });
 
 
@@ -36,13 +37,22 @@ const LoginModal = ({ email, setEmail, password, setPassword, handleLogin, handl
                                             <RiCloseCircleFill />
                                         </div>
                                     </div>
-                                    <label htmlFor="userEmail"> Email </label>
-                                    <input type="email" id="email" required onChange={ (e) => setEmail(e.target.value)} value={email}/>
-                                    <p className="errorMessage">{emailError}</p>
 
-                                    <label htmlFor="userPassword"> Password </label>
-                                    <input type="password" id="password" required onChange={ (e) => setPassword(e.target.value)} value={password}/>
-                                    <p className="errorMessage">{passwordError}</p>
+                                    <div className="loginInfo">
+                                        
+                                        <div className="inputField">
+                                            <label htmlFor="userEmail"> Email </label>
+                                            <input type="email" id="email" required onChange={ (e) => setEmail(e.target.value)} value={email}/>
+                                            <p className="errorMessage">{emailError}</p>
+                                        </div>
+
+                                        <div className="inputField">
+                                            <label htmlFor="userPassword"> Password </label>
+                                            <input type="password" id="password" required onChange={ (e) => setPassword(e.target.value)} value={password}/>
+                                            <p className="errorMessage">{passwordError}</p>
+                                        </div>
+
+                                    </div>
 
                                     { hasAccount ?
                                     <>

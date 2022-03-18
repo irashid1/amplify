@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Monoton&family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Monoton&family=Poppins:wght@400;600;700;800&display=swap');
 
 html {
     font-family: 'Poppins', sans-serif;
@@ -48,6 +48,10 @@ form {
 
 button {
     margin: 10px 5px;
+}
+
+input {
+    padding-left: 5px;
 }
 
 .wrapper {
