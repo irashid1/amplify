@@ -48,10 +48,20 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
             audioRef.current.play();
         }
     }
+    console.log(currentTrack)
 
     return (
 
         <div className="mediaPlayer">
+
+            <div className="trackInfo">
+                <img src={currentTrack.images.coverart} alt=""  />
+                <div>
+                    <h3>{currentTrack.title}</h3>
+                    <h4>{currentTrack.subtitle}</h4>
+                </div>
+
+            </div>
 
             <div className="mediaButtons">
 

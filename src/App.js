@@ -126,7 +126,7 @@ function App() {
       </header>
 
       <main>
-          <GetMusic user={user}/>
+        <GetMusic user={user} setShowModal={setShowModal}/>
       
           <LoginModal email={email} setEmail={setEmail} password={password} setPassword={setPassword} handleLogin={handleLogin} handleSignUp={handleSignUp} emailError={emailError} passwordError={passwordError} hasAccount={hasAccount} setHasAccount={setHasAccount} user={user} showModal={showModal} setShowModal={setShowModal}/>
 
