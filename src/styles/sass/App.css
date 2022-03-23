@@ -352,13 +352,13 @@ h2 {
 }
 
 .modalContent form {
-  background-image: linear-gradient(315deg, #eec0c6 0%, #7ee8fa 74%);
+  background: #89d4cf;
   color: black;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   width: 500px;
-  height: 395px;
+  height: 450px;
 }
 .modalContent form .loginInfo {
   display: flex;
@@ -370,6 +370,9 @@ h2 {
   flex-direction: column;
   height: 150px;
 }
+.modalContent form .loginInfo .inputField label {
+  color: black;
+}
 .modalContent form .loginInfo .inputField input {
   margin: 15px 0 0 0;
   background: rgba(255, 255, 255, 0.541);
@@ -378,44 +381,33 @@ h2 {
   border-radius: 5px;
 }
 .modalContent form .loginInfo .inputField p {
-  text-align: left;
   color: yellow;
+  font-size: 0.7rem;
 }
 .modalContent form button {
   width: 50%;
   margin: 30px auto;
   font-family: "Poppins", sans-serif;
   border: none;
-  background: royalblue;
+  background: #0D41E1;
   color: white;
   padding: 8px 25px;
   border-radius: 25px;
   cursor: pointer;
 }
-.modalContent form p {
+
+.loginToggle p {
   text-align: end;
   font-size: 0.7rem;
+  color: black;
 }
-.modalContent form p span {
+.loginToggle p span {
   font-size: 0.7rem;
-  color: yellow;
+  color: #001FA8;
   cursor: pointer;
 }
-.modalContent form p span:hover {
-  color: royalblue;
-}
-
-.signInToggle, .signUpToggle {
-  display: flex;
-  width: 100%;
-  height: 30px;
-}
-.signInToggle p, .signUpToggle p {
-  display: flex;
-  width: 50%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
+.loginToggle p span:hover {
+  color: #111DCF;
 }
 
 .closeIcon {
@@ -426,24 +418,27 @@ h2 {
 .modalHeader {
   display: flex;
   justify-content: space-between;
+  padding-bottom: 20px;
 }
 .modalHeader p {
-  font-size: 1rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
   font-family: "Monoton", cursive;
+  color: black;
   font-weight: 200;
   margin: 0;
   padding: 0;
   display: flex;
 }
 .modalHeader p span {
-  color: white;
+  color: black;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   margin-bottom: 25px;
   padding-right: 2px;
+  font-size: 1.5rem;
 }
 
 footer {
@@ -489,6 +484,13 @@ footer .logo {
   background: none;
   border: none;
   font-size: 2.5rem;
+  transition: transform 0.25s ease;
+}
+.mediaButtons button:active {
+  color: blue;
+}
+.mediaButtons button:hover {
+  transform: scale(1.1);
 }
 
 .playPause button {
@@ -583,7 +585,7 @@ input[type=range] {
 }
 
 main {
-  background-image: linear-gradient(315deg, #eec0c6 0%, #7ee8fa 74%);
+  background-image: linear-gradient(315deg, #734ae8 0%, #89d4cf 74%);
   padding: 50px 0;
   min-height: 90vh;
 }
@@ -594,7 +596,6 @@ h1 {
   text-align: center;
   font-weight: 700;
   padding: 200px 0 100px 0;
-  text-shadow: 5px 1px 8px gainsboro;
 }
 h1 span {
   font-size: 6rem;
@@ -618,7 +619,7 @@ h1 span {
 .tagLine button {
   font-family: "Poppins", sans-serif;
   border: none;
-  background: royalblue;
+  background: #0062e2;
   color: white;
   padding: 8px 25px;
   border-radius: 25px;
@@ -637,4 +638,11 @@ h1 span {
   font-size: 2.5rem;
   background: none;
   cursor: pointer;
+  transition: transform 0.25s ease;
+}
+.pagesBtnContainer button:active {
+  color: blue;
+}
+.pagesBtnContainer button:hover {
+  transform: scale(1.1);
 }/*# sourceMappingURL=App.css.map */

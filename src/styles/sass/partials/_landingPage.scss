@@ -19,7 +19,7 @@ h1 {
     text-align: center;
     font-weight: 700;
     padding: 200px 0 100px 0;
-    text-shadow: 5px 1px 8px $shadow1;
+    // text-shadow: 5px 1px 8px $shadow1;
     span {
         font-size: 6rem;
         font-family: 'Monoton', cursive;
@@ -43,10 +43,12 @@ h1 {
     button {
       font-family: 'Poppins', sans-serif;
       border: none;
-      background: royalblue;
+      background: #0062e2;
       color: white; 
       padding: 8px 25px; 
       border-radius: 25px ;
       cursor: pointer;
+
+
     }
 }
