@@ -54,17 +54,23 @@ const LoginModal = ({ email, setEmail, password, setPassword, handleLogin, handl
 
                                     </div>
 
-                                    { hasAccount ?
-                                    <>
-                                        <button onClick={handleLogin}> Sign In </button>
-                                        <p>Don't have an account? <span onClick={() => setHasAccount(!hasAccount)}> Sign up</span></p>
-                                    </>
-                                    :
-                                    <>
-                                        <button onClick={handleSignUp}> Sign up </button>
-                                        <p>Already have an account? <span onClick={() => setHasAccount(!hasAccount)}> Sign In</span></p>
-                                    </>
-                                    }
+                                  
+                                        { hasAccount ?
+                                        <>
+                                            <button onClick={handleLogin}> Sign In </button>
+                                            <div className="loginToggle">
+                                                <p>Don't have an account? <span onClick={() => setHasAccount(!hasAccount)}> Sign up</span></p>
+                                            </div>
+                                        </>
+                                        :
+                                        <>
+                                            <button onClick={handleSignUp}> Sign up </button>
+                                            <div className="loginToggle">
+                                                <p>Already have an account? <span onClick={() => setHasAccount(!hasAccount)}> Sign In</span></p>
+                                            </div>
+                                        </>
+                                        }
+
                                     
 
                                 </>
