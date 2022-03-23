@@ -4,7 +4,7 @@ import PlayMusic from "./PlayMusic";
 import Pages from "./Pages";
 
 
-const GetMusic = ({ user }) => {
+const GetMusic = ({ user, setShowModal }) => {
 
     // states 
     const [userInput, setUserInput] = useState("");
@@ -115,7 +115,7 @@ const GetMusic = ({ user }) => {
                 <div className="tagLine">
                     <h1><span>Amplify</span>ing Your Music</h1>
                     <p>Expand your musical horizon</p>
-                    <button>Get Started</button>
+                    <button onClick={ () => setShowModal(true) }>Get Started</button>
                 </div>
 
             }
@@ -123,7 +123,7 @@ const GetMusic = ({ user }) => {
             <div className="coverFlow">
                 {songList.map((song, index) => {
                     song.track.index = index; // putting trackIndex on to the song object
-                        console.log(song.track)
+
                     return (
             
                             <div className="artContainer" onClick={() => handlePlayPause(song.track)} key={song.track.key}>

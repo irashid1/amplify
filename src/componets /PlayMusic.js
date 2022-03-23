@@ -28,6 +28,8 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
 
     }
 
+
+    
     useEffect( () => {
 
         setUpdatedList(false); // setting this value to false, allows the user to search and switch pages without any interruption in the current song being played
