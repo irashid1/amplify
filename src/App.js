@@ -200,6 +200,7 @@ export default App;
 // - when songlist changes, set the index to [0]
 // - make the visibility of h3 and h4 to none when track is not selected
 // - move the page arrows below the coverflow
+// - wrapping the coverflow in a new div
 
 
 
