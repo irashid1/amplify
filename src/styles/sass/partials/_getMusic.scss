@@ -54,9 +54,8 @@
 
 main {
   .swiper {
-    width: 35%;
-    padding-top: 50px;
-    padding-bottom: 100px;
+    width: 30%;
+    padding: 50px 0;
     overflow: visible;
   }
   
@@ -68,7 +67,7 @@ main {
   background-size: cover;
   width: 300px;
   height: 300px;
-  padding-bottom: 75px;
+  // padding-bottom: 75px;
   transition: all 0.5s;
 }
 

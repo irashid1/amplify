@@ -114,20 +114,7 @@ const GetMusic = ({ user, setShowModal }) => {
             }
 
 
-            {searchTerm ?
-
-                <Pages pageIndex={pageIndex} setPageIndex={setPageIndex} />
-
-                :
-
-
-                <div className="tagLine">
-                    <h1><span>Amplify</span>Your Music</h1>
-                    <p>Expand your musical horizon</p>
-                    <button onClick={() => setShowModal(true)}>Get Started</button>
-                </div>
-
-            }
+            
 
             <Swiper
                 
@@ -168,9 +155,20 @@ const GetMusic = ({ user, setShowModal }) => {
 
             </Swiper>
 
+            {searchTerm ?
+
+                <Pages pageIndex={pageIndex} setPageIndex={setPageIndex} />
+
+                :
 
 
+                <div className="tagLine">
+                    <h1><span>Amplify</span>Your Music</h1>
+                    <p>Expand your musical horizon</p>
+                    <button onClick={() => setShowModal(true)}>Get Started</button>
+                </div>
 
+            }
 
 
             {currentTrack ? <PlayMusic currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} playPause={playPause} setPlayPause={setPlayPause} songList={songList} pageIndex={pageIndex} setPageIndex={setPageIndex} setUpdatedList={setUpdatedList} updatedList={updatedList} updatedPage={updatedPage} setUpdatedPage={setUpdatedPage} /> : null}
