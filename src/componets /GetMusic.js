@@ -1,10 +1,19 @@
 import axios from "axios";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { useState, useEffect } from "react";
 import PlayMusic from "./PlayMusic";
 import Pages from "./Pages";
+import "swiper/css/bundle";
+
+// import { SwiperStyles } 
+
+import SwiperCore, { EffectCoverflow, Pagination } from "swiper/core";
+SwiperCore.use([EffectCoverflow, Pagination]);
+
 
 
 const GetMusic = ({ user, setShowModal }) => {
+    
 
     // states 
     const [userInput, setUserInput] = useState("");
@@ -14,7 +23,7 @@ const GetMusic = ({ user, setShowModal }) => {
     const [currentTrack, setCurrentTrack] = useState();
 
     const [playPause, setPlayPause] = useState(false); // determines whether the song is in play or pause state
-    
+
     const [updatedList, setUpdatedList] = useState(false); // state used for keeping the track playing on the background while user searches for a new term or changing page index
     const [updatedPage, setUpdatedPage] = useState(false);
 
@@ -62,7 +71,7 @@ const GetMusic = ({ user, setShowModal }) => {
                     // Solomon key#1
                     'x-rapidapi-host': 'shazam.p.rapidapi.com',
                     'x-rapidapi-key': '4e6f74d025msh36947ff6c814c7cp11d0c1jsnc6f9a4f67eae'
-                    
+
                     // additional keys
 
                     // Solomon key#2
@@ -72,7 +81,7 @@ const GetMusic = ({ user, setShowModal }) => {
                     // Imtiaz key #1
                     // 'x-rapidapi-host': 'shazam.p.rapidapi.com',
                     // 'x-rapidapi-key': 'cd2f669506mshbacf9d2b7d2169ep15ef89jsnb7d5c64abf1d'
-                    
+
                     // Imtiaz key#2
                     // 'x-rapidapi-host': 'shazam.p.rapidapi.com',
                     // 'x-rapidapi-key': 'cd74434576msh2f5cc3adcc9d925p11959ejsnfe4483674b62' 
@@ -105,40 +114,63 @@ const GetMusic = ({ user, setShowModal }) => {
             }
 
 
-            {searchTerm ? 
-            
-                <Pages pageIndex={pageIndex} setPageIndex={setPageIndex} /> 
-            
-            : 
+            {searchTerm ?
 
-            
+                <Pages pageIndex={pageIndex} setPageIndex={setPageIndex} />
+
+                :
+
+
                 <div className="tagLine">
-                    <h1><span>Amplify</span>ing Your Music</h1>
+                    <h1><span>Amplify</span>Your Music</h1>
                     <p>Expand your musical horizon</p>
-                    <button onClick={ () => setShowModal(true) }>Get Started</button>
+                    <button onClick={() => setShowModal(true)}>Get Started</button>
                 </div>
 
             }
 
-            <div className="coverFlow">
-                {songList.map((song, index) => {
-                    song.track.index = index; // putting trackIndex on to the song object
-
-                    return (
-            
-                            <div className="artContainer" onClick={() => handlePlayPause(song.track)} key={song.track.key}>
-                                <img src={song.track.images.coverart} alt={`Coverart of ${song.track.title}`} />
-                                <h3>{song.track.title}</h3>
-                                <h4>{song.track.subtitle}</h4>
-                            </div>
-
-
-                    )
-                })
-
-                }
+            <Swiper
                 
-            </div>
+                effect={"coverflow"}
+                grabCursor={true}
+                centeredSlides={true}
+                // slidesPreView={"auto"}
+                coverflowEffect={{
+                    rotate: 50,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows: false,
+                }}
+                pagination={true}
+                modules={[EffectCoverflow, Pagination]}
+
+                className="mySwiper"
+            >
+
+                <div className="coverFlow">
+                    {songList.map((song, index) => {
+                        song.track.index = index; // putting trackIndex on to the song object
+
+                        return (
+                            <SwiperSlide key={song.track.key}>
+                                <div className="artContainer" onClick={() => handlePlayPause(song.track)} key={song.track.key}>
+                                    <img src={song.track.images.coverart} alt={`Coverart of ${song.track.title}`} />
+                                    <h3>{song.track.title}</h3>
+                                    <h4>{song.track.subtitle}</h4>
+                                </div>
+                            </SwiperSlide>
+                        )
+                    })
+                    }
+
+                </div>
+
+            </Swiper>
+
+
+
+
 
 
             {currentTrack ? <PlayMusic currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} playPause={playPause} setPlayPause={setPlayPause} songList={songList} pageIndex={pageIndex} setPageIndex={setPageIndex} setUpdatedList={setUpdatedList} updatedList={updatedList} updatedPage={updatedPage} setUpdatedPage={setUpdatedPage} /> : null}
