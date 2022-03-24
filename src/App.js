@@ -195,6 +195,12 @@ export default App;
 // - disable page button on index 0 
 // - add page index to display 
 
+// - enable playback for index[0] on coverflow
+// - if user selects a track, turn that track into the current album cover
+// - when songlist changes, set the index to [0]
+// - make the visibility of h3 and h4 to none when track is not selected
+// - move the page arrows below the coverflow
+
 
 
 
