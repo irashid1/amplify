@@ -12,10 +12,6 @@ import {  useEffect, useState, useCallback  } from 'react'
 // Firebase
 import fire from './firebase.js';
 
-console.log(fire)
-
-
-
 function App() {
   
   const [user, setUser ] = useState("")
