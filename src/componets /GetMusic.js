@@ -126,6 +126,7 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
                             effect={"coverflow"}
                             grabCursor={true}
                             centeredSlides={true}
+                            onSlideChange={()=> console.log(true)}
                             // slidesPreView={"auto"}
                             coverflowEffect={{
                                 rotate: 50,
@@ -134,7 +135,10 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
                                 modifier: 1,
                                 slideShadows: false,
                             }}
-                            pagination={true}
+                        
+                            pagination={{
+                                clickable: true
+                            }}
                             modules={[EffectCoverflow, Pagination]}
 
                         // className="mySwiper"
@@ -176,7 +180,7 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
             }
 
 
-            {currentTrack ? <PlayMusic currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} playPause={playPause} setPlayPause={setPlayPause} songList={songList} pageIndex={pageIndex} setPageIndex={setPageIndex} setUpdatedList={setUpdatedList} updatedList={updatedList} updatedPage={updatedPage} setUpdatedPage={setUpdatedPage} searchTerm={searchTerm} user={user} stopMusic={stopMusic}/> : null}
+            {currentTrack ? <PlayMusic currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} playPause={playPause} setPlayPause={setPlayPause} songList={songList} pageIndex={pageIndex} setPageIndex={setPageIndex} setUpdatedList={setUpdatedList} updatedList={updatedList} updatedPage={updatedPage} setUpdatedPage={setUpdatedPage} searchTerm={searchTerm} user={user} stopMusic={stopMusic} /> : null}
             {/* if current track exists then pass values into playMusic component. Otherwise return null */}
 
         </div>
