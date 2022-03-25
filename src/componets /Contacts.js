@@ -16,18 +16,20 @@ const Contacts = () => {
                     <div className="info">
                         <p>About Imtiaz</p>
                         <ul>
-                            <li>Portfolio</li>
-                            <li>Linkedin</li>
-                            <li>GitHub</li>
+                            <li><a href="https://www.imtiazrashid.com">Portfolio</a></li>
+                            <li><a href="https://www.linkedin.com/in/imtiazrashid/">Linkedin</a></li>
+                            <li><a href="https://github.com/irashid1">Github</a></li>
                         </ul>
+
+                        
                     </div>
 
                     <div className="info">
                         <p>About Solomon</p>
                         <ul>
-                            <li>Portfolio</li>
-                            <li>Linkedin</li>
-                            <li>GitHub</li>
+                            <li><a href="https://www.devsolo.ca/">Portfolio</a></li>
+                            <li><a href="https://www.linkedin.com/in/solomon-serry-the-developer/">Linkedin</a></li>
+                            <li><a href="https://github.com/SolomonSerry">Github</a></li>
                         </ul>
                     </div>
                 </div>    

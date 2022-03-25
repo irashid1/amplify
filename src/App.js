@@ -13,6 +13,10 @@ import {  useEffect, useState, useCallback  } from 'react'
 import fire from './firebase.js';
 
 function App() {
+
+
+
+  
   
   const [user, setUser ] = useState("")
   const [email, setEmail ] = useState("")
@@ -23,9 +27,17 @@ function App() {
 
   const [showModal, setShowModal] = useState(false)
 
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const [userInput, setUserInput] = useState("");
+
+  const [stopMusic, setStopMusic] = useState(false);
+
   const clearInputs = () => {
     setEmail("");
     setPassword("");
+    setUserInput("");
+    setSearchTerm(""); 
   };
   
   const clearErrors = () => {
@@ -78,6 +90,8 @@ function App() {
 
   const handleLogout = () => {
     fire.auth().signOut();
+    clearInputs(); 
+    setStopMusic(true);
   }
 
   const authListener = useCallback( () => {
@@ -86,8 +100,9 @@ function App() {
     .onAuthStateChanged((user) => {
       if (user) {
         clearInputs();
-        setUser(user)
-        setShowModal(false)
+        setUser(user);
+        setShowModal(false);
+        setStopMusic(false);
       } 
       else {
         setUser("")
@@ -122,7 +137,7 @@ function App() {
       </header>
 
       <main>
-        <GetMusic user={user} setShowModal={setShowModal}/>
+        <GetMusic user={user} setShowModal={setShowModal} searchTerm={searchTerm} setSearchTerm={setSearchTerm} userInput={userInput} setUserInput={setUserInput} stopMusic={stopMusic} />
       
           <LoginModal email={email} setEmail={setEmail} password={password} setPassword={setPassword} handleLogin={handleLogin} handleSignUp={handleSignUp} emailError={emailError} passwordError={passwordError} hasAccount={hasAccount} setHasAccount={setHasAccount} user={user} showModal={showModal} setShowModal={setShowModal}/>
 
@@ -143,53 +158,55 @@ export default App;
 
 // THEME
 
-// - choosing color palettes 
-//  * coolors and colorhunt
+// - choosing color palettes $$ 
+//  * coolors and colorhunt 
 
-// - choosing font
+// - choosing font $$
 //  * use google fonts
 
-// - create name and logo
+// - create name and logo $$
 //  * use react icons (headphones) to create a logo
 //  * rounded theme (kinda like apple)
 
-// possible name
+// possible name $$
 // - amplify-music
 
 // SCSS & JSX
 
-// - create wireframe & creating partials 
+// - create wireframe & creating partials $$
 //  * login area, main page, album art, header, footer
 
 // - media queries 
 //  * possible flex direction switch on media query 
 
-// - media player 
+// - media player $$
 //  * add album art, artist and track name to media player
 
-// - footer
+// - footer $$
 //  * add media links and desgined by
 
-// - header
+// - header - SCRAP
 //  * add welcome with users email
 //  * find a way to display everything before the @ sign
+//  * add user icon
 
-// - main/ landing page  
+// - main/ landing page $$
 //  * moving liner gradient background 
 //  * content - basic call to action 
 
-// - main/ after search 
+// - main/ after search $$
 //  * album art use react spring carosul 
 
 // - leave comments in html for all the resource that we used
 //  * media player- Ryan from lets build ui 
 //  * firebase auth- Youtube h3 web dev tuts
+//  * spring carousal 
 
 // possible issues 
-// - clearing search and stoping playing music on logout
-// - react spring animation using "useTranstion" from both modal and album art 
-// - adding visual to modal to help distinguish log in and sign up
-// - adding icons for footer and getting icons to animate into text on hover 
+// - clearing search and stoping playing music on logout $$ $$
+// - react spring animation using "useTranstion" from both modal 
+// - adding visual to modal to help distinguish log in and sign up SCRAP
+// - adding icons for footer and getting icons to animate into text on hover SCRAP
 // - volume controls in media player 
 // - when song finishes playing start next song
 // - disable page button on index 0 
@@ -199,8 +216,8 @@ export default App;
 // - if user selects a track, turn that track into the current album cover
 // - when songlist changes, set the index to [0]
 // - make the visibility of h3 and h4 to none when track is not selected
-// - move the page arrows below the coverflow
-// - wrapping the coverflow in a new div
+// - move the page arrows below the coverflow $$
+// - wrapping the coverflow in a new div $$
 
 
 

@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef} from "react"
+import { useState, useEffect, useRef } from "react"
 import MediaPlayer from "./MediaPlayer";
 
-const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, songList, pageIndex, setPageIndex, updatedList, setUpdatedList, updatedPage, setUpdatedPage}) => {
+const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, songList, pageIndex, setPageIndex, updatedList, setUpdatedList, updatedPage, setUpdatedPage, searchTerm, user, stopMusic }) => {
 
     // creating a new audioElement and putting it inside audioRef
     const audioElement = new Audio();
@@ -11,10 +11,10 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
     const intervalRef = useRef();
 
     // states used for the scrubbing functionality of the track
-    const [trackProgress, setTrackProgress] = useState(); 
+    const [trackProgress, setTrackProgress] = useState();
 
     const [duration, setDuration] = useState();
-    
+
     const startTimer = () => {
         // starts the timer that counts up from 0 to the duration of the track
         clearInterval(intervalRef.current);
@@ -28,9 +28,17 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
 
     }
 
+    useEffect(() => {
+        if (stopMusic === true) {
+            audioRef.current.pause();
+            audioRef.current.currentTime = 0;
 
-    
-    useEffect( () => {
+            console.log("HELLO!");
+        }
+    }, [stopMusic])
+
+
+    useEffect(() => {
 
         setUpdatedList(false); // setting this value to false, allows the user to search and switch pages without any interruption in the current song being played
         setDuration(audioRef.current.duration); // setting the total duration of each track
@@ -38,7 +46,7 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
 
         if (playPause === false && audioRef.current.currentTime === 0) {
             // when you get to the landing page, if no track is currently playing, this will start playing the first user selected track
-            audioRef.current.src = currentSong; 
+            audioRef.current.src = currentSong;
             audioRef.current.play();
             startTimer();
 
@@ -48,8 +56,7 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
             audioRef.current.src = currentSong;
             audioRef.current.play();
             startTimer();
-        }
-        else if (playPause === true && audioRef.current.currentTime > 0 ) {
+        } else if (playPause === true && audioRef.current.currentTime > 0) {
             // this pauses the current track, when its currently being played for any duration of time
             audioRef.current.pause();
             clearInterval(intervalRef.current);
@@ -60,19 +67,19 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
         }
     }, [currentTrack, playPause, setUpdatedList]);
 
-    useEffect( () => {
+    useEffect(() => {
         if (updatedList === true && updatedPage === true) {
             // every time songList gets populated, current song being played does not get interrupted
             if (currentTrack.index === (songList.length - 1) && pageIndex >= 0) {
                 // if the current track being played is the last index of the list and you want to go to the first index of the next list;
                 setCurrentTrack(songList[0].track);
                 setUpdatedList(false);
-                setUpdatedPage(false);         
+                setUpdatedPage(false);
             } else if (currentTrack.index === 0 && pageIndex >= 0 && audioRef.current.currentTime !== 0) {
                 // if the current track being played is the first index of the list and you want to go to the last index of the previous list
                 setCurrentTrack(songList[songList.length - 1].track);
                 setUpdatedList(false);
-                setUpdatedPage(false);     
+                setUpdatedPage(false);
             } else if (currentTrack.index < (songList.length - 1) && pageIndex > 0) {
                 // *** condition is here to prevent bugs regarding page changing when the song is being played, undesired results occur when we have page change when the first or last index is being played, requires further investigation ***
                 setCurrentTrack(songList[0].track);
@@ -80,7 +87,7 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
                 setUpdatedPage(false);
             }
         }
-        
+
     }, [currentTrack.index, pageIndex, setCurrentTrack, setUpdatedList, setUpdatedPage, songList, updatedList, updatedPage])
 
     const onScrub = (value) => {
@@ -96,9 +103,18 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
     }
 
     return (
-        <div className="wrapper">
-            <MediaPlayer audioRef={audioRef} playPause={playPause} setPlayPause={setPlayPause} currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} songList={songList} pageIndex={pageIndex} setPageIndex={setPageIndex} trackProgress={trackProgress} onScrub={onScrub} onScrubEnd={onScrubEnd} duration={duration} setUpdatedPage={setUpdatedPage}/>
-        </div>
+        <>
+            {searchTerm ?
+                <div className="wrapper">
+                    <MediaPlayer audioRef={audioRef} playPause={playPause} setPlayPause={setPlayPause} currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} songList={songList} pageIndex={pageIndex} setPageIndex={setPageIndex} trackProgress={trackProgress} onScrub={onScrub} onScrubEnd={onScrubEnd} duration={duration} setUpdatedPage={setUpdatedPage} />
+                </div>
+                : null}
+        </>
+
+
+        // <div className="wrapper">
+        //     <MediaPlayer audioRef={audioRef} playPause={playPause} setPlayPause={setPlayPause} currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} songList={songList} pageIndex={pageIndex} setPageIndex={setPageIndex} trackProgress={trackProgress} onScrub={onScrub} onScrubEnd={onScrubEnd} duration={duration} setUpdatedPage={setUpdatedPage}/>
+        // </div>
     )
 }
 

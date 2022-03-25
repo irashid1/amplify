@@ -12,12 +12,13 @@ SwiperCore.use([EffectCoverflow, Pagination]);
 
 
 
-const GetMusic = ({ user, setShowModal }) => {
-    
+const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, setUserInput, stopMusic }) => {
+
+
 
     // states 
-    const [userInput, setUserInput] = useState("");
-    const [searchTerm, setSearchTerm] = useState("");
+    
+
     const [songList, setSongList] = useState([]);
 
     const [currentTrack, setCurrentTrack] = useState();
@@ -29,6 +30,8 @@ const GetMusic = ({ user, setShowModal }) => {
 
     //for pages 
     const [pageIndex, setPageIndex] = useState(0);
+
+    // resetLandingPage(setSearchTerm);
 
     // event handlers
     const handleSubmit = (event) => {
@@ -52,6 +55,7 @@ const GetMusic = ({ user, setShowModal }) => {
         }
 
     } // this determines whether we pause/play the current track or play a new track
+
 
     // axios call
     useEffect(() => {
@@ -113,52 +117,53 @@ const GetMusic = ({ user, setShowModal }) => {
                 null
             }
 
-
-            
-
-            <Swiper
-                
-                effect={"coverflow"}
-                grabCursor={true}
-                centeredSlides={true}
-                // slidesPreView={"auto"}
-                coverflowEffect={{
-                    rotate: 50,
-                    stretch: 0,
-                    depth: 100,
-                    modifier: 1,
-                    slideShadows: false,
-                }}
-                pagination={true}
-                modules={[EffectCoverflow, Pagination]}
-
-                className="mySwiper"
-            >
-
-                <div className="coverFlow">
-                    {songList.map((song, index) => {
-                        song.track.index = index; // putting trackIndex on to the song object
-
-                        return (
-                            <SwiperSlide key={song.track.key}>
-                                <div className="artContainer" onClick={() => handlePlayPause(song.track)} key={song.track.key}>
-                                    <img src={song.track.images.coverart} alt={`Coverart of ${song.track.title}`} />
-                                    <h3>{song.track.title}</h3>
-                                    <h4>{song.track.subtitle}</h4>
-                                </div>
-                            </SwiperSlide>
-                        )
-                    })
-                    }
-
-                </div>
-
-            </Swiper>
-
             {searchTerm ?
+                <>
+                    <div className="mySwiper">
 
-                <Pages pageIndex={pageIndex} setPageIndex={setPageIndex} />
+                        <Swiper
 
+                            effect={"coverflow"}
+                            grabCursor={true}
+                            centeredSlides={true}
+                            // slidesPreView={"auto"}
+                            coverflowEffect={{
+                                rotate: 50,
+                                stretch: 0,
+                                depth: 100,
+                                modifier: 1,
+                                slideShadows: false,
+                            }}
+                            pagination={true}
+                            modules={[EffectCoverflow, Pagination]}
+
+                        // className="mySwiper"
+                        >
+
+                            <div className="coverFlow">
+                                {songList.map((song, index) => {
+                                    song.track.index = index; // putting trackIndex on to the song object
+
+                                    return (
+                                        <SwiperSlide key={song.track.key}>
+                                            <div className="artContainer" onClick={() => handlePlayPause(song.track)} key={song.track.key}>
+                                                <img src={song.track.images.coverart} alt={`Coverart of ${song.track.title}`} />
+                                                <h3>{song.track.title}</h3>
+                                                <h4>{song.track.subtitle}</h4>
+                                            </div>
+                                        </SwiperSlide>
+                                    )
+                                })
+                                }
+
+                            </div>
+
+                        </Swiper>
+
+                    </div>
+
+                    <Pages pageIndex={pageIndex} setPageIndex={setPageIndex} />
+                </>
                 :
 
 
@@ -171,7 +176,7 @@ const GetMusic = ({ user, setShowModal }) => {
             }
 
 
-            {currentTrack ? <PlayMusic currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} playPause={playPause} setPlayPause={setPlayPause} songList={songList} pageIndex={pageIndex} setPageIndex={setPageIndex} setUpdatedList={setUpdatedList} updatedList={updatedList} updatedPage={updatedPage} setUpdatedPage={setUpdatedPage} /> : null}
+            {currentTrack ? <PlayMusic currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} playPause={playPause} setPlayPause={setPlayPause} songList={songList} pageIndex={pageIndex} setPageIndex={setPageIndex} setUpdatedList={setUpdatedList} updatedList={updatedList} updatedPage={updatedPage} setUpdatedPage={setUpdatedPage} searchTerm={searchTerm} user={user} stopMusic={stopMusic}/> : null}
             {/* if current track exists then pass values into playMusic component. Otherwise return null */}
 
         </div>
