@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useCallback } from "react"
 import MediaPlayer from "./MediaPlayer";
 
 const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, songList, pageIndex, setPageIndex, updatedList, setUpdatedList, updatedPage, setUpdatedPage, searchTerm, user, stopMusic }) => {
@@ -15,18 +15,34 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
 
     const [duration, setDuration] = useState();
 
-    const startTimer = () => {
+    const nextTrack = useCallback(()=> {
+
+        // control function for the next track button
+        if (currentTrack.index === (songList.length - 1)) {
+            // if on the last index of the current list, then displays the next list of results
+            setPageIndex(pageIndex + 5);
+            setUpdatedPage(true);
+        } else {
+            // goes to the next track index within the same list
+            const next = currentTrack.index + 1;
+            setCurrentTrack(songList[next].track);
+            audioRef.current.play();
+        }
+    },[currentTrack.index, pageIndex, setCurrentTrack, setPageIndex, setUpdatedPage, songList])
+
+    const startTimer = useCallback( () =>{
         // starts the timer that counts up from 0 to the duration of the track
         clearInterval(intervalRef.current);
+        
         intervalRef.current = setInterval(() => {
-            // if (audioRef.current.ended) {
-
-            // } else {
+            if (audioRef.current.ended) {
+                nextTrack()
+            } else {
             setTrackProgress(audioRef.current.currentTime);
-            // }
+            }
         }, [1000])
 
-    }
+    },[nextTrack])
 
     useEffect(() => {
         if (stopMusic === true) {
@@ -65,7 +81,7 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
             audioRef.current.play();
             startTimer();
         }
-    }, [currentTrack, playPause, setUpdatedList]);
+    }, [currentTrack, playPause, setUpdatedList, startTimer]);
 
     useEffect(() => {
         if (updatedList === true && updatedPage === true) {
@@ -91,6 +107,7 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
     }, [currentTrack.index, pageIndex, setCurrentTrack, setUpdatedList, setUpdatedPage, songList, updatedList, updatedPage])
 
     const onScrub = (value) => {
+
         // lets the user control which part of the song they want to listen to using a range input
         clearInterval(intervalRef.current);
         audioRef.current.currentTime = value;
@@ -106,7 +123,7 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
         <>
             {searchTerm ?
                 <div className="wrapper">
-                    <MediaPlayer audioRef={audioRef} playPause={playPause} setPlayPause={setPlayPause} currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} songList={songList} pageIndex={pageIndex} setPageIndex={setPageIndex} trackProgress={trackProgress} onScrub={onScrub} onScrubEnd={onScrubEnd} duration={duration} setUpdatedPage={setUpdatedPage} />
+                    <MediaPlayer audioRef={audioRef} playPause={playPause} setPlayPause={setPlayPause} currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} songList={songList} pageIndex={pageIndex} setPageIndex={setPageIndex} trackProgress={trackProgress} onScrub={onScrub} onScrubEnd={onScrubEnd} duration={duration} setUpdatedPage={setUpdatedPage} nextTrack={nextTrack} />
                 </div>
                 : null}
         </>

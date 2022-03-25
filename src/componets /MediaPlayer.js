@@ -2,7 +2,7 @@
 import { BsFillPlayCircleFill, BsFillPauseCircleFill, BsFillSkipForwardCircleFill, BsFillSkipBackwardCircleFill } from "react-icons/bs";
 
 
-const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurrentTrack, songList, pageIndex, setPageIndex, trackProgress, onScrub, onScrubEnd, duration, setUpdatedPage }) => {
+const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurrentTrack, songList, pageIndex, setPageIndex, trackProgress, onScrub, onScrubEnd, duration, setUpdatedPage, nextTrack }) => {
 
     const togglePlayPause = () => {
         // control function for the play/pause button
@@ -34,21 +34,8 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
         }
     }
 
-    const nextTrack = () => {
-
-        // control function for the next track button
-        if (currentTrack.index === (songList.length - 1)) {
-            // if on the last index of the current list, then displays the next list of results
-            setPageIndex(pageIndex + 5);
-            setUpdatedPage(true);
-        } else {
-            // goes to the next track index within the same list
-            const next = currentTrack.index + 1;
-            setCurrentTrack(songList[next].track);
-            audioRef.current.play();
-        }
-    }
-    console.log(currentTrack)
+   
+  
 
     return (
 
