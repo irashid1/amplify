@@ -53,8 +53,9 @@
 // swiper 
 
 .mySwiper {
+  overflow-x: hidden;
   .swiper {
-    width: 30%;
+    width: 35%;
     padding: 50px 0;
     overflow: visible;
   }

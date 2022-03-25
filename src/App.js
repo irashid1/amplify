@@ -203,22 +203,22 @@ export default App;
 //  * spring carousal 
 
 // possible issues 
-// - clearing search and stoping playing music on logout $$ $$
-// - react spring animation using "useTranstion" from both modal 
 // - adding visual to modal to help distinguish log in and sign up SCRAP
 // - adding icons for footer and getting icons to animate into text on hover SCRAP
-// - volume controls in media player 
-// - when song finishes playing start next song
-// - disable page button on index 0 
-// - add page index to display 
 
-// - enable playback for index[0] on coverflow
-// - if user selects a track, turn that track into the current album cover
-// - when songlist changes, set the index to [0]
-// - make the visibility of h3 and h4 to none when track is not selected
+// - clearing search and stoping playing music on logout $$ $$
+// - when song finishes playing start next song $$
+// - add page index to display $$ 
+// - enable playback for index[0] on coverflow $$
 // - move the page arrows below the coverflow $$
 // - wrapping the coverflow in a new div $$
 
+// - volume controls in media player 
+// - when songlist changes, set the index to [0]
+// - disable page button on index 0 
+// - make the visibility of h3 and h4 to none when track is not selected
+// - react spring animation using "useTranstion" from both modal and media player
+// - if user selects a track, turn that track into the current album cover
 
 
 

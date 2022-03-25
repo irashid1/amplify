@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react"
 import MediaPlayer from "./MediaPlayer";
 
-const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, songList, pageIndex, setPageIndex, updatedList, setUpdatedList, updatedPage, setUpdatedPage, searchTerm, user, stopMusic }) => {
+const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, songList, pageIndex, setPageIndex, updatedList, setUpdatedList, updatedPage, setUpdatedPage, searchTerm, stopMusic }) => {
 
     // creating a new audioElement and putting it inside audioRef
     const audioElement = new Audio();
@@ -36,7 +36,12 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
         
         intervalRef.current = setInterval(() => {
             if (audioRef.current.ended) {
-                nextTrack()
+
+                setTimeout( ()=> {
+                    nextTrack()
+
+                },[1000])
+
             } else {
             setTrackProgress(audioRef.current.currentTime);
             }

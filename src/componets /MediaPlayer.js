@@ -42,7 +42,7 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
         <div className="mediaPlayer">
 
             <div className="trackInfo">
-                <img src={currentTrack.images.coverart} alt=""  />
+                <img src={currentTrack.images.coverart} alt={`album cover for ${currentTrack.title}`}  />
                 <div>
                     <h3>{currentTrack.title}</h3>
                     <h4>{currentTrack.subtitle}</h4>
