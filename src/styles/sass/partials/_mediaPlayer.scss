@@ -65,3 +65,25 @@ input[type=range] {
 	transition: background 0.2s ease;
 	cursor: pointer;
 }
+
+.mediaContainerTop {
+    display: flex;
+    justify-content: space-between;
+
+    .volumeControls {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        height: 50px;
+        button {
+            border: none;
+            background: none;
+            font-size: 1.2rem;
+        
+        }
+        input[type=range] {
+            width: 50%;
+        }
+
+    }
+}

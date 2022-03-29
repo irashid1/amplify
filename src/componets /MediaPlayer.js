@@ -1,8 +1,12 @@
-// import { useState} from "react";
+import { useState, useEffect } from "react";
 import { BsFillPlayCircleFill, BsFillPauseCircleFill, BsFillSkipForwardCircleFill, BsFillSkipBackwardCircleFill } from "react-icons/bs";
+import { HiVolumeUp, HiVolumeOff } from "react-icons/hi"
 
 
 const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurrentTrack, songList, pageIndex, setPageIndex, trackProgress, onScrub, onScrubEnd, duration, setUpdatedPage, nextTrack }) => {
+
+    const [mute, setMute] = useState(false);
+    const [velocity, setVelocity] = useState(100);
 
     const togglePlayPause = () => {
         // control function for the play/pause button
@@ -34,6 +38,42 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
         }
     }
 
+    // console.log(mute)
+
+    useEffect(()=> {
+        audioRef.current.volume = velocity / 100;
+        console.log(velocity)
+
+        if (audioRef.current.volume === 0) {
+            setMute(true)
+        } else {
+            setMute(false)
+        }
+
+    },[audioRef, velocity])
+
+    const volumeChange = (event) => {
+        setVelocity(event.target.value)
+    }
+
+    const muteTrack = () => {
+        setMute(!mute)
+    }
+
+    useEffect(()=>{
+        if (mute === true) {
+            audioRef.current.volume = 0;
+        } else {
+            audioRef.current.volume = velocity / 100;
+        }   
+    },[audioRef, mute, velocity])
+
+
+
+
+
+    
+
    
   
 
@@ -41,14 +81,38 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
 
         <div className="mediaPlayer">
 
-            <div className="trackInfo">
-                <img src={currentTrack.images.coverart} alt={`album cover for ${currentTrack.title}`}  />
-                <div>
-                    <h3>{currentTrack.title}</h3>
-                    <h4>{currentTrack.subtitle}</h4>
+            <div className="mediaContainerTop">
+                <div className="trackInfo">
+                    <img src={currentTrack.images.coverart} alt={`album cover for ${currentTrack.title}`}  />
+                    <div>
+                        <h3>{currentTrack.title}</h3>
+                        <h4>{currentTrack.subtitle}</h4>
+                    </div>
+
+
+                </div>
+
+                <div className="volumeControls">
+
+                    {mute ?
+
+                        <button onClick={() => muteTrack()}>
+                            <HiVolumeOff />
+                        </button>
+
+
+                        :
+                        <button onClick={() => muteTrack()}>
+                            <HiVolumeUp />
+                        </button>
+                    }
+                    <label className="sr-only" htmlFor="volumeInput">Volume</label>
+                    <input type="range" id="volumeInput" defaultValue="100" step="1" min="0" max="100" onChange={volumeChange} value={velocity} />
+
                 </div>
 
             </div>
+
 
             <div className="mediaButtons">
 
@@ -67,10 +131,12 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
             </div>
 
             <div className="mediaTime">
-
-                <input className="progress" type="range" value={trackProgress} step="1" min="0" max={duration ? duration : `${duration}`} onChange={(event)=>onScrub(event.target.value)} onMouseUp={onScrubEnd} onKeyUp={onScrubEnd}/>
+                <label className="sr-only" htmlFor="trackScrub">Track Scrub</label>
+                <input className="progress" id="trackScrub" type="range" value={trackProgress} step="1" min="0" max={duration ? duration : `${duration}`} onChange={(event) => onScrub(event.target.value)} defaultValue="0" onMouseUp={onScrubEnd} onKeyUp={onScrubEnd}/>
 
             </div>
+
+  
 
         </div>
     )
