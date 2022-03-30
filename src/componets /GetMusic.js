@@ -7,8 +7,8 @@ import "swiper/css/bundle";
 
 // import { SwiperStyles } 
 
-import SwiperCore, { EffectCoverflow, Pagination } from "swiper/core";
-SwiperCore.use([EffectCoverflow, Pagination]);
+import SwiperCore, { EffectCoverflow, Pagination, Virtual} from "swiper/core";
+SwiperCore.use([EffectCoverflow, Pagination, Virtual]);
 
 
 
@@ -128,6 +128,7 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
                             centeredSlides={true}
                             onSlideChange={()=> console.log(true)}
                             // slidesPreView={"auto"}
+                            // loop={true}
                             coverflowEffect={{
                                 rotate: 50,
                                 stretch: 0,
@@ -139,7 +140,8 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
                             pagination={{
                                 clickable: true
                             }}
-                            modules={[EffectCoverflow, Pagination]}
+                            virtual={true}
+                            modules={[EffectCoverflow, Pagination, Virtual]}
 
                         // className="mySwiper"
                         >
@@ -149,7 +151,7 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
                                     song.track.index = index; // putting trackIndex on to the song object
 
                                     return (
-                                        <SwiperSlide key={song.track.key}>
+                                        <SwiperSlide key={song.track.key} virtualIndex={song.track.index}>
                                             <div className="artContainer" onClick={() => handlePlayPause(song.track)} key={song.track.key}>
                                                 <img src={song.track.images.coverart} alt={`Coverart of ${song.track.title}`} />
                                                 <h3>{song.track.title}</h3>

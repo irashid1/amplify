@@ -17,12 +17,27 @@ const Pages = ({ pageIndex, setPageIndex }) => {
     return (
         <section>
             <div className="pagesBtnContainer">
-                <button 
-                onClick={()=> setPageIndex(pageIndex - 5)}
-                disabled={disabled}>
-                    <BsFillArrowLeftCircleFill />
-                </button>
-                <button onClick={() => setPageIndex(pageIndex + 5)}>
+                {!disabled ? 
+                    <button 
+                    onClick={()=> setPageIndex(pageIndex - 5)}
+                    >
+                
+                        <BsFillArrowLeftCircleFill />
+                    
+                
+                    </button>
+                    :
+                    <button
+                       className="disabledBtn"
+                    >
+
+                        <BsFillArrowLeftCircleFill />
+
+
+                    </button>
+
+                }
+                <button className="pageNext" onClick={() => setPageIndex(pageIndex + 5)}>
                     <BsFillArrowRightCircleFill />
                 </button>
             </div>

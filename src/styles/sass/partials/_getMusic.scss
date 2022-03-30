@@ -76,3 +76,15 @@
   display: block;
   width: 100%;
 }
+
+.swiper-slide-prev, .swiper-slide-next {
+  h3, h4 {
+    opacity: 0;
+  }
+}
+
+.swiper-slide-active {
+  h3, h4 {
+    transition: opacity 0.5s ease-in-out;
+  }
+}

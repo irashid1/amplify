@@ -213,10 +213,10 @@ export default App;
 // - move the page arrows below the coverflow $$
 // - wrapping the coverflow in a new div $$
 
-// - volume controls in media player 
+// - volume controls in media player $$
 // - when songlist changes, set the index to [0]
-// - disable page button on index 0 
-// - make the visibility of h3 and h4 to none when track is not selected
+// - disable page button on index 0 $$
+// - make the visibility of h3 and h4 to none when track is not selected $$
 // - react spring animation using "useTranstion" from both modal and media player
 // - if user selects a track, turn that track into the current album cover
 

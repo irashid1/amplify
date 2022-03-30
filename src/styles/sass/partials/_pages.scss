@@ -16,4 +16,13 @@
             transform: scale(1.1);
        }
     }
+    .disabledBtn {
+        opacity: 40%;
+         &:active {
+            color: black;
+        }
+        &:hover {
+            transform: scale(1);
+       }
+    }
 }
