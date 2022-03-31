@@ -33,7 +33,6 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
     const startTimer = useCallback( () =>{
         // starts the timer that counts up from 0 to the duration of the track
         clearInterval(intervalRef.current);
-        
         intervalRef.current = setInterval(() => {
             if (audioRef.current.ended) {
 
@@ -44,6 +43,7 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
 
             } else {
             setTrackProgress(audioRef.current.currentTime);
+            setDuration(audioRef.current.duration); // setting the total duration of each track
             }
         }, [1000])
 
@@ -53,28 +53,23 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
         if (stopMusic === true) {
             audioRef.current.pause();
             audioRef.current.currentTime = 0;
-
-            console.log("HELLO!");
         }
     }, [stopMusic])
-
 
     useEffect(() => {
 
         setUpdatedList(false); // setting this value to false, allows the user to search and switch pages without any interruption in the current song being played
-        setDuration(audioRef.current.duration); // setting the total duration of each track
-        const currentSong = currentTrack.hub.actions[1].uri; // link to playing the audio
 
         if (playPause === false && audioRef.current.currentTime === 0) {
             // when you get to the landing page, if no track is currently playing, this will start playing the first user selected track
-            audioRef.current.src = currentSong;
+            audioRef.current.src = currentTrack.hub.actions[1].uri;
             audioRef.current.play();
             startTimer();
 
-        } else if (audioRef.current.src !== currentSong) {
+        } else if (audioRef.current.src !== currentTrack.hub.actions[1].uri) {
             // if the user selects another song, this will start playing the new current track
             audioRef.current.currentTime = 0;
-            audioRef.current.src = currentSong;
+            audioRef.current.src = currentTrack.hub.actions[1].uri;
             audioRef.current.play();
             startTimer();
         } else if (playPause === true && audioRef.current.currentTime > 0) {
@@ -86,7 +81,7 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
             audioRef.current.play();
             startTimer();
         }
-    }, [currentTrack, playPause, setUpdatedList, startTimer]);
+    }, [currentTrack, playPause, setUpdatedList, startTimer, duration]);
 
     useEffect(() => {
         if (updatedList === true && updatedPage === true) {
@@ -127,7 +122,7 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
     return (
         <>
             {searchTerm ?
-                <div className="wrapper">
+                <div className="mediaPlayerContainer">
                     <MediaPlayer audioRef={audioRef} playPause={playPause} setPlayPause={setPlayPause} currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} songList={songList} pageIndex={pageIndex} setPageIndex={setPageIndex} trackProgress={trackProgress} onScrub={onScrub} onScrubEnd={onScrubEnd} duration={duration} setUpdatedPage={setUpdatedPage} nextTrack={nextTrack} />
                 </div>
                 : null}

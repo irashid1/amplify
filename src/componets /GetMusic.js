@@ -103,7 +103,7 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
 
     return (
 
-        <div className="wrapper">
+        <div>
 
             {user ?
                 <form className="searchBar" onSubmit={handleSubmit}>
@@ -119,7 +119,7 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
 
             {searchTerm ?
                 <>
-                    <div className="mySwiper">
+                    <div className="mySwiper wrapper">
 
                         <Swiper
 

@@ -16,7 +16,7 @@ const Pages = ({ pageIndex, setPageIndex }) => {
 
     return (
         <section>
-            <div className="pagesBtnContainer">
+            <div className="pagesBtnContainer wrapper">
                 {!disabled ? 
                     <button 
                     onClick={()=> setPageIndex(pageIndex - 5)}

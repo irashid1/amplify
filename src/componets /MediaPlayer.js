@@ -38,11 +38,23 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
         }
     }
 
-    // console.log(mute)
+    const timeCalc = (value) => {
+        let seconds = Math.round(value % 60);
+        let minutes = Math.round((value / 60) % 60);
 
-    useEffect(()=> {
+        if (seconds < 10) {
+            seconds = "0" + seconds;
+        };
+
+        return minutes + ":" + seconds;
+    };
+
+    // console.log(duration);
+    // console.log(audioRef.current.duration);
+
+    useEffect(() => {
         audioRef.current.volume = velocity / 100;
-        console.log(velocity)
+        // console.log(velocity)
 
         if (audioRef.current.volume === 0) {
             setMute(true)
@@ -50,7 +62,7 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
             setMute(false)
         }
 
-    },[audioRef, velocity])
+    }, [audioRef, velocity])
 
     const volumeChange = (event) => {
         setVelocity(event.target.value)
@@ -60,83 +72,89 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
         setMute(!mute)
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         if (mute === true) {
             audioRef.current.volume = 0;
         } else {
             audioRef.current.volume = velocity / 100;
-        }   
-    },[audioRef, mute, velocity])
-
-
-
-
-
-    
-
-   
-  
+        }
+    }, [audioRef, mute, velocity])
 
     return (
 
         <div className="mediaPlayer">
 
-            <div className="mediaContainerTop">
-                <div className="trackInfo">
-                    <img src={currentTrack.images.coverart} alt={`album cover for ${currentTrack.title}`}  />
-                    <div>
-                        <h3>{currentTrack.title}</h3>
-                        <h4>{currentTrack.subtitle}</h4>
-                    </div>
 
-
+            <div className="trackInfo">
+                <img src={currentTrack.images.coverart} alt={`album cover for ${currentTrack.title}`} />
+                <div>
+                    <h3>{currentTrack.title}</h3>
+                    <h4>{currentTrack.subtitle}</h4>
                 </div>
 
-                <div className="volumeControls">
-
-                    {mute ?
-
-                        <button onClick={() => muteTrack()}>
-                            <HiVolumeOff />
-                        </button>
-
-
-                        :
-                        <button onClick={() => muteTrack()}>
-                            <HiVolumeUp />
-                        </button>
-                    }
-                    <label className="sr-only" htmlFor="volumeInput">Volume</label>
-                    <input type="range" id="volumeInput" defaultValue="100" step="1" min="0" max="100" onChange={volumeChange} value={mute ? 0 : velocity} />
-
-                </div>
 
             </div>
 
+            <div className="mediaContainer">
+                <div className="mediaButtons">
 
-            <div className="mediaButtons">
-
-                <button onClick={() => prevTrack()}>
-                    <BsFillSkipBackwardCircleFill />
-                </button>
-                <div className="playPause">
-                    <button onClick={() => togglePlayPause()}>
-                        {playPause ? <BsFillPlayCircleFill /> : <BsFillPauseCircleFill />}
+                    <button onClick={() => prevTrack()}>
+                        <BsFillSkipBackwardCircleFill />
                     </button>
+                    <div className="playPause">
+                        <button onClick={() => togglePlayPause()}>
+                            {playPause ? <BsFillPlayCircleFill /> : <BsFillPauseCircleFill />}
+                        </button>
+                    </div>
+                    <button onClick={() => nextTrack()}>
+                        <BsFillSkipForwardCircleFill />
+                    </button>
+
                 </div>
-                <button onClick={() => nextTrack()}>
-                    <BsFillSkipForwardCircleFill />
-                </button>
+
+                <div className="mediaTime">
+                    <p>
+                        { trackProgress ?
+                            timeCalc(trackProgress)
+                            :
+                            "0:00"
+                        }
+                    </p>
+                    <label className="sr-only" htmlFor="trackScrub">Track Scrub</label>
+                    <input className="progress" id="trackScrub" type="range" value={trackProgress} step="1" min="0" max={duration ? duration : `${duration}`} onChange={(event) => onScrub(event.target.value)} defaultValue="0" onMouseUp={onScrubEnd} onKeyUp={onScrubEnd} />
+                    <p>
+                        {duration ?
+                            timeCalc(duration)
+                            :
+                            "0:00"
+                        }
+                    </p>
+                </div>
+            </div>
+
+            <div className="volumeControls">
+
+                {mute ?
+
+                    <button onClick={() => muteTrack()}>
+                        <HiVolumeOff />
+                    </button>
+
+
+                    :
+                    <button onClick={() => muteTrack()}>
+                        <HiVolumeUp />
+                    </button>
+                }
+                <label className="sr-only" htmlFor="volumeInput">Volume</label>
+                <input type="range" id="volumeInput" defaultValue="100" step="1" min="0" max="100" onChange={volumeChange} value={mute ? 0 : velocity} />
 
             </div>
 
-            <div className="mediaTime">
-                <label className="sr-only" htmlFor="trackScrub">Track Scrub</label>
-                <input className="progress" id="trackScrub" type="range" value={trackProgress} step="1" min="0" max={duration ? duration : `${duration}`} onChange={(event) => onScrub(event.target.value)} defaultValue="0" onMouseUp={onScrubEnd} onKeyUp={onScrubEnd}/>
 
-            </div>
 
-  
+
+
 
         </div>
     )

@@ -55,7 +55,7 @@
 .mySwiper {
   overflow-x: hidden;
   .swiper {
-    width: 35%;
+    width: 30%;
     padding: 50px 0;
     overflow: visible;
   }
@@ -78,13 +78,12 @@
 }
 
 .swiper-slide-prev, .swiper-slide-next {
+  opacity: 50%;
   h3, h4 {
     opacity: 0;
   }
 }
 
 .swiper-slide-active {
-  h3, h4 {
-    transition: opacity 0.5s ease-in-out;
-  }
+  transition: opacity 0.5s ease-in-out;
 }
