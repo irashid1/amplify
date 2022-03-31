@@ -39,8 +39,8 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
     }
 
     const timeCalc = (value) => {
-        let seconds = Math.floor(value % 60);
-        let minutes = Math.floor((value / 60) % 60);
+        let seconds = Math.round(value % 60);
+        let minutes = Math.round((value / 60) % 60);
 
         if (seconds < 10) {
             seconds = "0" + seconds;
@@ -113,10 +113,22 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
                 </div>
 
                 <div className="mediaTime">
-                    <p>{timeCalc(trackProgress)}</p>
+                    <p>
+                        { trackProgress ?
+                            timeCalc(trackProgress)
+                            :
+                            "0:00"
+                        }
+                    </p>
                     <label className="sr-only" htmlFor="trackScrub">Track Scrub</label>
                     <input className="progress" id="trackScrub" type="range" value={trackProgress} step="1" min="0" max={duration ? duration : `${duration}`} onChange={(event) => onScrub(event.target.value)} defaultValue="0" onMouseUp={onScrubEnd} onKeyUp={onScrubEnd} />
-                    <p>{timeCalc(duration)}</p>
+                    <p>
+                        {duration ?
+                            timeCalc(duration)
+                            :
+                            "0:00"
+                        }
+                    </p>
                 </div>
             </div>
 
