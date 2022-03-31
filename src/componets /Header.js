@@ -3,7 +3,7 @@ import { FaHeadphonesAlt } from 'react-icons/fa'
 const Header = ({ handleLogout, setShowModal, user, setHasAccount}) => {
 
     return(
-        <div className='wrapper headerContent'>
+        <div className="headerContent wrapper">
             <div className="logo">
                 <div className="headphones">
                     <FaHeadphonesAlt />
