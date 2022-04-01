@@ -176,7 +176,11 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
                 <div className="tagLine">
                     <h1><span>Amplify</span>Your Music</h1>
                     <p>Expand your musical horizon</p>
-                    <button onClick={() => setShowModal(true)}>Get Started</button>
+                    {!user ?
+                        <button onClick={() => setShowModal(true)}>Get Started</button>
+                    :
+                        null
+                    }
                 </div>
 
             }
