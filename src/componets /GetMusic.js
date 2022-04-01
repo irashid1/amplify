@@ -138,7 +138,7 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
                             }}
                         
                             pagination={{
-                                clickable: true
+                                clickable: true,
                             }}
                             virtual={true}
                             modules={[EffectCoverflow, Pagination, Virtual]}
