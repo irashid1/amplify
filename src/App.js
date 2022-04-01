@@ -13,10 +13,6 @@ import {  useEffect, useState, useCallback  } from 'react'
 import fire from './firebase.js';
 
 function App() {
-
-
-
-  
   
   const [user, setUser ] = useState("")
   const [email, setEmail ] = useState("")
@@ -217,10 +213,12 @@ export default App;
 // - disable page button on index 0 $$
 // - make the visibility of h3 and h4 to none when track is not selected $$
 // - when songlist changes, set the index to [0]
-// - react spring animation using "useTranstion" from both modal and media player
 // - if user selects a track, turn that track into the current album cover
+// - react spring animation using "useTranstion" from both modal and media player
 
 
+// Stretch goal
+// adding a fullscreen mode 
 
 
 
