@@ -1,5 +1,6 @@
 .mediaContainer {
     width: 50%;
+    margin: 0 auto;
     .mediaButtons {
         display: flex;
         justify-content: center;
@@ -15,13 +16,11 @@
                 transform: scale(1.1);
             }
         }
-    }
-
-    .playPause {
-        button {
-            font-size: 3rem;
+        .playPause {
+            font-size: 3rem; 
         }
     }
+
 
     .mediaTime {
         text-align: center;
@@ -32,6 +31,7 @@
             margin: 0 10px;
             color: black;
             width: 50px;
+            font-size: 0.7rem;
         }
     }
 }
@@ -47,9 +47,26 @@
     box-shadow: 0 28px 28px rgba(0, 0, 0, 0.2);
 }
 
+.trackTitle {
+    text-align: center;
+    padding: 10px 0;
+    display: none;
+    p {
+        color: black;
+        font-size: 0.8rem;
+        span {
+            color: black;
+            font-size: 0.8rem;
+            font-weight: 600;
+
+        }
+    }
+}
+
 .trackInfo {
     display: flex;
     width: 25%;
+    overflow-wrap: anywhere;
     img {
         width: 100px;
         height: 100px;
@@ -58,11 +75,11 @@
     }
     h3 {
         font-weight: 600;
-        font-size: 1.1rem;
+        font-size: 0.8rem;
     }
     h4 {
         font-weight: 100;
-        font-size: 0.8rem;
+        font-size: 0.6rem;
     }
 }
 

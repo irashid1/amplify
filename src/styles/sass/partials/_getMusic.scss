@@ -86,14 +86,16 @@
 
 .swiper-slide-active {
   transition: opacity 0.5s ease-in-out;
+  h3, h4 {
+    transition: opacity 0.5s ease-in-out;
+  }
 }
 
 .swiper-pagination {
   .swiper-pagination-bullet {
-    width: 40px;
+    width: calc((100% / 5) - 8px);
     height: 5px;
     border-radius: 5px;
   }
 
 }
-

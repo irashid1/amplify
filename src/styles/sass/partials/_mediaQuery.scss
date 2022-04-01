@@ -1,8 +1,104 @@
-@media (max-width: 1250px) {
+@media (max-width: 1000px) {
+    .mySwiper {
+        .swiper {
+            width: 35%;
+        }
+    
+    }
 
+    .mediaContainer {
+        width: 40%;
+    }
+
+    .volumeControls {
+        width: 30%;
+    }
+
+    .trackInfo {
+        width: 30%;
+    }
 }
 
 @media (max-width: 750px) {
+    .volumeControls {
+        input[type="range"] {
+            width: 100px;
+        }
+    }
+
+    .trackInfo {
+        img {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    .mediaTime {
+        input[type="range"] {
+            width: 175px;
+        }
+    }
+
+}
+
+@media (max-width: 650px) {
+    .mediaContainer {
+        .mediaButtons {
+            button {
+                font-size: 2rem;
+            }
+            .playPause {
+                font-size: 2.5rem;   
+            }
+        }
+    
+    }
+
+    .mediaContainer {
+        width: 60%;
+    }
+    
+    .volumeControls {
+        width: 20%;
+    }
+    
+    .trackInfo {
+        width: 20%;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 550px) {
+    .searchBar {
+        flex-direction: column;
+    }
+    .trackTitle {
+        display: block;
+    }
+    .trackInfo {
+        h3, h4 {
+            display: none;
+        }
+    }
+    .trackInfo {
+        img {
+            width: 80px;
+            height: 80px;
+        }
+    }
+
+    .volumeControls {
+        display: flex;
+        flex-direction: column;
+        height: 70px;
+        button {
+            margin: -90px;
+        }
+        input[type="range"] {
+            width: 100px;
+            transform: rotateZ(270deg);
+        }
+    }
 
 }
 

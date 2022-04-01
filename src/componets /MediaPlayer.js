@@ -101,11 +101,9 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
                     <button onClick={() => prevTrack()}>
                         <BsFillSkipBackwardCircleFill />
                     </button>
-                    <div className="playPause">
-                        <button onClick={() => togglePlayPause()}>
+                        <button className="playPause" onClick={() => togglePlayPause()}>
                             {playPause ? <BsFillPlayCircleFill /> : <BsFillPauseCircleFill />}
                         </button>
-                    </div>
                     <button onClick={() => nextTrack()}>
                         <BsFillSkipForwardCircleFill />
                     </button>
@@ -129,6 +127,9 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
                             "0:00"
                         }
                     </p>
+                </div>
+                <div className="trackTitle">
+                    <p><span>{`${currentTrack.title}`}</span> - {`${currentTrack.subtitle}`}</p>
                 </div>
             </div>
 
