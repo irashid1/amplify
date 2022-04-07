@@ -7,7 +7,7 @@ header {
         justify-content: space-between;
         align-items: center;
     }
-    nav ul {
+    .navText ul {
         display: flex;
         li, a {
             padding-left:30px;
@@ -23,6 +23,9 @@ header {
         .userLogin {
             display: flex;
         }
+    }
+    .navIcon {
+        display: none;
     }
 
 }
