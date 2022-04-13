@@ -1,7 +1,7 @@
 header {
     background: black;
     padding: 15px 0;
-    // height: 10vh;
+    // overflow: hidden;
     .headerContent {
         display: flex;
         justify-content: space-between;
@@ -22,6 +22,7 @@ header {
         }
         .userLogin {
             display: flex;
+            
         }
     }
     .navIcon {
@@ -29,6 +30,8 @@ header {
     }
 
 }
+
+
 
 h2 {
     font-size: 2rem;
@@ -62,3 +65,5 @@ h2 {
     margin-bottom: 5px;
     padding-right: 5px;
 }
+
+

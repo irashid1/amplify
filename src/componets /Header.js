@@ -1,6 +1,10 @@
-import { FaHeadphonesAlt, FaBars } from 'react-icons/fa'
+import { FaHeadphonesAlt, FaBars } from 'react-icons/fa';
+import { MdClose } from 'react-icons/md'
+import { useState } from 'react';
 
 const Header = ({ handleLogout, setShowModal, user, setHasAccount }) => {
+
+    const [hamburgerMenu, setHamburgerMenu] = useState(false);
 
     return (
         <div className="headerContent wrapper">
@@ -29,21 +33,91 @@ const Header = ({ handleLogout, setShowModal, user, setHasAccount }) => {
             </nav>
 
             <nav className='navIcon'>
-                <button>
-                    <FaBars />
-                </button>
-                <ul>
-                    <li><a href="#contact">Contact</a></li>
-                    {user ?
-                        <li onClick={handleLogout}>Logout</li>
-                        :
-                        <div className="userLogin">
-                            <li onClick={() => { setShowModal(true); setHasAccount(true) }} >Log in</li>
-                            <li onClick={() => { setShowModal(true); setHasAccount(false) }} >Sign up</li>
-                        </div>
-                    }
+                {hamburgerMenu
+                    ?
+                    <>
+                        <button onClick={() => setHamburgerMenu(!hamburgerMenu)}>
+                            <MdClose />
+                        </button>
 
-                </ul>
+                        <ul className='menuActive'>
+                            <li onClick={() => setHamburgerMenu(false)}><a href="#contact" >Contact</a></li>
+                            {user ?
+                                <li onClick={handleLogout}>Logout</li>
+                                :
+                                <div className="userLogin">
+                                    <li onClick={() => { setShowModal(true); setHasAccount(true); setHamburgerMenu(false) }} >Log in</li>
+                                    <li onClick={() => { setShowModal(true); setHasAccount(false); setHamburgerMenu(false) }} >Sign up</li>
+                                </div>
+                            }
+
+                        </ul>
+                    </>
+                    :
+                    <>
+                        <button onClick={() => setHamburgerMenu(!hamburgerMenu)}>
+                            <FaBars />
+                        </button>
+
+                        <ul >
+                            <li onClick={() => setHamburgerMenu(false)}><a href="#contact" >Contact</a></li>
+                            {user ?
+                                <li onClick={handleLogout}>Logout</li>
+                                :
+                                <div className="userLogin">
+                                    <li onClick={() => { setShowModal(true); setHasAccount(true); setHamburgerMenu(false) }} >Log in</li>
+                                    <li onClick={() => { setShowModal(true); setHasAccount(false); setHamburgerMenu(false) }} >Sign up</li>
+                                </div>
+                            }
+
+                        </ul>
+                    </>
+                }
+
+
+                {/* {
+                    !hamburgerMenu ?
+
+                        <>
+                            <button onClick={setHamburgerMenu(!hamburgerMenu)}>
+                                <MdClose />
+                            </button>
+
+                            <ul>
+                                <li><a href="#contact">Contact</a></li>
+                                {user ?
+                                    <li onClick={handleLogout}>Logout</li>
+                                    :
+                                    <div className="userLogin">
+                                        <li onClick={() => { setShowModal(true); setHasAccount(true) }} >Log in</li>
+                                        <li onClick={() => { setShowModal(true); setHasAccount(false) }} >Sign up</li>
+                                    </div>
+                                }
+
+                            </ul>
+                        </>
+
+                    :
+                        <>
+                            <button onClick={setHamburgerMenu(!hamburgerMenu)}>
+                                <FaBars />
+                            </button>
+
+                            <ul>
+                                <li><a href="#contact">Contact</a></li>
+                                {user ?
+                                    <li onClick={handleLogout}>Logout</li>
+                                    :
+                                    <div className="userLogin">
+                                        <li onClick={() => { setShowModal(true); setHasAccount(true) }} >Log in</li>
+                                        <li onClick={() => { setShowModal(true); setHasAccount(false) }} >Sign up</li>
+                                    </div>
+                                }
+
+                            </ul>
+                        </>
+                } */}
+
             </nav>
 
         </div>

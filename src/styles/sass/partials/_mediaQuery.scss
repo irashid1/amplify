@@ -19,7 +19,6 @@
 }
 
 @media (max-width: 750px) {
-
     header {
         position: relative;
         .navText {
@@ -30,23 +29,69 @@
             ul {
                 position: absolute;
                 background-color: black;
-                width: 125px;
-                height: 125px;
+                width: 100%;
+                // height: 125px;
                 text-align: center;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-evenly;
                 align-items: center;
-                right: -125px;
+                top: 75px;
+                right: -100%;
+                transition: right 0.3s ease-in-out;
+                .userLogin {
+                    width: 100%;
+                    height: 100%;
+                    li {
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        padding: 18px;
+                        align-items: center;
+                        justify-content: center;
+                        transition: background 0.2s ease-in-out;
+                        &:hover{
+                            background: royalblue;
+                        }
+                    } 
+                }
+                li {
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        padding: 18px;
+                        align-items: center;
+                        justify-content: center;
+                        transition: background 0.2s ease-in-out;
+                        &:hover{
+                            background: royalblue;
+                        }
+                    } 
+
             }
             button {
                 color: white;
                 background: none;
                 border: none;
             }
+            .menuActive {
+                right: 0;
+            }
         }
-        
-        
+    }
+
+    footer {
+        .infoContainer {
+            flex-direction: column;
+            justify-content: center;
+            .infoContent {
+                justify-content: center;
+            }
+            .logo {
+                justify-content: center;
+            }
+        }
+
     }
 
     .volumeControls {
@@ -70,6 +115,14 @@
 }
 
 @media (max-width: 650px) {
+
+    h1 {
+        font-size: 5rem;
+        span {
+            font-size: 5rem;
+        }
+    }
+
     .mediaContainer {
         .mediaButtons {
             button {
@@ -96,6 +149,14 @@
 }
 
 @media (max-width: 570px) {
+
+    h1 {
+        font-size: 4rem;
+        span {
+            font-size: 4rem;
+        }
+    }
+
     .searchBar {
         flex-direction: column;
     }
@@ -111,6 +172,13 @@
         img {
             width: 60px;
             height: 60px;
+        }
+    }
+
+    @media (max-width: 540px) {
+        .modalContent form {
+            width: 300px;
+            height: 450px;
         }
     }
 
@@ -131,9 +199,18 @@
         //     transition: opacity 0.35s ease-in-out;
         // }
     }
+    
 }
 
 @media (max-width: 430px) {
+
+    h1 {
+        font-size: 3rem;
+        span {
+            font-size: 3rem;
+        }
+    }
+
     .mediaTime {
         p {
             display: none;
@@ -161,6 +238,12 @@
         }
         button {
             margin-bottom: 10px;
+        }
+    }
+    .trackInfo {
+        img {
+            width: 50px;
+            height: 50px;
         }
     }
 
