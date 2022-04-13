@@ -1,13 +1,13 @@
 header {
     background: black;
     padding: 15px 0;
-    // height: 10vh;
+    // overflow: hidden;
     .headerContent {
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
-    nav ul {
+    .navText ul {
         display: flex;
         li, a {
             padding-left:30px;
@@ -22,10 +22,16 @@ header {
         }
         .userLogin {
             display: flex;
+            
         }
+    }
+    .navIcon {
+        display: none;
     }
 
 }
+
+
 
 h2 {
     font-size: 2rem;
@@ -59,3 +65,5 @@ h2 {
     margin-bottom: 5px;
     padding-right: 5px;
 }
+
+
