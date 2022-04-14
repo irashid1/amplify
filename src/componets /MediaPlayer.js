@@ -39,8 +39,8 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
     }
 
     const timeCalc = (value) => {
-        let seconds = Math.round(value % 60);
-        let minutes = Math.round((value / 60) % 60);
+        let seconds = Math.floor(value % 60);
+        let minutes = Math.floor((value / 60) % 60);
 
         if (seconds < 10) {
             seconds = "0" + seconds;
