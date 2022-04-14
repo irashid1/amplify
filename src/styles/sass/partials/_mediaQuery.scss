@@ -112,6 +112,10 @@
             width: 175px;
         }
     }
+
+    body, html {
+        overflow-x: hidden;
+    }
 }
 
 @media (max-width: 650px) {
