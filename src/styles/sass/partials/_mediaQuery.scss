@@ -7,7 +7,9 @@
 
     .mediaContainer {
         width: 40%;
+        
         .mediaButtons {
+            width: 100%;
             display: grid;
             grid-template-columns: 0.25fr 0.25fr 0.25fr;
             button {
