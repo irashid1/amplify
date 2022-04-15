@@ -10,6 +10,10 @@
         .mediaButtons {
             display: grid;
             grid-template-columns: 0.25fr 0.25fr 0.25fr;
+            button {
+                margin: 0;
+                padding: 0;
+            }
         }
     }
 
