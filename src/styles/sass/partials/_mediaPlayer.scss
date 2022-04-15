@@ -38,14 +38,18 @@
 }
 
 .mediaPlayer {
-    display: flex;
-    justify-content: space-between;
+   
     width: 90%;
     border-radius: 20px;
     margin: 0 auto;
     padding: 24px;
     background: rgba(0, 0, 0, 0.1);
     box-shadow: 0 28px 28px rgba(0, 0, 0, 0.2);
+}
+
+.mediaContainerTop {
+    display: flex;
+    justify-content: space-between;
 }
 
 .trackTitle {
@@ -60,6 +64,20 @@
             font-size: 0.8rem;
             font-weight: 600;
 
+        }
+    }
+
+    .mediaTimeBottom {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+        padding: 5px 0 10px 0;
+        p {
+            margin: 0 10px;
+            color: black;
+            width: 50px;
+            font-size: 0.7rem;
         }
     }
 }

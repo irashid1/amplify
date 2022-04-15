@@ -127,6 +127,15 @@
     body, html {
         overflow-x: hidden;
     }
+
+    .mediaContainer {
+        .mediaButtons {
+            .playPause {
+                margin: 0 5px;
+            }
+        }
+    }
+
 }
 
 @media (max-width: 650px) {
@@ -142,7 +151,7 @@
         width: 60%;
         .mediaButtons {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 0.25fr 0.25fr 0.25fr;
             button {
                 font-size: 2rem;
             }
@@ -184,28 +193,39 @@
     // }
     .trackInfo {
         img {
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
+            margin: 0;
         }
     }
 
-    .volumeControls {
+    .volumeControls, .coverArtTitle {
         display: none;
-        // flex-direction: column;
-        // height: 100px;
-        // &:hover input[type=“range”] {
-        //     opacity: 1;
-        // }
-        // button {
-        //     margin: 30px;
-        // }
-        // input[type="range"] {
-        //     width: 75px;
-        //     transform: rotateZ(270deg);
-        //     // opacity: 0;
-        //     transition: opacity 0.35s ease-in-out;
-        // }
     }
+
+    .trackTitle {
+        display: block;
+
+    }
+
+    .mediaContainer{
+        display: flex;
+        align-items: flex-end;
+        margin: 0;
+        .mediaTime {
+            display: none;
+        }
+        .mediaButtons {
+            justify-content: flex-end;
+        }
+    }
+
+    .mediaContainerTop {
+        justify-content: space-evenly;
+    }
+
+
+
     
 }
 
@@ -273,14 +293,22 @@
     }
     .trackInfo {
         img {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
         }
     }
 
     .pagesBtnContainer {
         height: 40px;
         padding: 35px 0;
+    }
+}
+
+@media (max-width: 390px) {
+    .mediaTimeBottom {
+        p {
+            display: none;
+        }
     }
 }
 
