@@ -84,15 +84,13 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
 
         <div className="mediaPlayer">
 
-
+            <div className="mediaContainerTop">
             <div className="trackInfo">
                 <img src={currentTrack.images.coverart} alt={`album cover for ${currentTrack.title}`} />
-                <div>
+                <div className="coverArtTitle">
                     <h3>{currentTrack.title}</h3>
                     <h4>{currentTrack.subtitle}</h4>
                 </div>
-
-
             </div>
 
             <div className="mediaContainer">
@@ -128,9 +126,6 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
                         }
                     </p>
                 </div>
-                <div className="trackTitle">
-                    <p><span>{`${currentTrack.title}`}</span> - {`${currentTrack.subtitle}`}</p>
-                </div>
             </div>
 
             <div className="volumeControls">
@@ -151,11 +146,31 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
                 <input type="range" id="volumeInput" defaultValue="100" step="1" min="0" max="100" onChange={volumeChange} value={mute ? 0 : velocity} />
 
             </div>
+            
+            </div>
 
+            <div className="trackTitle">
+                <div className="mediaTimeBottom">
+                    <p>
+                        {trackProgress ?
+                            timeCalc(trackProgress)
+                            :
+                            "0:00"
+                        }
+                    </p>
+                    <label className="sr-only" htmlFor="trackScrub">Track Scrub</label>
+                    <input className="progress" id="trackScrub" type="range" value={trackProgress} step="1" min="0" max={duration ? duration : `${duration}`} onChange={(event) => onScrub(event.target.value)} defaultValue="0" onMouseUp={onScrubEnd} onKeyUp={onScrubEnd} />
+                    <p>
+                        {duration ?
+                            timeCalc(duration)
+                            :
+                            "0:00"
+                        }
+                    </p>
+                </div>
 
-
-
-
+                <p><span>{`${currentTrack.title}`}</span> - {`${currentTrack.subtitle}`}</p>
+            </div>
 
         </div>
     )
