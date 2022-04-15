@@ -1,4 +1,4 @@
-@media (max-width: 1000px) {
+@media (max-width: 1080px) {
     .mySwiper {
         .swiper {
             width: 35%;
@@ -7,6 +7,10 @@
 
     .mediaContainer {
         width: 40%;
+        .mediaButtons {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
     }
 
     .volumeControls {
@@ -16,6 +20,7 @@
     .trackInfo {
         width: 30%;
     }
+
 }
 
 @media (max-width: 750px) {
