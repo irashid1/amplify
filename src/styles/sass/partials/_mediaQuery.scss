@@ -128,6 +128,7 @@
     }
 
     .mediaContainer {
+        width: 60%;
         .mediaButtons {
             button {
                 font-size: 2rem;
@@ -136,10 +137,6 @@
                 font-size: 2.5rem;
             }
         }
-    }
-
-    .mediaContainer {
-        width: 150px;
     }
 
     .volumeControls {
@@ -179,13 +176,6 @@
         }
     }
 
-    @media (max-width: 540px) {
-        .modalContent form {
-            width: 300px;
-            height: 450px;
-        }
-    }
-
     .volumeControls {
         display: none;
         // flex-direction: column;
@@ -204,6 +194,13 @@
         // }
     }
     
+}
+
+@media (max-width: 540px) {
+    .modalContent form {
+        width: 300px;
+        height: 450px;
+    }
 }
 
 @media (max-width: 430px) {
