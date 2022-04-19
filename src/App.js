@@ -29,6 +29,8 @@ function App() {
 
   const [stopMusic, setStopMusic] = useState(false);
 
+  const [hamburgerMenu, setHamburgerMenu] = useState(false);
+
   const clearInputs = () => {
     setEmail("");
     setPassword("");
@@ -88,6 +90,7 @@ function App() {
     fire.auth().signOut();
     clearInputs(); 
     setStopMusic(true);
+    setHamburgerMenu(false);
   }
 
   const authListener = useCallback( () => {
@@ -129,7 +132,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-          <Header handleLogout={handleLogout} setShowModal={setShowModal} user={user} setHasAccount={setHasAccount} />
+          <Header handleLogout={handleLogout} setShowModal={setShowModal} user={user} setHasAccount={setHasAccount} hamburgerMenu={hamburgerMenu} setHamburgerMenu={setHamburgerMenu} />
       </header>
 
       <main>
@@ -172,7 +175,7 @@ export default App;
 // - create wireframe & creating partials $$
 //  * login area, main page, album art, header, footer
 
-// - media queries 
+// - media queries $$
 //  * possible flex direction switch on media query 
 
 // - media player $$
@@ -193,10 +196,6 @@ export default App;
 // - main/ after search $$
 //  * album art use react spring carosul 
 
-// - leave comments in html for all the resource that we used
-//  * media player- Ryan from lets build ui 
-//  * firebase auth- Youtube h3 web dev tuts
-//  * spring carousal 
 
 // possible issues 
 // - adding visual to modal to help distinguish log in and sign up SCRAP
@@ -212,13 +211,23 @@ export default App;
 // - volume controls in media player $$
 // - disable page button on index 0 $$
 // - make the visibility of h3 and h4 to none when track is not selected $$
+
+// Final to do list
 // - when songlist changes, set the index to [0]
 // - if user selects a track, turn that track into the current album cover
 // - react spring animation using "useTranstion" from both modal and media player
+// - add Oauth 
+// - pagination buttons 
+// - song title scroll 
+// - adding a fullscreen mode 
+
+// - leave comments in html for all the resource that we used
+//  * media player- Ryan from lets build ui 
+//  * firebase auth- Youtube h3 web dev tuts
+//  * spring carousal 
 
 
-// Stretch goal
-// adding a fullscreen mode 
+
 
 
 

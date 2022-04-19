@@ -1,10 +1,10 @@
 import { FaHeadphonesAlt, FaBars } from 'react-icons/fa';
 import { MdClose } from 'react-icons/md'
-import { useState } from 'react';
+// import { useState } from 'react';
 
-const Header = ({ handleLogout, setShowModal, user, setHasAccount }) => {
+const Header = ({ handleLogout, setShowModal, user, setHasAccount, hamburgerMenu, setHamburgerMenu }) => {
 
-    const [hamburgerMenu, setHamburgerMenu] = useState(false);
+    
 
     return (
         <div className="headerContent wrapper">

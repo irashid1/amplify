@@ -230,9 +230,19 @@
 }
 
 @media (max-width: 540px) {
-    .modalContent form {
-        width: 300px;
-        height: 450px;
+    .modalContent {
+        form {
+            width: 300px;
+            height: 450px;
+            .loginInfo {
+                .inputField {
+                    p {
+                        font-size: 0.6rem;
+                        padding-top: 5px;
+                    }
+                }
+            }
+        }
     }
 }
 
