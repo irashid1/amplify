@@ -7,8 +7,8 @@ import "swiper/css/bundle";
 
 // import { SwiperStyles } 
 
-import SwiperCore, { EffectCoverflow, Pagination, Virtual} from "swiper/core";
-SwiperCore.use([EffectCoverflow, Pagination, Virtual]);
+import SwiperCore, { EffectCoverflow, Pagination, Virtual, Navigation } from "swiper/core";
+SwiperCore.use([EffectCoverflow, Pagination, Virtual, Navigation]);
 
 
 
@@ -17,7 +17,7 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
 
 
     // states 
-    
+
 
     const [songList, setSongList] = useState([]);
 
@@ -122,13 +122,15 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
                     <div className="mySwiper wrapper">
 
                         <Swiper
+                            navigation
 
                             effect={"coverflow"}
                             grabCursor={true}
-                            centeredSlides={true}
-                            onSlideChange={()=> console.log(true)}
-                            // slidesPreView={"auto"}
-                            // loop={true}
+                            // centeredSlides={true}
+                            // onSlideChange={() => console.log(true)}
+                            spaceBetween={50}
+                            // // slidesPreView={"auto"}
+                            // // loop={true}
                             coverflowEffect={{
                                 rotate: 50,
                                 stretch: 0,
@@ -136,16 +138,19 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
                                 modifier: 1,
                                 slideShadows: false,
                             }}
-                        
+
                             pagination={{
                                 clickable: true,
                             }}
-                            virtual={true}
-                            modules={[EffectCoverflow, Pagination, Virtual]}
+
+                            
+
+                            // virtual={true}
+                            // modules={[EffectCoverflow, Pagination, Virtual, Navigation]}
 
                         // className="mySwiper"
                         >
-
+                            
                             <div className="coverFlow">
                                 {songList.map((song, index) => {
                                     song.track.index = index; // putting trackIndex on to the song object
@@ -156,6 +161,8 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
                                                 <img src={song.track.images.coverart} alt={`Coverart of ${song.track.title}`} />
                                                 <h3>{song.track.title}</h3>
                                                 <h4>{song.track.subtitle}</h4>
+                                                
+                                                
                                             </div>
                                         </SwiperSlide>
                                     )
@@ -163,7 +170,7 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
                                 }
 
                             </div>
-
+                            
                         </Swiper>
 
                     </div>
@@ -178,7 +185,7 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
                     <p>Expand your musical horizon</p>
                     {!user ?
                         <button onClick={() => setShowModal(true)}>Get Started</button>
-                    :
+                        :
                         null
                     }
                 </div>

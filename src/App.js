@@ -220,6 +220,7 @@ export default App;
 // - pagination buttons 
 // - song title scroll 
 // - adding a fullscreen mode 
+// - adding more effective error handling
 
 // - leave comments in html for all the resource that we used
 //  * media player- Ryan from lets build ui 

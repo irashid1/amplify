@@ -58,9 +58,22 @@
     width: 30%;
     padding: 50px 0;
     overflow: visible;
+    .swiper-button-next, .swiper-rtl .swiper-button-prev {
+      right: -55px;
+    }
+    
+    .swiper-button-prev, .swiper-rtl .swiper-button-next {
+      left: -55px;
+    }
+    
+    .swiper-button-next, .swiper-button-prev {
+      z-index: -10;
+      // color: #3b5ec5;
+    }
   }
   
 }
+
 
 
 .swiper-slide {
@@ -96,6 +109,7 @@
     width: calc((100% / 5) - 8px);
     height: 5px;
     border-radius: 5px;
+    // --swiper-theme-color: #3b5ec5;
   }
 
 }

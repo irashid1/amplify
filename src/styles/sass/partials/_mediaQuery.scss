@@ -7,7 +7,7 @@
 
     .mediaContainer {
         width: 40%;
-        
+
         .mediaButtons {
             width: 100%;
             display: grid;
@@ -26,7 +26,6 @@
     .trackInfo {
         width: 30%;
     }
-
 }
 
 @media (max-width: 750px) {
@@ -61,24 +60,23 @@
                         align-items: center;
                         justify-content: center;
                         transition: background 0.2s ease-in-out;
-                        &:hover{
+                        &:hover {
                             background: royalblue;
                         }
-                    } 
+                    }
                 }
                 li {
-                        width: 100%;
-                        height: 100%;
-                        display: flex;
-                        padding: 18px;
-                        align-items: center;
-                        justify-content: center;
-                        transition: background 0.2s ease-in-out;
-                        &:hover{
-                            background: royalblue;
-                        }
-                    } 
-
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    padding: 18px;
+                    align-items: center;
+                    justify-content: center;
+                    transition: background 0.2s ease-in-out;
+                    &:hover {
+                        background: royalblue;
+                    }
+                }
             }
             button {
                 color: white;
@@ -102,7 +100,13 @@
                 justify-content: center;
             }
         }
+    }
 
+    .swiper {
+        .swiper-button-next,
+        .swiper-button-prev {
+            top: 45%;
+        }
     }
 
     .volumeControls {
@@ -124,7 +128,8 @@
         }
     }
 
-    body, html {
+    body,
+    html {
         overflow-x: hidden;
     }
 
@@ -135,11 +140,9 @@
             }
         }
     }
-
 }
 
 @media (max-width: 650px) {
-
     h1 {
         font-size: 5rem;
         span {
@@ -172,7 +175,6 @@
 }
 
 @media (max-width: 570px) {
-
     h1 {
         font-size: 4rem;
         span {
@@ -191,6 +193,16 @@
     //         display: none;
     //     }
     // }
+
+
+    .swiper {
+        .swiper-button-next,
+        .swiper-button-prev {
+            top: 40%;
+        }
+    }
+
+
     .trackInfo {
         img {
             width: 80px;
@@ -199,16 +211,16 @@
         }
     }
 
-    .volumeControls, .coverArtTitle {
+    .volumeControls,
+    .coverArtTitle {
         display: none;
     }
 
     .trackTitle {
         display: block;
-
     }
 
-    .mediaContainer{
+    .mediaContainer {
         display: flex;
         align-items: flex-end;
         margin: 0;
@@ -223,10 +235,6 @@
     .mediaContainerTop {
         justify-content: space-evenly;
     }
-
-
-
-    
 }
 
 @media (max-width: 540px) {
@@ -246,8 +254,16 @@
     }
 }
 
-@media (max-width: 430px) {
+@media (max-width: 460px) {
+    .swiper {
+        .swiper-button-next,
+        .swiper-button-prev {
+            top: 35%;
+        }
+    }
+}
 
+@media (max-width: 430px) {
     .mediaContainer {
         text-align: center;
         .mediaButtons {
@@ -256,11 +272,11 @@
             // grid-template-rows: 150px 300px;
             // gap: 10px;
             button {
-              margin: 0;
-              padding: 0;
+                margin: 0;
+                padding: 0;
             }
             .playPause {
-               margin: 0 7px;
+                margin: 0 7px;
             }
         }
     }
