@@ -215,13 +215,14 @@ export default App;
 // Final to do list
 // - when songlist changes, set the index to [0] $$
 // - if user selects a track, turn that track into the current album cover $$
+// - pagination buttons $$
+// - 0 index track cant be click due to swiper wrapper $$
+
 // - react spring animation using "useTranstion" from both modal and media player
 // - add Oauth 
-// - pagination buttons $$
 // - song title scroll 
 // - adding a fullscreen mode 
 // - adding more effective error handling
-// - 0 index track cant be click due to swiper wrapper 
 
 // - leave comments in html for all the resource that we used
 //  * media player- Ryan from lets build ui 
