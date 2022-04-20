@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from "react-icons/bs"
 
-const Pages = ({ pageIndex, setPageIndex, sliderRef, songList }) => {
+const Pages = ({ pageIndex, setPageIndex, sliderRef, songList, setPageChange, pageChange }) => {
 
     const [disabled, setDisabled] = useState(false);
+    const [sliderReset, setSliderReset] = useState();
 
     useEffect(()=>{
         // this is disables the previous page button when the user is at the first page index
@@ -14,21 +15,28 @@ const Pages = ({ pageIndex, setPageIndex, sliderRef, songList }) => {
         }
     }, [pageIndex])
 
+  
     const nextPage = () => {
         setPageIndex(pageIndex + 5);
-        setTimeout( ()=> {
-            sliderRef.current.swiper.slideTo(0);
-        },[1200])
-    
+        setSliderReset(1)
+        setPageChange(false)
+        
     }
     
     const prevPage = () => {
         setPageIndex(pageIndex - 5);
-        setTimeout( ()=> {
-            sliderRef.current.swiper.slideTo(songList.length);
-        },[1200])
-    
-    }
+            setSliderReset(2)
+            setPageChange(false)
+            
+        }
+        
+        useEffect( ()=> {
+            if (sliderReset === 1 && pageChange === true) {
+                sliderRef.current.swiper.slideTo(0);
+            } else if (sliderReset === 2 && pageChange === true) {
+                sliderRef.current.swiper.slideTo(songList.length);       
+        }
+    },[pageChange, sliderRef, sliderReset, songList.length])
     return (
         <section>
             <div className="pagesBtnContainer wrapper">

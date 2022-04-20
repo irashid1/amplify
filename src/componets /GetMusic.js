@@ -33,6 +33,8 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
 
     const [coverflowIndex, setCoverflowIndex] = useState(0)
 
+    const [pageChange, setPageChange] = useState(false)
+
     const sliderRef = useRef();
 
     // resetLandingPage(setSearchTerm);
@@ -104,6 +106,7 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
             }).then((response) => {
                 setSongList(response.data.tracks.hits);
                 setUpdatedList(true); // has to be set after the songList since this is an async event
+                setPageChange(true);
             }).catch(function (error) {
                 console.error(error);
             });
@@ -187,7 +190,7 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
                                 
                     </div>
 
-                    <Pages pageIndex={pageIndex} setPageIndex={setPageIndex} sliderRef={sliderRef} coverflowIndex={coverflowIndex} setCoverflowIndex={setCoverflowIndex} songList={songList} />
+                    <Pages pageIndex={pageIndex} setPageIndex={setPageIndex} sliderRef={sliderRef} coverflowIndex={coverflowIndex} setCoverflowIndex={setCoverflowIndex} songList={songList} updatedList={updatedList} pageChange={pageChange} setPageChange={setPageChange} />
                 </>
                 :
 
