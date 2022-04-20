@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react"
 import MediaPlayer from "./MediaPlayer";
 
-const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, songList, pageIndex, setPageIndex, updatedList, setUpdatedList, updatedPage, setUpdatedPage, searchTerm, stopMusic }) => {
+const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, songList, pageIndex, setPageIndex, updatedList, setUpdatedList, updatedPage, setUpdatedPage, searchTerm, stopMusic, coverflowIndex, setCoverflowIndex, sliderRef }) => {
 
     // creating a new audioElement and putting it inside audioRef
     const audioElement = new Audio();
@@ -35,6 +35,7 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
         clearInterval(intervalRef.current);
         intervalRef.current = setInterval(() => {
             if (audioRef.current.ended) {
+                sliderRef.current.swiper.slideTo(currentTrack.index)
 
                 setTimeout( ()=> {
                     nextTrack()
@@ -47,7 +48,7 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
             }
         }, [1000])
 
-    },[nextTrack])
+    },[currentTrack.index, nextTrack, sliderRef])
 
     useEffect(() => {
         if (stopMusic === true) {
@@ -63,25 +64,32 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
         if (playPause === false && audioRef.current.currentTime === 0) {
             // when you get to the landing page, if no track is currently playing, this will start playing the first user selected track
             audioRef.current.src = currentTrack.hub.actions[1].uri;
-            audioRef.current.play();
+            sliderRef.current.swiper.slideTo(currentTrack.index)
             startTimer();
-
+            audioRef.current.play();
+            console.log("ok!!!!")
+            
+            
         } else if (audioRef.current.src !== currentTrack.hub.actions[1].uri) {
             // if the user selects another song, this will start playing the new current track
             audioRef.current.currentTime = 0;
             audioRef.current.src = currentTrack.hub.actions[1].uri;
-            audioRef.current.play();
+            sliderRef.current.swiper.slideTo(currentTrack.index)
             startTimer();
+            audioRef.current.play();
+            console.log("yes!!!!")
         } else if (playPause === true && audioRef.current.currentTime > 0) {
             // this pauses the current track, when its currently being played for any duration of time
             audioRef.current.pause();
             clearInterval(intervalRef.current);
+            console.log("hello!!!!")
         } else {
             // if the song is being paused and the user selects the same track, it will resume from the point the current track was paused at
             audioRef.current.play();
             startTimer();
+            console.log("bye!!!!")
         }
-    }, [currentTrack, playPause, setUpdatedList, startTimer, duration]);
+    }, [currentTrack.hub.actions, currentTrack.index, playPause, setUpdatedList, sliderRef, startTimer]);
 
     useEffect(() => {
         if (updatedList === true && updatedPage === true) {

@@ -213,14 +213,15 @@ export default App;
 // - make the visibility of h3 and h4 to none when track is not selected $$
 
 // Final to do list
-// - when songlist changes, set the index to [0]
-// - if user selects a track, turn that track into the current album cover
+// - when songlist changes, set the index to [0] $$
+// - if user selects a track, turn that track into the current album cover $$
 // - react spring animation using "useTranstion" from both modal and media player
 // - add Oauth 
-// - pagination buttons 
+// - pagination buttons $$
 // - song title scroll 
 // - adding a fullscreen mode 
 // - adding more effective error handling
+// - 0 index track cant be click due to swiper wrapper 
 
 // - leave comments in html for all the resource that we used
 //  * media player- Ryan from lets build ui 
