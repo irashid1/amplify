@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react"
 import MediaPlayer from "./MediaPlayer";
 
-const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, songList, pageIndex, setPageIndex, updatedList, setUpdatedList, updatedPage, setUpdatedPage, searchTerm, stopMusic }) => {
+const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, songList, pageIndex, setPageIndex, updatedList, setUpdatedList, updatedPage, setUpdatedPage, searchTerm, stopMusic, coverflowIndex, setCoverflowIndex, sliderRef }) => {
 
     // creating a new audioElement and putting it inside audioRef
     const audioElement = new Audio();
@@ -65,6 +65,7 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
             audioRef.current.src = currentTrack.hub.actions[1].uri;
             audioRef.current.play();
             startTimer();
+          
 
         } else if (audioRef.current.src !== currentTrack.hub.actions[1].uri) {
             // if the user selects another song, this will start playing the new current track
@@ -81,7 +82,7 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
             audioRef.current.play();
             startTimer();
         }
-    }, [currentTrack, playPause, setUpdatedList, startTimer, duration]);
+    }, [currentTrack, playPause, setUpdatedList, startTimer, duration, coverflowIndex]);
 
     useEffect(() => {
         if (updatedList === true && updatedPage === true) {

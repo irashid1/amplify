@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import PlayMusic from "./PlayMusic";
 import Pages from "./Pages";
 import "swiper/css/bundle";
@@ -31,14 +31,19 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
     //for pages 
     const [pageIndex, setPageIndex] = useState(0);
 
+    const [coverflowIndex, setCoverflowIndex] = useState(0)
+
+    const sliderRef = useRef();
+
     // resetLandingPage(setSearchTerm);
 
-    // event handlers
     const handleSubmit = (event) => {
         event.preventDefault();
         setSearchTerm(userInput);
         setUpdatedList(false);
         setPageIndex(0); // resets the page index to 0 every time user searches for a new track
+        // sliderRef.current.swiper.slideTo(0)  
+        
     }
 
     const handleChange = (event) => {
@@ -55,6 +60,12 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
         }
 
     } // this determines whether we pause/play the current track or play a new track
+
+    useEffect(()=> {
+        if (updatedList === true) {
+             sliderRef.current.swiper.slideTo(0) 
+        }
+    },[updatedList])
 
 
     // axios call
@@ -123,11 +134,11 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
 
                         <Swiper
                             navigation
-
+                            ref={sliderRef}
                             effect={"coverflow"}
                             grabCursor={true}
                             // centeredSlides={true}
-                            // onSlideChange={() => console.log(true)}
+                            onSlideChange={(e) => setCoverflowIndex(e.activeIndex)}
                             spaceBetween={50}
                             // // slidesPreView={"auto"}
                             // // loop={true}
@@ -150,13 +161,14 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
 
                         // className="mySwiper"
                         >
+                        
                             
                             <div className="coverFlow">
                                 {songList.map((song, index) => {
                                     song.track.index = index; // putting trackIndex on to the song object
 
                                     return (
-                                        <SwiperSlide key={song.track.key} virtualIndex={song.track.index}>
+                                        <SwiperSlide key={song.track.key}>
                                             <div className="artContainer" onClick={() => handlePlayPause(song.track)} key={song.track.key}>
                                                 <img src={song.track.images.coverart} alt={`Coverart of ${song.track.title}`} />
                                                 <h3>{song.track.title}</h3>
@@ -172,10 +184,10 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
                             </div>
                             
                         </Swiper>
-
+                                
                     </div>
 
-                    <Pages pageIndex={pageIndex} setPageIndex={setPageIndex} />
+                    <Pages pageIndex={pageIndex} setPageIndex={setPageIndex} sliderRef={sliderRef} coverflowIndex={coverflowIndex} setCoverflowIndex={setCoverflowIndex} songList={songList} />
                 </>
                 :
 
@@ -193,7 +205,7 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
             }
 
 
-            {currentTrack ? <PlayMusic currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} playPause={playPause} setPlayPause={setPlayPause} songList={songList} pageIndex={pageIndex} setPageIndex={setPageIndex} setUpdatedList={setUpdatedList} updatedList={updatedList} updatedPage={updatedPage} setUpdatedPage={setUpdatedPage} searchTerm={searchTerm} user={user} stopMusic={stopMusic} /> : null}
+            {currentTrack ? <PlayMusic currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} playPause={playPause} setPlayPause={setPlayPause} songList={songList} pageIndex={pageIndex} setPageIndex={setPageIndex} setUpdatedList={setUpdatedList} updatedList={updatedList} updatedPage={updatedPage} setUpdatedPage={setUpdatedPage} searchTerm={searchTerm} user={user} stopMusic={stopMusic} coverflowIndex={coverflowIndex} setCoverflowIndex={setCoverflowIndex} sliderRef={sliderRef} /> : null}
             {/* if current track exists then pass values into playMusic component. Otherwise return null */}
 
         </div>

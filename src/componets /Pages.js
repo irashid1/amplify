@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from "react-icons/bs"
 
-const Pages = ({ pageIndex, setPageIndex }) => {
+const Pages = ({ pageIndex, setPageIndex, sliderRef, songList }) => {
 
     const [disabled, setDisabled] = useState(false);
 
@@ -14,12 +14,27 @@ const Pages = ({ pageIndex, setPageIndex }) => {
         }
     }, [pageIndex])
 
+    const nextPage = () => {
+        setPageIndex(pageIndex + 5);
+        setTimeout( ()=> {
+            sliderRef.current.swiper.slideTo(0);
+        },[1200])
+    
+    }
+    
+    const prevPage = () => {
+        setPageIndex(pageIndex - 5);
+        setTimeout( ()=> {
+            sliderRef.current.swiper.slideTo(songList.length);
+        },[1200])
+    
+    }
     return (
         <section>
             <div className="pagesBtnContainer wrapper">
                 {!disabled ? 
                     <button 
-                    onClick={()=> setPageIndex(pageIndex - 5)}
+                    onClick={prevPage}
                     >
                 
                         <BsFillArrowLeftCircleFill />
@@ -37,7 +52,7 @@ const Pages = ({ pageIndex, setPageIndex }) => {
                     </button>
 
                 }
-                <button className="pageNext" onClick={() => setPageIndex(pageIndex + 5)}>
+                <button className="pageNext" onClick={nextPage}>
                     <BsFillArrowRightCircleFill />
                 </button>
             </div>
