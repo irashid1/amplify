@@ -6,7 +6,7 @@ import Footer from './componets /Footer';
 import Contacts from './componets /Contacts';
 
 // React Hooks
-import {  useEffect, useState, useCallback  } from 'react'
+import {  useEffect, useState, useCallback  } from 'react';
 
 
 // Firebase
@@ -110,21 +110,6 @@ function App() {
     })
   },[])  
 
-  // const authListener = () => {
-  //   fire.auth().onAuthStateChanged((user) => {
-  //     if (user) {
-  //       clearInputs();
-  //       setUser(user)
-  //       // setShowModal(false)
-  //     } else {
-  //       setUser("")
-  //       // setShowModal(true)
-  //     }
-  //   })
-  // }
-
- 
-
   useEffect( () => {
     authListener();
   },[authListener]);
@@ -223,6 +208,7 @@ export default App;
 // - song title scroll 
 // - adding a fullscreen mode 
 // - adding more effective error handling
+// - bug fixes on scrub for mobile devices
 
 // - leave comments in html for all the resource that we used
 //  * media player- Ryan from lets build ui 

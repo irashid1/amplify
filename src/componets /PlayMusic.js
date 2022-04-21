@@ -67,9 +67,6 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
             sliderRef.current.swiper.slideTo(currentTrack.index)
             startTimer();
             audioRef.current.play();
-            console.log("ok!!!!")
-            
-            
         } else if (audioRef.current.src !== currentTrack.hub.actions[1].uri) {
             // if the user selects another song, this will start playing the new current track
             audioRef.current.currentTime = 0;
@@ -77,17 +74,14 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
             sliderRef.current.swiper.slideTo(currentTrack.index)
             startTimer();
             audioRef.current.play();
-            console.log("yes!!!!")
         } else if (playPause === true && audioRef.current.currentTime > 0) {
             // this pauses the current track, when its currently being played for any duration of time
             audioRef.current.pause();
             clearInterval(intervalRef.current);
-            console.log("hello!!!!")
         } else {
             // if the song is being paused and the user selects the same track, it will resume from the point the current track was paused at
             audioRef.current.play();
             startTimer();
-            console.log("bye!!!!")
         }
     }, [currentTrack.hub.actions, currentTrack.index, playPause, setUpdatedList, sliderRef, startTimer]);
 

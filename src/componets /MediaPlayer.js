@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { BsFillPlayCircleFill, BsFillPauseCircleFill, BsFillSkipForwardCircleFill, BsFillSkipBackwardCircleFill } from "react-icons/bs";
-import { HiVolumeUp, HiVolumeOff } from "react-icons/hi"
+import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
+// import Range from "react-range";
 
 
 const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurrentTrack, songList, pageIndex, setPageIndex, trackProgress, onScrub, onScrubEnd, duration, setUpdatedPage, nextTrack }) => {
@@ -171,7 +172,7 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
 
                 <p><span>{`${currentTrack.title}`}</span> - {`${currentTrack.subtitle}`}</p>
             </div>
-
+            {/* <Range /> */}
         </div>
     )
 
