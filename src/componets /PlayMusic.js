@@ -13,7 +13,7 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
     // states used for the scrubbing functionality of the track
     const [trackProgress, setTrackProgress] = useState();
 
-    const [duration, setDuration] = useState();
+    const [trackDuration, setTrackDuration] = useState();
 
     const nextTrack = useCallback(()=> {
 
@@ -44,7 +44,7 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
 
             } else {
             setTrackProgress(audioRef.current.currentTime);
-            setDuration(audioRef.current.duration); // setting the total duration of each track
+            setTrackDuration(audioRef.current.duration); // setting the total duration of each track
             }
         }, [1000])
 
@@ -125,7 +125,7 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
         <>
             {searchTerm ?
                 <div className="mediaPlayerContainer">
-                    <MediaPlayer audioRef={audioRef} playPause={playPause} setPlayPause={setPlayPause} currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} songList={songList} pageIndex={pageIndex} setPageIndex={setPageIndex} trackProgress={trackProgress} onScrub={onScrub} onScrubEnd={onScrubEnd} duration={duration} setUpdatedPage={setUpdatedPage} nextTrack={nextTrack} />
+                    <MediaPlayer audioRef={audioRef} playPause={playPause} setPlayPause={setPlayPause} currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} songList={songList} pageIndex={pageIndex} setPageIndex={setPageIndex} trackProgress={trackProgress} onScrub={onScrub} onScrubEnd={onScrubEnd} trackDuration={trackDuration} setUpdatedPage={setUpdatedPage} nextTrack={nextTrack} />
                 </div>
                 : null}
         </>

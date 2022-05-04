@@ -1,13 +1,25 @@
 import { useState, useEffect } from "react";
 import { BsFillPlayCircleFill, BsFillPauseCircleFill, BsFillSkipForwardCircleFill, BsFillSkipBackwardCircleFill } from "react-icons/bs";
 import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
+// import { useSpring, animated  } from "react-spring";
 // import Range from "react-range";
 
 
-const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurrentTrack, songList, pageIndex, setPageIndex, trackProgress, onScrub, onScrubEnd, duration, setUpdatedPage, nextTrack }) => {
+const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurrentTrack, songList, pageIndex, setPageIndex, trackProgress, onScrub, onScrubEnd, trackDuration, setUpdatedPage, nextTrack }) => {
 
     const [mute, setMute] = useState(false);
     const [velocity, setVelocity] = useState(100);
+    // const [animateKey, setAnimateKey] = useState(1);
+
+    // const scrolling = useSpring({
+    //     from: { transform: "translate(100%, 0)"},
+    //     to: { transform: "translate(-100%, 0)"},
+    //     config: { duration: 8000},
+    //     reset: true,
+    //     onRest: () =>{
+    //         setAnimateKey(animateKey + 1)
+    //     }
+    // }) 
 
     const togglePlayPause = () => {
         // control function for the play/pause button
@@ -90,6 +102,12 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
                 <img src={currentTrack.images.coverart} alt={`album cover for ${currentTrack.title}`} />
                 <div className="coverArtTitle">
                     <h3>{currentTrack.title}</h3>
+                    {/* <h4>
+                        <animated.div style={scrolling}>{currentTrack.subtitle}</animated.div>
+                    </h4> */}
+                    {/* <animated.div style={scrolling}>
+                        <h4 key={animateKey}>{currentTrack.subtitle}</h4>
+                    </animated.div> */}
                     <h4>{currentTrack.subtitle}</h4>
                 </div>
             </div>
@@ -118,10 +136,10 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
                         }
                     </p>
                     <label className="sr-only" htmlFor="trackScrub">Track Scrub</label>
-                    <input className="progress" id="trackScrub" type="range" value={trackProgress} step="1" min="0" max={duration ? duration : `${duration}`} onChange={(event) => onScrub(event.target.value)} defaultValue="0" onMouseUp={onScrubEnd} onKeyUp={onScrubEnd} />
+                    <input className="progress" id="trackScrub" type="range" value={trackProgress} step="1" min="0" max={trackDuration ? trackDuration : `${trackDuration}`} onChange={(event) => onScrub(event.target.value)} defaultValue="0" onMouseUp={onScrubEnd} onKeyUp={onScrubEnd} />
                     <p>
-                        {duration ?
-                            timeCalc(duration)
+                        {trackDuration ?
+                            timeCalc(trackDuration)
                             :
                             "0:00"
                         }
@@ -160,10 +178,10 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
                         }
                     </p>
                     <label className="sr-only" htmlFor="trackScrub">Track Scrub</label>
-                    <input className="progress" id="trackScrub" type="range" value={trackProgress} step="1" min="0" max={duration ? duration : `${duration}`} onChange={(event) => onScrub(event.target.value)} defaultValue="0" onMouseUp={onScrubEnd} onKeyUp={onScrubEnd} />
+                    <input className="progress" id="trackScrub" type="range" value={trackProgress} step="1" min="0" max={trackDuration ? trackDuration : `${trackDuration}`} onChange={(event) => onScrub(event.target.value)} defaultValue="0" onMouseUp={onScrubEnd} onKeyUp={onScrubEnd} />
                     <p>
-                        {duration ?
-                            timeCalc(duration)
+                        {trackDuration ?
+                            timeCalc(trackDuration)
                             :
                             "0:00"
                         }

@@ -92,6 +92,18 @@ function App() {
     setStopMusic(true);
     setHamburgerMenu(false);
   }
+  
+  
+  // const googleLogin = () => {
+  //   const provider = fire.auth.GoogleAuthProvider();
+  //   fire.auth().signInWithPopup(provider)
+  //   .then( (e)=>{
+  //     console.log(e)
+  //   })
+  //   .catch( (err)=> {
+  //     console.log(err)
+  //   })
+  // }
 
   const authListener = useCallback( () => {
     fire
@@ -123,7 +135,7 @@ function App() {
       <main>
         <GetMusic user={user} setShowModal={setShowModal} searchTerm={searchTerm} setSearchTerm={setSearchTerm} userInput={userInput} setUserInput={setUserInput} stopMusic={stopMusic} />
       
-          <LoginModal email={email} setEmail={setEmail} password={password} setPassword={setPassword} handleLogin={handleLogin} handleSignUp={handleSignUp} emailError={emailError} passwordError={passwordError} hasAccount={hasAccount} setHasAccount={setHasAccount} user={user} showModal={showModal} setShowModal={setShowModal}/>
+          <LoginModal email={email} setEmail={setEmail} password={password} setPassword={setPassword} handleLogin={handleLogin} handleSignUp={handleSignUp} emailError={emailError} passwordError={passwordError} hasAccount={hasAccount} setHasAccount={setHasAccount} user={user} showModal={showModal} setShowModal={setShowModal} />
 
       </main>
 
@@ -185,6 +197,8 @@ export default App;
 // possible issues 
 // - adding visual to modal to help distinguish log in and sign up SCRAP
 // - adding icons for footer and getting icons to animate into text on hover SCRAP
+// - adding a fullscreen mode SCRAP
+// - react spring animation using "useTranstion" from both modal and media player SCRAP
 
 // - clearing search and stoping playing music on logout $$ $$
 // - when song finishes playing start next song $$
@@ -203,10 +217,9 @@ export default App;
 // - pagination buttons $$
 // - 0 index track cant be click due to swiper wrapper $$
 
-// - react spring animation using "useTranstion" from both modal and media player
+
 // - add Oauth 
 // - song title scroll 
-// - adding a fullscreen mode 
 // - adding more effective error handling
 // - bug fixes on scrub for mobile devices
 

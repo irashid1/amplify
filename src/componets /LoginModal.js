@@ -1,8 +1,9 @@
 import { useSpring, animated } from "react-spring"
 import { RiCloseCircleFill } from "react-icons/ri"
 import { FaHeadphonesAlt } from 'react-icons/fa'
+import { FcGoogle } from 'react-icons/fc'
 
-const LoginModal = ({ email, setEmail, password, setPassword, handleLogin, handleSignUp, emailError, passwordError, hasAccount, setHasAccount, showModal, setShowModal }) => {
+const LoginModal = ({ email, setEmail, password, setPassword, handleLogin, handleSignUp, emailError, passwordError, hasAccount, setHasAccount, showModal, setShowModal,googleLogin }) => {
 
 
 
@@ -36,6 +37,12 @@ const LoginModal = ({ email, setEmail, password, setPassword, handleLogin, handl
                                         <div className="closeIcon" onClick={ () => setShowModal(false) }>
                                             <RiCloseCircleFill />
                                         </div>
+                                    </div>
+
+                                    <div className="providerLogin">
+                                        <button onClick={googleLogin}>
+                                            <FcGoogle />
+                                        </button>
                                     </div>
 
                                     <div className="loginInfo">
