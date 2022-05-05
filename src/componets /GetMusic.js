@@ -85,15 +85,15 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
                 },
                 headers: {
                     // current key 
-                    // Solomon key#1
-                    'x-rapidapi-host': 'shazam.p.rapidapi.com',
-                    'x-rapidapi-key': '4e6f74d025msh36947ff6c814c7cp11d0c1jsnc6f9a4f67eae'
-
-                    // additional keys
-
                     // Solomon key#2
+                    'x-rapidapi-host': 'shazam.p.rapidapi.com',
+                    'x-rapidapi-key': '8b686888demsh8b501dde66c5b3dp12f3d2jsn655350bd72a5'
+                    
+                    // additional keys
+                    
+                    // Solomon key#1
                     // 'x-rapidapi-host': 'shazam.p.rapidapi.com',
-                    // 'x-rapidapi-key': '8b686888demsh8b501dde66c5b3dp12f3d2jsn655350bd72a5'
+                    // 'x-rapidapi-key': '4e6f74d025msh36947ff6c814c7cp11d0c1jsnc6f9a4f67eae'
 
                     // Imtiaz key #1
                     // 'x-rapidapi-host': 'shazam.p.rapidapi.com',
