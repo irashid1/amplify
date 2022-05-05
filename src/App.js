@@ -216,10 +216,10 @@ export default App;
 // - if user selects a track, turn that track into the current album cover $$
 // - pagination buttons $$
 // - 0 index track cant be click due to swiper wrapper $$
+// - song title scroll $$
 
 
 // - add Oauth 
-// - song title scroll 
 // - adding more effective error handling
 // - bug fixes on scrub for mobile devices
 
