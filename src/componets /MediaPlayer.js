@@ -187,8 +187,9 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
                         }
                     </p>
                 </div>
-
-                <p><span>{`${currentTrack.title}`}</span> - {`${currentTrack.subtitle}`}</p>
+                  
+                <p className="titleTicker"><span>{`${currentTrack.title}`}</span> - {`${currentTrack.subtitle}`}</p>
+                  
             </div>
             {/* <Range /> */}
         </div>
