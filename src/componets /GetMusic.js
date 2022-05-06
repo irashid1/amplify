@@ -4,6 +4,8 @@ import { useState, useEffect, useRef } from "react";
 import PlayMusic from "./PlayMusic";
 import Pages from "./Pages";
 import "swiper/css/bundle";
+import toast, { Toaster } from "react-hot-toast";
+// import { BiError } from "react-icons/bi"
 
 // import { SwiperStyles } 
 
@@ -31,11 +33,17 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
     //for pages 
     const [pageIndex, setPageIndex] = useState(0);
 
-    const [coverflowIndex, setCoverflowIndex] = useState(0)
+    const [coverflowIndex, setCoverflowIndex] = useState(0);
 
-    const [pageChange, setPageChange] = useState(false)
+    const [pageChange, setPageChange] = useState(false);
+
+    // const [errorPage, setErrorPage] = useState(false);
 
     const sliderRef = useRef();
+
+    
+
+    
 
     // resetLandingPage(setSearchTerm);
 
@@ -104,20 +112,37 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
                     // 'x-rapidapi-key': 'cd74434576msh2f5cc3adcc9d925p11959ejsnfe4483674b62' 
                 }
             }).then((response) => {
+                // setErrorPage(false)
                 setSongList(response.data.tracks.hits);
                 setUpdatedList(true); // has to be set after the songList since this is an async event
                 setPageChange(true);
             }).catch(function (error) {
-                console.error(error);
+            //   console.log(toast("Hello"))
+                setSearchTerm("");
+                // setErrorPage(true);
+                toast("Please Enter A Valid Input");
+              
             });
 
         }
 
-    }, [pageIndex, searchTerm])
+    }, [pageIndex, searchTerm, setSearchTerm])
 
     return (
 
+        
         <div>
+            <Toaster 
+                position="top-center"
+                toastOptions={{
+                    duration: 4000,
+                    style: {
+                        margin: '250px 0 0 0',
+                        background: '#fbb034',
+                    },
+
+                }}
+            />
 
             {user ?
                 <form className="searchBar" onSubmit={handleSubmit}>
@@ -130,6 +155,16 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
 
                 null
             }
+
+            {/* {errorPage ? 
+                <div className="errorImg">
+                    <BiError />
+                </div>
+            :
+
+            null
+
+            } */}
 
             {searchTerm ?
                 <>

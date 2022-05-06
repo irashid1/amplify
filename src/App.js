@@ -217,10 +217,10 @@ export default App;
 // - pagination buttons $$
 // - 0 index track cant be click due to swiper wrapper $$
 // - song title scroll $$
+// - adding more effective error handling $$
 
 
 // - add Oauth 
-// - adding more effective error handling
 // - bug fixes on scrub for mobile devices
 
 // - leave comments in html for all the resource that we used
