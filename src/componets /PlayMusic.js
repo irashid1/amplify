@@ -114,6 +114,7 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
         clearInterval(intervalRef.current);
         audioRef.current.currentTime = value;
         setTrackProgress(audioRef.current.currentTime);
+        startTimer();
     }
 
     const onScrubEnd = () => {
