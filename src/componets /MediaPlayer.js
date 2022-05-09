@@ -3,6 +3,7 @@ import { BsFillPlayCircleFill, BsFillPauseCircleFill, BsFillSkipForwardCircleFil
 import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
 // import { useSpring, animated  } from "react-spring";
 // import Range from "react-range";
+import { Slider } from "@mui/material";
 
 
 const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurrentTrack, songList, pageIndex, setPageIndex, trackProgress, onScrub, onScrubEnd, trackDuration, setUpdatedPage, nextTrack }) => {
@@ -20,6 +21,8 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
     //         setAnimateKey(animateKey + 1)
     //     }
     // }) 
+
+    console.log(trackDuration)
 
     const togglePlayPause = () => {
         // control function for the play/pause button
@@ -136,7 +139,9 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
                         }
                     </p>
                     <label className="sr-only" htmlFor="trackScrub">Track Scrub</label>
-                    <input className="progress" id="trackScrub" type="range" value={trackProgress} step="1" min="0" max={trackDuration ? trackDuration : `${trackDuration}`} onChange={(event) => onScrub(event.target.value)} defaultValue="0" onMouseUp={onScrubEnd} onKeyUp={onScrubEnd} />
+                    {/* <input className="progress" id="trackScrub" type="range" value={trackProgress} step="1" min="0" max={trackDuration ? trackDuration : `${trackDuration}`} onChange={(event) => onScrub(event.target.value)} defaultValue="0" onMouseUp={onScrubEnd} onKeyUp={onScrubEnd} /> */}
+                        <Slider step={1} value={trackProgress} onChange={(e) => onScrub(e.target.value)} onMouseUp={onScrubEnd} onKeyUp={onScrubEnd} max={trackDuration} />
+                    
                     <p>
                         {trackDuration ?
                             timeCalc(trackDuration)
@@ -162,7 +167,7 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
                     </button>
                 }
                 <label className="sr-only" htmlFor="volumeInput">Volume</label>
-                <input type="range" id="volumeInput" defaultValue="100" step="1" min="0" max="100" onChange={volumeChange} value={mute ? 0 : velocity} />
+                <input type="range" id="volumeInput" step="1" min="0" max="100" onChange={volumeChange} value={mute ? 0 : velocity} />
 
             </div>
             
@@ -178,7 +183,7 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
                         }
                     </p>
                     <label className="sr-only" htmlFor="trackScrub">Track Scrub</label>
-                    <input className="progress" id="trackScrub" type="range" value={trackProgress} step="1" min="0" max={trackDuration ? trackDuration : `${trackDuration}`} onChange={(event) => onScrub(event.target.value)} defaultValue="0" onMouseUp={onScrubEnd} onKeyUp={onScrubEnd} />
+                    <input className="progress" id="trackScrub" type="range" value={trackProgress} step="1" min="0" max={trackDuration ? trackDuration : `${trackDuration}`} onChange={(event) => onScrub(event.target.value)} onMouseUp={onScrubEnd} onKeyUp={onScrubEnd} />
                     <p>
                         {trackDuration ?
                             timeCalc(trackDuration)

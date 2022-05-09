@@ -11,9 +11,9 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
     const intervalRef = useRef();
 
     // states used for the scrubbing functionality of the track
-    const [trackProgress, setTrackProgress] = useState();
+    const [trackProgress, setTrackProgress] = useState(0);
 
-    const [trackDuration, setTrackDuration] = useState();
+    const [trackDuration, setTrackDuration] = useState(0);
 
     const nextTrack = useCallback(()=> {
 
