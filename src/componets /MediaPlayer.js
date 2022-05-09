@@ -183,7 +183,8 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
                         }
                     </p>
                     <label className="sr-only" htmlFor="trackScrub">Track Scrub</label>
-                    <input className="progress" id="trackScrub" type="range" value={trackProgress} step="1" min="0" max={trackDuration ? trackDuration : `${trackDuration}`} onChange={(event) => onScrub(event.target.value)} onMouseUp={onScrubEnd} onKeyUp={onScrubEnd} />
+                    {/* <input className="progress" id="trackScrub" type="range" value={trackProgress} step="1" min="0" max={trackDuration ? trackDuration : `${trackDuration}`} onChange={(event) => onScrub(event.target.value)} onMouseUp={onScrubEnd} onKeyUp={onScrubEnd} /> */}
+                    <Slider step={1} value={trackProgress} onChange={(e) => onScrub(e.target.value)} onMouseUp={onScrubEnd} onKeyUp={onScrubEnd} max={trackDuration} />
                     <p>
                         {trackDuration ?
                             timeCalc(trackDuration)
