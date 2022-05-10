@@ -146,8 +146,8 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
                     </button>
                 }
                 <label className="sr-only" htmlFor="volumeInput">Volume</label>
-                {/* <input type="range" id="volumeInput" step="1" min="0" max="100" onChange={volumeChange} value={mute ? 0 : velocity} /> */}
-                    <Slider className='volumeRange slider' step={1} min={0} max={100} onChange={volumeChange} touchmove={volumeChange} value={mute ? 0 : velocity} />
+                <input type="range" id="volumeInput" step="1" min="0" max="100" onChange={volumeChange} value={mute ? 0 : velocity} />
+                    {/* <Slider className='volumeRange slider' step={1} min={0} max={100} onChange={volumeChange} touchmove={volumeChange} value={mute ? 0 : velocity} /> */}
 
             </div>
             
