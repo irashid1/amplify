@@ -135,20 +135,29 @@
         background: none;
         font-size: 1.2rem;
         color: black;
+        margin-right: 10px;
     }
-    input[type="range"] {
+    .volumeRange {
         width: 150px;
         margin-bottom: 10px;
     }
 }
 
-input[type="range"] {
+.slider {
     height: 10px;
     // -webkit-appearance: none;
     // -webkit-gradient: (linear, 0% 0%, 100% 0%, color-stop(currentPercentage, #fff), color-stop(currentPercentage, #777));
     width: 350px;
     border-radius: 8px;
-    background: royalblue;
+    // background: royalblue;
     transition: background 0.2s ease;
     cursor: pointer;
 }
+
+.MuiSlider-rail {
+    color: black;
+}
+
+.MuiSlider-track {
+    color: black;
+} 

@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { BsFillPlayCircleFill, BsFillPauseCircleFill, BsFillSkipForwardCircleFill, BsFillSkipBackwardCircleFill } from "react-icons/bs";
 import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
-// import { useSpring, animated  } from "react-spring";
-// import Range from "react-range";
 import { Slider } from "@mui/material";
 
 
@@ -10,19 +8,6 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
 
     const [mute, setMute] = useState(false);
     const [velocity, setVelocity] = useState(100);
-    // const [animateKey, setAnimateKey] = useState(1);
-
-    // const scrolling = useSpring({
-    //     from: { transform: "translate(100%, 0)"},
-    //     to: { transform: "translate(-100%, 0)"},
-    //     config: { duration: 8000},
-    //     reset: true,
-    //     onRest: () =>{
-    //         setAnimateKey(animateKey + 1)
-    //     }
-    // }) 
-
-    console.log(trackDuration)
 
     const togglePlayPause = () => {
         // control function for the play/pause button
@@ -65,13 +50,11 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
         return minutes + ":" + seconds;
     };
 
-    // console.log(duration);
-    // console.log(audioRef.current.duration);
+ 
 
     useEffect(() => {
         audioRef.current.volume = velocity / 100;
-        // console.log(velocity)
-
+  
         if (audioRef.current.volume === 0) {
             setMute(true)
         } else {
@@ -105,12 +88,6 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
                 <img src={currentTrack.images.coverart} alt={`album cover for ${currentTrack.title}`} />
                 <div className="coverArtTitle">
                     <h3>{currentTrack.title}</h3>
-                    {/* <h4>
-                        <animated.div style={scrolling}>{currentTrack.subtitle}</animated.div>
-                    </h4> */}
-                    {/* <animated.div style={scrolling}>
-                        <h4 key={animateKey}>{currentTrack.subtitle}</h4>
-                    </animated.div> */}
                     <h4>{currentTrack.subtitle}</h4>
                 </div>
             </div>
@@ -131,7 +108,7 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
                 </div>
 
                 <div className="mediaTime">
-                    <p>
+                    <p> 
                         { trackProgress ?
                             timeCalc(trackProgress)
                             :
@@ -140,9 +117,9 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
                     </p>
                     <label className="sr-only" htmlFor="trackScrub">Track Scrub</label>
                     {/* <input className="progress" id="trackScrub" type="range" value={trackProgress} step="1" min="0" max={trackDuration ? trackDuration : `${trackDuration}`} onChange={(event) => onScrub(event.target.value)} defaultValue="0" onMouseUp={onScrubEnd} onKeyUp={onScrubEnd} /> */}
-                        <Slider step={1} value={trackProgress} onChange={(e) => onScrub(e.target.value)} onMouseUp={onScrubEnd} onKeyUp={onScrubEnd} max={trackDuration} />
+                        <Slider className='slider' step={1} value={trackProgress} onChange={(e) => onScrub(e.target.value)} onMouseUp={onScrubEnd} onKeyUp={onScrubEnd} max={trackDuration} sx={{ color: "#734ae8",}} />
                     
-                    <p>
+                    <p> -
                         {trackDuration ?
                             timeCalc(trackDuration)
                             :
@@ -167,7 +144,8 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
                     </button>
                 }
                 <label className="sr-only" htmlFor="volumeInput">Volume</label>
-                <input type="range" id="volumeInput" step="1" min="0" max="100" onChange={volumeChange} value={mute ? 0 : velocity} />
+                {/* <input type="range" id="volumeInput" step="1" min="0" max="100" onChange={volumeChange} value={mute ? 0 : velocity} /> */}
+                <Slider className='volumeRange slider' step={1} min={0} max={100} onChange={volumeChange} value={mute ? 0 : velocity} />
 
             </div>
             
@@ -184,7 +162,7 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
                     </p>
                     <label className="sr-only" htmlFor="trackScrub">Track Scrub</label>
                     {/* <input className="progress" id="trackScrub" type="range" value={trackProgress} step="1" min="0" max={trackDuration ? trackDuration : `${trackDuration}`} onChange={(event) => onScrub(event.target.value)} onMouseUp={onScrubEnd} onKeyUp={onScrubEnd} /> */}
-                    <Slider step={1} value={trackProgress} onChange={(e) => onScrub(e.target.value)} onMouseUp={onScrubEnd} touchmove={onScrubEnd} touchstart={onScrubEnd} touchend={onScrubEnd} onKeyUp={onScrubEnd} max={trackDuration} />
+                    <Slider className='slider' step={1} value={trackProgress} onChange={(e) => onScrub(e.target.value)} onMouseUp={onScrubEnd} touchmove={onScrubEnd} touchstart={onScrubEnd} touchend={onScrubEnd} onKeyUp={onScrubEnd} max={trackDuration} />
                     <p>
                         {trackDuration ?
                             timeCalc(trackDuration)
@@ -197,7 +175,6 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
                 <p className="titleTicker"><span>{`${currentTrack.title}`}</span> - {`${currentTrack.subtitle}`}</p>
                   
             </div>
-            {/* <Range /> */}
         </div>
     )
 
