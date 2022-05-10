@@ -44,7 +44,7 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
 
             } else {
             setTrackProgress(audioRef.current.currentTime);
-                setTrackDuration(audioRef.current.duration - audioRef.current.currentTime); // setting the total duration of each track
+                setTrackDuration(audioRef.current.duration); // setting the total duration of each track
             }
         }, [1000])
 

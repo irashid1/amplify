@@ -9,6 +9,8 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
     const [mute, setMute] = useState(false);
     const [velocity, setVelocity] = useState(100);
 
+    
+
     const togglePlayPause = () => {
         // control function for the play/pause button
         setPlayPause(!playPause)
@@ -117,11 +119,11 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
                     </p>
                     <label className="sr-only" htmlFor="trackScrub">Track Scrub</label>
                     {/* <input className="progress" id="trackScrub" type="range" value={trackProgress} step="1" min="0" max={trackDuration ? trackDuration : `${trackDuration}`} onChange={(event) => onScrub(event.target.value)} defaultValue="0" onMouseUp={onScrubEnd} onKeyUp={onScrubEnd} /> */}
-                        <Slider className='slider' step={1} value={trackProgress} onChange={(e) => onScrub(e.target.value)} onMouseUp={onScrubEnd} onKeyUp={onScrubEnd} max={trackDuration} sx={{ color: "#734ae8",}} />
+                        <Slider className='slider' step={0.0001} value={trackProgress} onChange={(e) => onScrub(e.target.value)} onMouseUp={onScrubEnd} onKeyUp={onScrubEnd} max={trackDuration ? trackDuration : `${trackDuration}`}  />
                     
                     <p> -
                         {trackDuration ?
-                            timeCalc(trackDuration)
+                            timeCalc(trackDuration - audioRef.current.currentTime)
                             :
                             "0:00"
                         }
