@@ -26,6 +26,10 @@
     .trackInfo {
         width: 30%;
     }
+
+     .volumeControls {
+       display: none;
+    }
 }
 
 @media (max-width: 750px) {
@@ -109,9 +113,7 @@
         }
     }
 
-    .volumeControls {
-       display: none;
-    }
+   
 
     .trackInfo {
         img {
