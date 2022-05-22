@@ -5,6 +5,8 @@ import PlayMusic from "./PlayMusic";
 import Pages from "./Pages";
 import "swiper/css/bundle";
 import toast, { Toaster } from "react-hot-toast";
+import TextField from '@mui/material/TextField';
+
 // import { BiError } from "react-icons/bi"
 
 // import { SwiperStyles } 
@@ -40,6 +42,11 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
     // const [errorPage, setErrorPage] = useState(false);
 
     const sliderRef = useRef();
+
+    const inputProps = {
+        name: "Search",
+        placeholder: "Search For Music"
+    }
 
     
 
@@ -146,8 +153,9 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
 
             {user ?
                 <form className="searchBar" onSubmit={handleSubmit}>
-                    <label className="sr-only" htmlFor="search"> Search For Music </label>
-                    <input placeholder="Search For Music" type="text" id="search" onChange={handleChange} value={userInput} />
+                    {/* <label className="sr-only" htmlFor="search"> Search For Music </label>
+                    <input placeholder="Search For Music" type="text" id="search" onChange={handleChange} value={userInput} /> */}
+                    <TextField label="Search" onChange={handleChange} value={userInput} inputProps={inputProps}/>
                     <button> Search </button>
                 </form>
 
