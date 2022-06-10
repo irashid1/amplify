@@ -1,0 +1,143 @@
+// styling for modal
+
+.modalContainer {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.modalContent form {
+    background: #89d4cf;
+    // background: #79d3bc;
+    // background: #63C2AB;
+    color: black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 450px;
+    .loginInfo {
+        display: flex;
+        flex-direction: column;
+        height: 200px;
+        .inputField {
+            display: flex;
+            flex-direction: column;
+            height: 150px;
+            label {
+                color: black;
+            }
+            input {
+                margin: 15px 0 0 0;
+                background: rgba(255, 255, 255, 0.541);
+                border: none;
+                padding: 5px;
+                border-radius: 5px;
+                
+            }
+            p {
+                color: yellow;
+                font-size: 0.7rem;
+            }
+
+        }
+    }
+    button {
+        width: 50%;
+        margin: 30px auto;
+        font-family: 'Poppins', sans-serif;
+        border: none;
+        background: #0D41E1;
+        color: white; 
+        padding: 8px 25px; 
+        border-radius: 25px ;
+        cursor: pointer;
+        
+    }
+   
+        // span {
+        //     font-size: 0.7rem;
+        //     color: yellow;
+        //     cursor: pointer;
+        //     &:hover {
+        //         color: royalblue;
+        //     }
+        // }   
+    
+}
+
+// .signInToggle, .signUpToggle {
+//     display: flex;
+//     width: 100%;
+//     height: 30px;
+//     p {
+//         display: flex;
+//         width: 50%;
+//         height: 100%;
+//         align-items: center;
+//         justify-content: center;
+       
+//     }
+
+// }
+
+.loginToggle {
+    p {
+        text-align: end;
+        font-size: 0.7rem;
+        color: black;
+        span {
+            font-size: 0.7rem;
+            color: #001FA8;
+            cursor: pointer;
+            &:hover {
+                color: #111DCF;
+            }
+        }
+    }
+}
+
+
+
+.closeIcon {
+    text-align: end;
+    font-size: 1.25rem;
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    p {
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        font-family: 'Monoton', cursive;
+        // background: black;
+        color: black;
+        font-weight: 200;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        span {
+            color: black;
+            // width: 45px;
+            // height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 25px;
+            padding-right: 2px;
+            font-size: 1.5rem;
+        } 
+    }
+}
+
+

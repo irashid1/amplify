@@ -1,0 +1,163 @@
+.mediaContainer {
+    width: 50%;
+    margin: 0 auto;
+    .mediaButtons {
+        display: flex;
+        justify-content: center;
+        button {
+            background: none;
+            border: none;
+            font-size: 2.5rem;
+            transition: transform 0.25s ease;
+            color: black;
+            &:active {
+                color: blue;
+            }
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+        .playPause {
+            font-size: 3rem; 
+        }
+    }
+    
+    
+    .mediaTime {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        p {
+            margin: 0 10px;
+            color: black;
+            width: 50px;
+            font-size: 0.7rem;
+        }
+    }
+}
+
+.mediaPlayer {
+   
+    width: 90%;
+    border-radius: 20px;
+    margin: 0 auto;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 28px 28px rgba(0, 0, 0, 0.2);
+    overflow-x: hidden;
+}
+
+@keyframes moving {
+    0% {
+        transform: translateX(100%);
+    }
+
+    // 20% {
+    //     transform: translateX(0%);
+    // }
+    
+    100% {
+        transform: translateX(-100%);
+    }
+}
+.mediaContainerTop {
+    display: flex;
+    justify-content: space-between;
+}
+
+.trackTitle {
+    text-align: center;
+    padding: 10px 0;
+    display: none;
+    .titleTicker {
+        color: black;
+        font-size: 0.8rem;
+        transform: translateX(100%);
+        animation: moving 10s linear infinite;
+        overflow-wrap: normal;
+        width: 500px;
+        span {
+            color: black;
+            font-size: 0.8rem;
+            font-weight: 600;
+            
+        }
+    }
+    
+    
+    .mediaTimeBottom {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+        padding: 5px 0 10px 0;
+        p {
+            margin: 0 10px;
+            color: black;
+            width: 50px;
+            font-size: 0.7rem;
+        }
+    }
+}
+
+
+.trackInfo {
+    display: flex;
+    width: 25%;
+    overflow-wrap: anywhere;
+    img {
+        width: 100px;
+        height: 100px;
+        margin-right: 10px;
+        border-radius: 5px;
+    }
+    h3 {
+        font-weight: 600;
+        font-size: 0.8rem;
+    }
+    h4 {
+        font-weight: 100;
+        font-size: 0.6rem; 
+    }
+}
+
+
+
+.volumeControls {
+    display: flex;
+    width: 25%;
+    align-items: center;
+    justify-content: flex-end;
+    height: 50px;
+    button {
+        border: none;
+        background: none;
+        font-size: 1.2rem;
+        color: black;
+        margin-right: 10px;
+    }
+    .volumeRange {
+        width: 150px;
+        margin-bottom: 10px;
+    }
+}
+
+.slider {
+    height: 10px;
+    // -webkit-appearance: none;
+    // -webkit-gradient: (linear, 0% 0%, 100% 0%, color-stop(currentPercentage, #fff), color-stop(currentPercentage, #777));
+    width: 350px;
+    border-radius: 8px;
+    // background: royalblue;
+    transition: background 0.2s ease;
+    cursor: pointer;
+}
+
+.MuiSlider-rail {
+    color: black;
+}
+
+.MuiSlider-track {
+    color: black;
+} 

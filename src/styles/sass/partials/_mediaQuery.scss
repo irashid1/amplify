@@ -1,0 +1,362 @@
+@media (max-width: 1080px) {
+    .mySwiper {
+        .swiper {
+            width: 35%;
+        }
+    }
+
+    .mediaContainer {
+        width: 40%;
+
+        .mediaButtons {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 0.25fr 0.25fr 0.25fr;
+            button {
+                margin: 0;
+                padding: 0;
+            }
+        }
+    }
+
+    .volumeControls {
+        width: 30%;
+    }
+
+    .trackInfo {
+        width: 30%;
+    }
+
+     .volumeControls {
+       display: none;
+    }
+}
+
+@media (max-width: 750px) {
+    header {
+        position: relative;
+        .navText {
+            display: none;
+        }
+        .navIcon {
+            display: block;
+            ul {
+                position: absolute;
+                background-color: black;
+                width: 100%;
+                // height: 125px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+                top: 75px;
+                right: -100%;
+                transition: right 0.3s ease-in-out;
+                z-index: 20;
+                .userLogin {
+                    width: 100%;
+                    height: 100%;
+                    li {
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        padding: 18px;
+                        align-items: center;
+                        justify-content: center;
+                        transition: background 0.2s ease-in-out;
+                        &:hover {
+                            background: royalblue;
+                        }
+                    }
+                }
+                li {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    padding: 18px;
+                    align-items: center;
+                    justify-content: center;
+                    transition: background 0.2s ease-in-out;
+                    &:hover {
+                        background: royalblue;
+                    }
+                }
+            }
+            button {
+                color: white;
+                background: none;
+                border: none;
+            }
+            .menuActive {
+                right: 0;
+            }
+        }
+    }
+
+    footer {
+        .infoContainer {
+            flex-direction: column;
+            justify-content: center;
+            .infoContent {
+                justify-content: center;
+            }
+            .logo {
+                justify-content: center;
+            }
+        }
+    }
+
+    .swiper {
+        .swiper-button-next,
+        .swiper-button-prev {
+            top: 45%;
+        }
+    }
+
+   
+
+    .trackInfo {
+        img {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    .mediaTime {
+        input[type="range"] {
+            width: 175px;
+        }
+    }
+
+    body,
+    html {
+        overflow-x: hidden;
+    }
+
+    .mediaContainer {
+        width: 60%;
+        .mediaButtons {
+            .playPause {
+                margin: 0 5px;
+            }
+        }
+    }
+}
+
+@media (max-width: 650px) {
+    h1 {
+        font-size: 5rem;
+        span {
+            font-size: 5rem;
+        }
+    }
+
+    .mediaContainer {
+        width: 60%;
+        .mediaButtons {
+            display: grid;
+            grid-template-columns: 0.25fr 0.25fr 0.25fr;
+            button {
+                font-size: 2rem;
+            }
+            .playPause {
+                font-size: 2.5rem;
+            }
+        }
+    }
+
+    .volumeControls {
+        width: 20%;
+    }
+
+    .trackInfo {
+        width: 20%;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 570px) {
+    h1 {
+        font-size: 4rem;
+        span {
+            font-size: 4rem;
+        }
+    }
+
+    .searchBar {
+        flex-direction: column;
+    }
+    // .trackTitle {
+    //     display: block;
+    // }
+    // .trackInfo {
+    //     h3, h4 {
+    //         display: none;
+    //     }
+    // }
+
+
+    .swiper {
+        .swiper-button-next,
+        .swiper-button-prev {
+            top: 40%;
+        }
+    }
+
+
+    .trackInfo {
+        img {
+            width: 80px;
+            height: 80px;
+            margin: 0;
+        }
+    }
+
+    .volumeControls,
+    .coverArtTitle {
+        display: none;
+    }
+
+    .trackTitle {
+        display: block;
+    }
+
+    .mediaContainer {
+        display: flex;
+        align-items: flex-end;
+        margin: 0;
+        .mediaTime {
+            display: none;
+        }
+        .mediaButtons {
+            justify-content: space-evenly;
+        }
+    }
+
+    .mediaContainerTop {
+        justify-content: space-evenly;
+    }
+}
+
+@media (max-width: 540px) {
+    .modalContent {
+        form {
+            width: 300px;
+            height: 450px;
+            .loginInfo {
+                .inputField {
+                    p {
+                        font-size: 0.6rem;
+                        padding-top: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 460px) {
+    .swiper {
+        .swiper-button-next,
+        .swiper-button-prev {
+            top: 35%;
+        }
+    }
+}
+
+@media (max-width: 430px) {
+    .mediaContainer {
+        text-align: center;
+        .mediaButtons {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            // grid-template-rows: 150px 300px;
+            // gap: 10px;
+            button {
+                margin: 0;
+                padding: 0;
+            }
+            .playPause {
+                margin: 0 7px;
+            }
+        }
+    }
+
+    h1 {
+        font-size: 3rem;
+        span {
+            font-size: 3rem;
+        }
+    }
+
+    .mediaTime {
+        p {
+            display: none;
+        }
+    }
+
+    .trackInfo {
+        h3,
+        h4 {
+            font-size: 0.5rem;
+        }
+    }
+
+    .mySwiper .swiper {
+        width: 95%;
+        padding-top: 0px;
+    }
+
+    .searchBar {
+        padding: 15px;
+        padding-bottom: 5px;
+        input {
+            width: 100%;
+            padding-bottom: 10px;
+        }
+        button {
+            margin-bottom: 10px;
+        }
+    }
+    .trackInfo {
+        img {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    .pagesBtnContainer {
+        height: 40px;
+        padding: 35px 0;
+    }
+}
+
+@media (max-width: 390px) {
+    .mediaTimeBottom {
+        p {
+            display: none;
+        }
+    }
+}
+
+// mediaQuery
+
+// header
+// - dropdown menu for contact, login and signup
+// - break point not necessary until ~750px
+
+// landing page
+// - break point not necessary until ~750px
+
+// modal
+// - break point not necessary until ~750px
+
+// footer
+// - break point not necessary until ~750px
+
+// getMusic
+// - shorten the search bar and make the top and bottom paddings smaller
+
+// mediaPlayer
+// - widen the media player at 1250px width

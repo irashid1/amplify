@@ -1,0 +1,30 @@
+.pagesBtnContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    padding: 40px 0;
+    button {
+        border: none;
+        color: black;
+        font-size: 2.5rem;
+        background: none;
+        cursor: pointer;
+        transition: transform 0.25s ease;
+        &:active {
+            color: blue;
+        }
+        &:hover {
+            transform: scale(1.1);
+       }
+    }
+    .disabledBtn {
+        opacity: 40%;
+         &:active {
+            color: black;
+        }
+        &:hover {
+            transform: scale(1);
+       }
+    }
+}

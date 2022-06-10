@@ -1,0 +1,1063 @@
+@import url("https://fonts.googleapis.com/css2?family=Monoton&family=Poppins:wght@400;600;700;800&display=swap");
+html {
+  line-height: 1.15;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+article, aside, footer, header, nav, section {
+  display: block;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+figcaption, figure, main {
+  display: block;
+}
+
+figure {
+  margin: 1em 40px;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+a {
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+abbr[title] {
+  border-bottom: none;
+  text-decoration: underline;
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+b, strong {
+  font-weight: inherit;
+}
+
+b, strong {
+  font-weight: bolder;
+}
+
+code, kbd, samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+dfn {
+  font-style: italic;
+}
+
+mark {
+  background-color: #ff0;
+  color: #000;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+audio, video {
+  display: inline-block;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+img {
+  border-style: none;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+button, input, optgroup, select, textarea {
+  font-family: sans-serif;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+button, input {
+  overflow: visible;
+}
+
+button, select {
+  text-transform: none;
+}
+
+button, html [type=button], [type=reset], [type=submit] {
+  -webkit-appearance: button;
+}
+
+button::-moz-focus-inner, [type=button]::-moz-focus-inner, [type=reset]::-moz-focus-inner, [type=submit]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+button:-moz-focusring, [type=button]:-moz-focusring, [type=reset]:-moz-focusring, [type=submit]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+legend {
+  box-sizing: border-box;
+  color: inherit;
+  display: table;
+  max-width: 100%;
+  padding: 0;
+  white-space: normal;
+}
+
+progress {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+textarea {
+  overflow: auto;
+}
+
+[type=checkbox], [type=radio] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+[type=number]::-webkit-inner-spin-button, [type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type=search] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+
+[type=search]::-webkit-search-cancel-button, [type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+details, menu {
+  display: block;
+}
+
+summary {
+  display: list-item;
+}
+
+canvas {
+  display: inline-block;
+}
+
+template {
+  display: none;
+}
+
+[hidden] {
+  display: none;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: "";
+  clear: both;
+  height: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  -webkit-clip-path: inset(100%);
+          clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+html {
+  font-family: "Poppins", sans-serif;
+  font-size: 125%;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100vw;
+}
+
+h1,
+h2,
+h3,
+h4,
+a,
+p,
+li,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+p,
+a,
+span,
+li {
+  color: white;
+  font-size: 1rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+form {
+  padding: 20px;
+}
+
+button {
+  margin: 10px 5px;
+}
+
+input {
+  padding-left: 5px;
+}
+
+.wrapper {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header {
+  background: black;
+  padding: 15px 0;
+}
+header .headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .navText ul {
+  display: flex;
+}
+header .navText ul li, header .navText ul a {
+  padding-left: 30px;
+  cursor: pointer;
+}
+header .navText ul li:hover, header .navText ul a:hover {
+  color: royalblue;
+}
+header .navText ul span {
+  padding-left: 30px;
+}
+header .navText ul .userLogin {
+  display: flex;
+}
+header .navIcon {
+  display: none;
+}
+
+h2 {
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-family: "Monoton", cursive;
+  color: white;
+  font-weight: 200;
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.75rem;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.headphones {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 5px;
+  padding-right: 5px;
+}
+
+.modalContainer {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modalContent form {
+  background: #89d4cf;
+  color: black;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 450px;
+}
+.modalContent form .loginInfo {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+}
+.modalContent form .loginInfo .inputField {
+  display: flex;
+  flex-direction: column;
+  height: 150px;
+}
+.modalContent form .loginInfo .inputField label {
+  color: black;
+}
+.modalContent form .loginInfo .inputField input {
+  margin: 15px 0 0 0;
+  background: rgba(255, 255, 255, 0.541);
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+}
+.modalContent form .loginInfo .inputField p {
+  color: yellow;
+  font-size: 0.7rem;
+}
+.modalContent form button {
+  width: 50%;
+  margin: 30px auto;
+  font-family: "Poppins", sans-serif;
+  border: none;
+  background: #0D41E1;
+  color: white;
+  padding: 8px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.loginToggle p {
+  text-align: end;
+  font-size: 0.7rem;
+  color: black;
+}
+.loginToggle p span {
+  font-size: 0.7rem;
+  color: #001FA8;
+  cursor: pointer;
+}
+.loginToggle p span:hover {
+  color: #111DCF;
+}
+
+.closeIcon {
+  text-align: end;
+  font-size: 1.25rem;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+.modalHeader p {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-family: "Monoton", cursive;
+  color: black;
+  font-weight: 200;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.modalHeader p span {
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 25px;
+  padding-right: 2px;
+  font-size: 1.5rem;
+}
+
+footer {
+  background: black;
+  padding: 25px 0;
+  text-align: center;
+}
+footer .footerContent span svg {
+  padding-top: 3px;
+}
+footer .footerContent a:hover {
+  color: royalblue;
+}
+footer .infoContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 0 80px 0;
+}
+footer .infoContent {
+  display: flex;
+}
+footer .infoContent .info {
+  padding: 0 30px;
+}
+footer .infoContent .info p {
+  padding: 20px 0;
+  font-size: 1rem;
+  opacity: 0.7;
+}
+footer .infoContent .info li {
+  padding: 5px 0;
+  font-size: 0.8rem;
+}
+footer .logo {
+  justify-content: flex-start;
+}
+
+.mediaContainer {
+  width: 50%;
+  margin: 0 auto;
+}
+.mediaContainer .mediaButtons {
+  display: flex;
+  justify-content: center;
+}
+.mediaContainer .mediaButtons button {
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  transition: transform 0.25s ease;
+  color: black;
+}
+.mediaContainer .mediaButtons button:active {
+  color: blue;
+}
+.mediaContainer .mediaButtons button:hover {
+  transform: scale(1.1);
+}
+.mediaContainer .mediaButtons .playPause {
+  font-size: 3rem;
+}
+.mediaContainer .mediaTime {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mediaContainer .mediaTime p {
+  margin: 0 10px;
+  color: black;
+  width: 50px;
+  font-size: 0.7rem;
+}
+
+.mediaPlayer {
+  width: 90%;
+  border-radius: 20px;
+  margin: 0 auto;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 28px 28px rgba(0, 0, 0, 0.2);
+}
+
+.mediaContainerTop {
+  display: flex;
+  justify-content: space-between;
+}
+
+.trackTitle {
+  text-align: center;
+  padding: 10px 0;
+  display: none;
+}
+.trackTitle p {
+  color: black;
+  font-size: 0.8rem;
+}
+.trackTitle p span {
+  color: black;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.trackTitle .mediaTimeBottom {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0 10px 0;
+}
+.trackTitle .mediaTimeBottom p {
+  margin: 0 10px;
+  color: black;
+  width: 50px;
+  font-size: 0.7rem;
+}
+
+.trackInfo {
+  display: flex;
+  width: 25%;
+  overflow-wrap: anywhere;
+}
+.trackInfo img {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+.trackInfo h3 {
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+.trackInfo h4 {
+  font-weight: 100;
+  font-size: 0.6rem;
+}
+
+.volumeControls {
+  display: flex;
+  width: 25%;
+  align-items: center;
+  justify-content: flex-end;
+  height: 50px;
+}
+.volumeControls button {
+  border: none;
+  background: none;
+  font-size: 1.2rem;
+  color: black;
+}
+.volumeControls input[type=range] {
+  width: 150px;
+  margin-bottom: 10px;
+}
+
+input[type=range] {
+  height: 10px;
+  width: 350px;
+  border-radius: 8px;
+  background: royalblue;
+  transition: background 0.2s ease;
+  cursor: pointer;
+}
+
+.searchBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchBar input {
+  height: 40px;
+  font-family: "Poppins", sans-serif;
+  background: rgba(255, 255, 255, 0.541);
+  border: none;
+  border-radius: 5px;
+}
+.searchBar button {
+  font-family: "Poppins", sans-serif;
+  border: none;
+  background: royalblue;
+  color: white;
+  padding: 8px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.coverFlow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.artContainer img {
+  width: 100%;
+  border-radius: 5px;
+  transition: transform 0.25s ease-in;
+}
+.artContainer h3 {
+  padding-top: 10px;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.artContainer h4 {
+  font-weight: 100;
+  font-size: 0.8rem;
+}
+
+.mySwiper {
+  overflow-x: hidden;
+}
+.mySwiper .swiper {
+  width: 30%;
+  padding: 50px 0;
+  overflow: visible;
+}
+.mySwiper .swiper .swiper-button-next, .mySwiper .swiper .swiper-rtl .swiper-button-prev {
+  right: -55px;
+}
+.mySwiper .swiper .swiper-button-prev, .mySwiper .swiper .swiper-rtl .swiper-button-next {
+  left: -55px;
+}
+.mySwiper .swiper .swiper-button-next, .mySwiper .swiper .swiper-button-prev {
+  z-index: -10;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+  transition: all 0.5s;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+}
+
+.swiper-slide-prev, .swiper-slide-next {
+  opacity: 50%;
+}
+.swiper-slide-prev h3, .swiper-slide-prev h4, .swiper-slide-next h3, .swiper-slide-next h4 {
+  opacity: 0;
+}
+
+.swiper-slide-active {
+  transition: opacity 0.5s ease-in-out;
+}
+.swiper-slide-active h3, .swiper-slide-active h4 {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.swiper-pagination .swiper-pagination-bullet {
+  width: calc(20% - 8px);
+  height: 5px;
+  border-radius: 5px;
+}
+
+main {
+  background-image: linear-gradient(315deg, #734ae8 0%, #89d4cf 74%);
+  padding-bottom: 25px;
+  min-height: 90vh;
+}
+
+h1 {
+  font-size: 6rem;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 700;
+  padding: 50px 0;
+}
+h1 span {
+  font-size: 6rem;
+  font-family: "Monoton", cursive;
+  text-transform: uppercase;
+  font-weight: 200;
+  color: black;
+  display: block;
+}
+
+.tagLine {
+  padding: 120px 0;
+  text-align: center;
+}
+.tagLine p {
+  color: black;
+  padding: 20px 0;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.tagLine button {
+  font-family: "Poppins", sans-serif;
+  border: none;
+  background: #0062e2;
+  color: white;
+  padding: 8px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.pagesBtnContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  padding: 40px 0;
+}
+.pagesBtnContainer button {
+  border: none;
+  color: black;
+  font-size: 2.5rem;
+  background: none;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+.pagesBtnContainer button:active {
+  color: blue;
+}
+.pagesBtnContainer button:hover {
+  transform: scale(1.1);
+}
+.pagesBtnContainer .disabledBtn {
+  opacity: 40%;
+}
+.pagesBtnContainer .disabledBtn:active {
+  color: black;
+}
+.pagesBtnContainer .disabledBtn:hover {
+  transform: scale(1);
+}
+
+@media (max-width: 1080px) {
+  .mySwiper .swiper {
+    width: 35%;
+  }
+
+  .mediaContainer {
+    width: 40%;
+  }
+  .mediaContainer .mediaButtons {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 0.25fr 0.25fr 0.25fr;
+  }
+  .mediaContainer .mediaButtons button {
+    margin: 0;
+    padding: 0;
+  }
+
+  .volumeControls {
+    width: 30%;
+  }
+
+  .trackInfo {
+    width: 30%;
+  }
+}
+@media (max-width: 750px) {
+  header {
+    position: relative;
+  }
+  header .navText {
+    display: none;
+  }
+  header .navIcon {
+    display: block;
+  }
+  header .navIcon ul {
+    position: absolute;
+    background-color: black;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    top: 75px;
+    right: -100%;
+    transition: right 0.3s ease-in-out;
+  }
+  header .navIcon ul .userLogin {
+    width: 100%;
+    height: 100%;
+  }
+  header .navIcon ul .userLogin li {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 18px;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease-in-out;
+  }
+  header .navIcon ul .userLogin li:hover {
+    background: royalblue;
+  }
+  header .navIcon ul li {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 18px;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease-in-out;
+  }
+  header .navIcon ul li:hover {
+    background: royalblue;
+  }
+  header .navIcon button {
+    color: white;
+    background: none;
+    border: none;
+  }
+  header .navIcon .menuActive {
+    right: 0;
+  }
+
+  footer .infoContainer {
+    flex-direction: column;
+    justify-content: center;
+  }
+  footer .infoContainer .infoContent {
+    justify-content: center;
+  }
+  footer .infoContainer .logo {
+    justify-content: center;
+  }
+
+  .swiper .swiper-button-next,
+.swiper .swiper-button-prev {
+    top: 45%;
+  }
+
+  .volumeControls input[type=range] {
+    width: 100px;
+  }
+
+  .trackInfo img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .mediaTime input[type=range] {
+    width: 175px;
+  }
+
+  body,
+html {
+    overflow-x: hidden;
+  }
+
+  .mediaContainer .mediaButtons .playPause {
+    margin: 0 5px;
+  }
+}
+@media (max-width: 650px) {
+  h1 {
+    font-size: 5rem;
+  }
+  h1 span {
+    font-size: 5rem;
+  }
+
+  .mediaContainer {
+    width: 60%;
+  }
+  .mediaContainer .mediaButtons {
+    display: grid;
+    grid-template-columns: 0.25fr 0.25fr 0.25fr;
+  }
+  .mediaContainer .mediaButtons button {
+    font-size: 2rem;
+  }
+  .mediaContainer .mediaButtons .playPause {
+    font-size: 2.5rem;
+  }
+
+  .volumeControls {
+    width: 20%;
+  }
+
+  .trackInfo {
+    width: 20%;
+    flex-direction: column;
+  }
+}
+@media (max-width: 570px) {
+  h1 {
+    font-size: 4rem;
+  }
+  h1 span {
+    font-size: 4rem;
+  }
+
+  .searchBar {
+    flex-direction: column;
+  }
+
+  .swiper .swiper-button-next,
+.swiper .swiper-button-prev {
+    top: 40%;
+  }
+
+  .trackInfo img {
+    width: 80px;
+    height: 80px;
+    margin: 0;
+  }
+
+  .volumeControls,
+.coverArtTitle {
+    display: none;
+  }
+
+  .trackTitle {
+    display: block;
+  }
+
+  .mediaContainer {
+    display: flex;
+    align-items: flex-end;
+    margin: 0;
+  }
+  .mediaContainer .mediaTime {
+    display: none;
+  }
+  .mediaContainer .mediaButtons {
+    justify-content: flex-end;
+  }
+
+  .mediaContainerTop {
+    justify-content: space-evenly;
+  }
+}
+@media (max-width: 540px) {
+  .modalContent form {
+    width: 300px;
+    height: 450px;
+  }
+  .modalContent form .loginInfo .inputField p {
+    font-size: 0.6rem;
+    padding-top: 5px;
+  }
+}
+@media (max-width: 460px) {
+  .swiper .swiper-button-next,
+.swiper .swiper-button-prev {
+    top: 35%;
+  }
+}
+@media (max-width: 430px) {
+  .mediaContainer {
+    text-align: center;
+  }
+  .mediaContainer .mediaButtons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .mediaContainer .mediaButtons button {
+    margin: 0;
+    padding: 0;
+  }
+  .mediaContainer .mediaButtons .playPause {
+    margin: 0 7px;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+  h1 span {
+    font-size: 3rem;
+  }
+
+  .mediaTime p {
+    display: none;
+  }
+
+  .trackInfo h3,
+.trackInfo h4 {
+    font-size: 0.5rem;
+  }
+
+  .mySwiper .swiper {
+    width: 95%;
+    padding-top: 0px;
+  }
+
+  .searchBar {
+    padding: 15px;
+    padding-bottom: 5px;
+  }
+  .searchBar input {
+    width: 100%;
+    padding-bottom: 10px;
+  }
+  .searchBar button {
+    margin-bottom: 10px;
+  }
+
+  .trackInfo img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .pagesBtnContainer {
+    height: 40px;
+    padding: 35px 0;
+  }
+}
+@media (max-width: 390px) {
+  .mediaTimeBottom p {
+    display: none;
+  }
+}/*# sourceMappingURL=App.css.map */
