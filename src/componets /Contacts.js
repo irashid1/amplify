@@ -20,8 +20,6 @@ const Contacts = () => {
                             <li><a href="https://www.linkedin.com/in/imtiazrashid/">Linkedin</a></li>
                             <li><a href="https://github.com/irashid1">Github</a></li>
                         </ul>
-
-                        
                     </div>
 
                 </div>    
