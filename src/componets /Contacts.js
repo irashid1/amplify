@@ -21,7 +21,6 @@ const Contacts = () => {
                             <li><a href="https://github.com/irashid1">Github</a></li>
                         </ul>
                     </div>
-
                 </div>    
             </div>
         </section>
