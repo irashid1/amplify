@@ -9,7 +9,7 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
     const [mute, setMute] = useState(false);
     const [velocity, setVelocity] = useState(100);
 
-    
+
 
     const togglePlayPause = () => {
         // control function for the play/pause button
@@ -52,11 +52,11 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
         return minutes + ":" + seconds;
     };
 
- console.log(audioRef.current.volume)
+    console.log(audioRef.current.volume)
 
     useEffect(() => {
         audioRef.current.volume = velocity / 100;
-  
+
         if (audioRef.current.volume === 0) {
             setMute(true)
         } else {
@@ -86,69 +86,69 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
         <div className="mediaPlayer">
 
             <div className="mediaContainerTop">
-            <div className="trackInfo">
-                <img src={currentTrack.images.coverart} alt={`album cover for ${currentTrack.title}`} />
-                <div className="coverArtTitle">
-                    <h3>{currentTrack.title}</h3>
-                    <h4>{currentTrack.subtitle}</h4>
+                <div className="trackInfo">
+                    <img src={currentTrack.images.coverart} alt={`album cover for ${currentTrack.title}`} />
+                    <div className="coverArtTitle">
+                        <h3>{currentTrack.title}</h3>
+                        <h4>{currentTrack.subtitle}</h4>
+                    </div>
                 </div>
-            </div>
 
-            <div className="mediaContainer">
-                <div className="mediaButtons">
+                <div className="mediaContainer">
+                    <div className="mediaButtons">
 
-                    <button onClick={() => prevTrack()}>
-                        <BsFillSkipBackwardCircleFill />
-                    </button>
+                        <button onClick={() => prevTrack()}>
+                            <BsFillSkipBackwardCircleFill />
+                        </button>
                         <button className="playPause" onClick={() => togglePlayPause()}>
                             {playPause ? <BsFillPlayCircleFill /> : <BsFillPauseCircleFill />}
                         </button>
-                    <button onClick={() => nextTrack()}>
-                        <BsFillSkipForwardCircleFill />
-                    </button>
+                        <button onClick={() => nextTrack()}>
+                            <BsFillSkipForwardCircleFill />
+                        </button>
 
+                    </div>
+
+                    <div className="mediaTime">
+                        <p>
+                            {trackProgress ?
+                                timeCalc(trackProgress)
+                                :
+                                "0:00"
+                            }
+                        </p>
+                        <label className="sr-only" htmlFor="trackScrub">Track Scrub</label>
+
+                        <Slider className='slider' step={1} value={trackProgress} onChange={(e) => onScrub(e.target.value)} onMouseUp={onScrubEnd} onKeyUp={onScrubEnd} max={trackDuration} />
+
+                        <p> - 
+                            {trackDuration ?
+                                timeCalc(trackDuration - audioRef.current.currentTime)
+                                :
+                                "0:00"
+                            }
+                        </p>
+                    </div>
                 </div>
 
-                <div className="mediaTime">
-                    <p> 
-                        { trackProgress ?
-                            timeCalc(trackProgress)
-                            :
-                            "0:00"
-                        }
-                    </p>
-                    <label className="sr-only" htmlFor="trackScrub">Track Scrub</label>
-                    {/* <input className="progress" id="trackScrub" type="range" value={trackProgress} step="1" min="0" max={trackDuration ? trackDuration : `${trackDuration}`} onChange={(event) => onScrub(event.target.value)} defaultValue="0" onMouseUp={onScrubEnd} onKeyUp={onScrubEnd} /> */}
-                        <Slider className='slider' step={0.0001} value={trackProgress} onChange={(e) => onScrub(e.target.value)} onMouseUp={onScrubEnd} onKeyUp={onScrubEnd} max={trackDuration}  />
+                <div className="volumeControls">
+
+                    {mute ?
+
+                        <button onClick={() => muteTrack()}>
+                            <HiVolumeOff />
+                        </button>
+                        :
+                        <button onClick={() => muteTrack()}>
+                            <HiVolumeUp />
+                        </button>
+                    }
+                    <label className="sr-only" htmlFor="volumeInput">Volume</label>
                     
-                    <p> -
-                        {trackDuration ?
-                            timeCalc(trackDuration - audioRef.current.currentTime)
-                            :
-                            "0:00"
-                        }
-                    </p>
-                </div>
-            </div>
-
-            <div className="volumeControls">
-
-                {mute ?
-
-                    <button onClick={() => muteTrack()}>
-                        <HiVolumeOff />
-                    </button>
-                    :
-                    <button onClick={() => muteTrack()}>
-                        <HiVolumeUp />
-                    </button>
-                }
-                <label className="sr-only" htmlFor="volumeInput">Volume</label>
-                {/* <input type="range" id="volumeInput" step="1" min="0" max="100" onChange={volumeChange} value={mute ? 0 : velocity} /> */}
                     <Slider className='volumeRange slider' step={1} min={0} max={100} onChange={volumeChange} value={mute ? 0 : velocity} />
 
-            </div>
-            
+                </div>
+
             </div>
 
             <div className="trackTitle">
@@ -171,9 +171,9 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
                         }
                     </p>
                 </div>
-                  
+
                 <p className="titleTicker"><span>{`${currentTrack.title}`}</span> - {`${currentTrack.subtitle}`}</p>
-                  
+
             </div>
         </div>
     )
