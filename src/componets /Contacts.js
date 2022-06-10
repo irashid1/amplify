@@ -24,14 +24,6 @@ const Contacts = () => {
                         
                     </div>
 
-                    <div className="info">
-                        <p>About Solomon</p>
-                        <ul>
-                            <li><a href="https://www.devsolo.ca/">Portfolio</a></li>
-                            <li><a href="https://www.linkedin.com/in/solomon-serry-the-developer/">Linkedin</a></li>
-                            <li><a href="https://github.com/SolomonSerry">Github</a></li>
-                        </ul>
-                    </div>
                 </div>    
             </div>
         </section>
