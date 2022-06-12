@@ -13,6 +13,7 @@ import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
 // import { SwiperStyles } 
 
 import SwiperCore, { EffectCoverflow, Pagination, Virtual, Navigation } from "swiper/core";
+import { borderRadius } from "@mui/system";
 SwiperCore.use([EffectCoverflow, Pagination, Virtual, Navigation]);
 
 
