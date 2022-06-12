@@ -17,6 +17,7 @@ const Header = ({ handleLogout, setShowModal, user, setHasAccount, hamburgerMenu
 
             <nav className='navText'>
                 <ul>
+                    {/* route here */}
                     <li><a href="#contact">Contact</a></li>
                     <span>|</span>
                     {user ?
