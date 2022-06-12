@@ -8,6 +8,7 @@ import toast, { Toaster } from "react-hot-toast";
 import TextField from '@mui/material/TextField';
 
 import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
+// import { ImSearch } from "react-icons/im"
 
 // import { SwiperStyles } 
 
@@ -77,6 +78,13 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
 
     } // this determines whether we pause/play the current track or play a new track
 
+    const handleLiked = () => {
+       setLiked(!liked);
+       if (liked === true) {
+           toast('Liked');
+       }
+    }
+
     useEffect(() => {
         if (updatedList === true) {
             sliderRef.current.swiper.slideTo(0)
@@ -142,10 +150,11 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
             <Toaster
                 position="top-center"
                 toastOptions={{
-                    duration: 4000,
+                    duration: 1500,
                     style: {
                         margin: '250px 0 0 0',
-                        background: '#fbb034',
+                        background: '#4169e1',
+                        color: '#FFFFFF',
                     },
 
                 }}
@@ -153,8 +162,6 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
 
             {user ?
                 <form className="searchBar" onSubmit={handleSubmit}>
-                    {/* <label className="sr-only" htmlFor="search"> Search For Music </label>
-                    <input placeholder="Search For Music" type="text" id="search" onChange={handleChange} value={userInput} /> */}
                     <TextField label="Search" onChange={handleChange} value={userInput} inputProps={inputProps} />
                     <button> Search </button>
                 </form>
@@ -201,7 +208,7 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
                                         <SwiperSlide key={song.track.key}>
                                             <div className="artContainer" key={song.track.key}>
                                                 <img src={song.track.images.coverart} alt={`Coverart of ${song.track.title}`} onClick={() => handlePlayPause(song.track)} />
-                                                <h3>{song.track.title}<span><button onClick={() => setLiked(!liked)}>{liked ? <IoMdHeartEmpty /> : <IoMdHeart /> }</button></span></h3>
+                                                <h3>{song.track.title}<span><button onClick={() => handleLiked()}>{liked ? <IoMdHeartEmpty /> : <IoMdHeart />}</button></span></h3>
                                                 <h4>{song.track.subtitle}</h4>
                                             </div>
                                         </SwiperSlide>
