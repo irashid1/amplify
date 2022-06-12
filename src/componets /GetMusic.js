@@ -19,7 +19,6 @@ SwiperCore.use([EffectCoverflow, Pagination, Virtual, Navigation]);
 const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, setUserInput, stopMusic }) => {
 
 
-
     // states 
 
 
@@ -51,10 +50,6 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
         name: "Search",
         placeholder: "Search For Music"
     }
-
-
-
-
 
     // resetLandingPage(setSearchTerm);
 
@@ -169,16 +164,6 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
                 null
             }
 
-            {/* {errorPage ? 
-                <div className="errorImg">
-                    <BiError />
-                </div>
-            :
-
-            null
-
-            } */}
-
             {searchTerm ?
                 <>
                     <div className="mySwiper wrapper">
@@ -205,12 +190,6 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
                                 clickable: true,
                             }}
 
-
-
-                        // virtual={true}
-                        // modules={[EffectCoverflow, Pagination, Virtual, Navigation]}
-
-                        // className="mySwiper"
                         >
 
 

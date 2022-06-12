@@ -74,51 +74,6 @@ const Header = ({ handleLogout, setShowModal, user, setHasAccount, hamburgerMenu
                         </ul>
                     </>
                 }
-
-
-                {/* {
-                    !hamburgerMenu ?
-
-                        <>
-                            <button onClick={setHamburgerMenu(!hamburgerMenu)}>
-                                <MdClose />
-                            </button>
-
-                            <ul>
-                                <li><a href="#contact">Contact</a></li>
-                                {user ?
-                                    <li onClick={handleLogout}>Logout</li>
-                                    :
-                                    <div className="userLogin">
-                                        <li onClick={() => { setShowModal(true); setHasAccount(true) }} >Log in</li>
-                                        <li onClick={() => { setShowModal(true); setHasAccount(false) }} >Sign up</li>
-                                    </div>
-                                }
-
-                            </ul>
-                        </>
-
-                    :
-                        <>
-                            <button onClick={setHamburgerMenu(!hamburgerMenu)}>
-                                <FaBars />
-                            </button>
-
-                            <ul>
-                                <li><a href="#contact">Contact</a></li>
-                                {user ?
-                                    <li onClick={handleLogout}>Logout</li>
-                                    :
-                                    <div className="userLogin">
-                                        <li onClick={() => { setShowModal(true); setHasAccount(true) }} >Log in</li>
-                                        <li onClick={() => { setShowModal(true); setHasAccount(false) }} >Sign up</li>
-                                    </div>
-                                }
-
-                            </ul>
-                        </>
-                } */}
-
             </nav>
 
         </div>
