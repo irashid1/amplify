@@ -3,7 +3,7 @@ import MediaPlayer from "./MediaPlayer";
 
 const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, songList, pageIndex, setPageIndex, updatedList, setUpdatedList, updatedPage, setUpdatedPage, searchTerm, stopMusic, coverflowIndex, setCoverflowIndex, sliderRef }) => {
 
-    // creating a new audioElement and putting it inside audioRef
+    // creating a new audioElement and putting it inside audioRef so that we have access to all the methods built in, such as play, stop etc. 
     const audioElement = new Audio();
     const audioRef = useRef(audioElement);
 
@@ -43,7 +43,7 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
                 },[1000])
 
             } else {
-            setTrackProgress(audioRef.current.currentTime);
+                setTrackProgress(audioRef.current.currentTime);
                 setTrackDuration(audioRef.current.duration); // setting the total duration of each track
             }
         }, [1000])
@@ -130,11 +130,6 @@ const PlayMusic = ({ currentTrack, setCurrentTrack, playPause, setPlayPause, son
                 </div>
                 : null}
         </>
-
-
-        // <div className="wrapper">
-        //     <MediaPlayer audioRef={audioRef} playPause={playPause} setPlayPause={setPlayPause} currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} songList={songList} pageIndex={pageIndex} setPageIndex={setPageIndex} trackProgress={trackProgress} onScrub={onScrub} onScrubEnd={onScrubEnd} duration={duration} setUpdatedPage={setUpdatedPage}/>
-        // </div>
     )
 }
 
