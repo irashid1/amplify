@@ -93,18 +93,6 @@ function App() {
     setHamburgerMenu(false);
   }
   
-  
-  // const googleLogin = () => {
-  //   const provider = fire.auth.GoogleAuthProvider();
-  //   fire.auth().signInWithPopup(provider)
-  //   .then( (e)=>{
-  //     console.log(e)
-  //   })
-  //   .catch( (err)=> {
-  //     console.log(err)
-  //   })
-  // }
-
   const authListener = useCallback( () => {
     fire
     .auth()
@@ -117,7 +105,6 @@ function App() {
       } 
       else {
         setUser("")
-        // setShowModal(true)
       }
     })
   },[])  
@@ -125,6 +112,7 @@ function App() {
   useEffect( () => {
     authListener();
   },[authListener]);
+  // wrapping the usecallback in a useeffect
 
   return (
     <div className="App">
@@ -135,7 +123,7 @@ function App() {
       <main>
         <GetMusic user={user} setShowModal={setShowModal} searchTerm={searchTerm} setSearchTerm={setSearchTerm} userInput={userInput} setUserInput={setUserInput} stopMusic={stopMusic} />
       
-          <LoginModal email={email} setEmail={setEmail} password={password} setPassword={setPassword} handleLogin={handleLogin} handleSignUp={handleSignUp} emailError={emailError} passwordError={passwordError} hasAccount={hasAccount} setHasAccount={setHasAccount} user={user} showModal={showModal} setShowModal={setShowModal} />
+        <LoginModal email={email} setEmail={setEmail} password={password} setPassword={setPassword} handleLogin={handleLogin} handleSignUp={handleSignUp} emailError={emailError} passwordError={passwordError} hasAccount={hasAccount} setHasAccount={setHasAccount} user={user} showModal={showModal} setShowModal={setShowModal} />
 
       </main>
 

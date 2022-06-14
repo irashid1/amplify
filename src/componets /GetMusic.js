@@ -8,12 +8,8 @@ import toast, { Toaster } from "react-hot-toast";
 import TextField from '@mui/material/TextField';
 
 import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
-// import { ImSearch } from "react-icons/im"
-
-// import { SwiperStyles } 
 
 import SwiperCore, { EffectCoverflow, Pagination, Virtual, Navigation } from "swiper/core";
-import { borderRadius } from "@mui/system";
 SwiperCore.use([EffectCoverflow, Pagination, Virtual, Navigation]);
 
 
@@ -47,6 +43,7 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
     // const [errorPage, setErrorPage] = useState(false);
 
     const sliderRef = useRef();
+    // const likeButtonRef = useRef();
 
     const inputProps = {
         name: "Search",
@@ -63,10 +60,12 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
         // sliderRef.current.swiper.slideTo(0)  
 
     }
+    // handles the submit button
 
     const handleChange = (event) => {
         setUserInput(event.target.value);
     }
+    // handles any change to the user input field
 
     const handlePlayPause = (event) => {
 
@@ -77,20 +76,28 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
             setPlayPause(false);
         }
 
-    } // this determines whether we pause/play the current track or play a new track
+    } 
+    // this determines whether we pause/play the current track or play a new track
 
     const handleLiked = () => {
-       setLiked(!liked);
-       if (liked === true) {
-           toast('Liked');
-       }
+
+        setLiked(!liked);
+        if (liked === true) {
+            toast('Liked');
+        }
+
     }
+    // stretch goal
+    // handle function for whether or not a song was liked, if a song is liked then notifies the user with toast
 
     useEffect(() => {
         if (updatedList === true) {
             sliderRef.current.swiper.slideTo(0)
         }
     }, [updatedList])
+    // switches the index to 0 everytime the list gets populated
+    // used to fix a bug where the index used to remain even when the user searched for a new term
+
 
 
     // axios call
@@ -114,15 +121,6 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
 
                     // additional keys
 
-                    // Solomon key#1
-                    // 'x-rapidapi-host': 'shazam.p.rapidapi.com',
-                    // 'x-rapidapi-key': '4e6f74d025msh36947ff6c814c7cp11d0c1jsnc6f9a4f67eae'
-
-                    // Solomon key#2
-                    // 'x-rapidapi-host': 'shazam.p.rapidapi.com',
-                    // 'x-rapidapi-key': '8b686888demsh8b501dde66c5b3dp12f3d2jsn655350bd72a5'
-
-
                     // Imtiaz key#2
                     // 'x-rapidapi-host': 'shazam.p.rapidapi.com',
                     // 'x-rapidapi-key': 'cd74434576msh2f5cc3adcc9d925p11959ejsnfe4483674b62' 
@@ -133,7 +131,6 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
                 setUpdatedList(true); // has to be set after the songList since this is an async event
                 setPageChange(true);
             }).catch(function (error) {
-                //   console.log(toast("Hello"))
                 setSearchTerm("");
                 // setErrorPage(true);
                 toast("Please Enter A Valid Input");
@@ -144,11 +141,14 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
 
     }, [pageIndex, searchTerm, setSearchTerm])
 
+    
+
     return (
 
 
         <div>
             <Toaster
+                // react hot toast notification  
                 position="top-center"
                 toastOptions={{
                     duration: 1500,
@@ -166,6 +166,7 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
                     <TextField label="Search" onChange={handleChange} value={userInput} inputProps={inputProps} />
                     <button> Search </button>
                 </form>
+                // if user logged in then enables the search input, otherwise null
 
                 :
 
@@ -181,11 +182,8 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
                             ref={sliderRef}
                             effect={"coverflow"}
                             grabCursor={true}
-                            // centeredSlides={true}
                             onSlideChange={(e) => setCoverflowIndex(e.activeIndex)}
                             spaceBetween={50}
-                            // // slidesPreView={"auto"}
-                            // // loop={true}
                             coverflowEffect={{
                                 rotate: 50,
                                 stretch: 0,
@@ -204,7 +202,6 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
                             <div className="coverFlow">
                                 {songList.map((song, index) => {
                                     song.track.index = index; // putting trackIndex on to the song object
-
                                     return (
                                         <SwiperSlide key={song.track.key}>
                                             <div className="artContainer" key={song.track.key}>
@@ -237,6 +234,7 @@ const GetMusic = ({ user, setShowModal, searchTerm, setSearchTerm, userInput, se
                         null
                     }
                 </div>
+                // if searchTerm doesn't exist then displays a different landing page
 
             }
 

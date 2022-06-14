@@ -52,8 +52,6 @@ const MediaPlayer = ({ audioRef, playPause, setPlayPause, currentTrack, setCurre
         return minutes + ":" + seconds;
     };
 
-    console.log(audioRef.current.volume)
-
     useEffect(() => {
         audioRef.current.volume = velocity / 100;
 
